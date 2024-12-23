@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>A minimal Hugo website</title>
-    <link>/</link>
+    <link>https://gtlpython.click/</link>
     <description>Recent content on A minimal Hugo website</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Dec 2024 14:54:26 -0600</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://gtlpython.click/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why_python</title>
-      <link>/why_python/</link>
+      <link>https://gtlpython.click/why_python/</link>
       <pubDate>Mon, 23 Dec 2024 14:54:26 -0600</pubDate>
-      <guid>/why_python/</guid>
+      <guid>https://gtlpython.click/why_python/</guid>
       <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;python&lt;/code&gt;&lt;/pre&gt;&#xA;def hello_world():&#xA;    print(&#34;Hello, World!&#34;)</description>
     </item>
     <item>
       <title>About Your Instructor</title>
-      <link>/about/</link>
+      <link>https://gtlpython.click/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/about/</guid>
-      <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/img/about/home.jpg&#34; alt=&#34;my_home&#34;&gt;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;&#xA;&lt;h1 id=&#34;heading&#34;&gt;Heading&lt;/h1&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#ff9f43&#34;&gt;10&lt;/span&gt;):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;num = &lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;{&lt;/span&gt;i&lt;span style=&#34;color:#5af78e&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pr</description>
+      <guid>https://gtlpython.click/about/</guid>
+      <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://gtlpython.click/img/about/home.jpg&#34; alt=&#34;my_home&#34;&gt;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;&#xA;&lt;h1 id=&#34;heading&#34;&gt;Heading&lt;/h1&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#ff9f43&#34;&gt;10&lt;/span&gt;):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;num = &lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;{&lt;/span&gt;i&lt;span style=&#34;color:#5af78e&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pr</description>
     </item>
   </channel>
 </rss>
