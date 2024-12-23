@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>A minimal Hugo website</title>
-    <link>https://jdhagood.github.io/gtl/</link>
+    <link>https://gtlpython.click/</link>
     <description>Recent content on A minimal Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://jdhagood.github.io/gtl/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://gtlpython.click/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why_python</title>
-      <link>https://jdhagood.github.io/gtl/why_python/</link>
+      <link>https://gtlpython.click/why_python/</link>
       <pubDate>Mon, 23 Dec 2024 14:54:26 -0600</pubDate>
       
-      <guid>https://jdhagood.github.io/gtl/why_python/</guid>
+      <guid>https://gtlpython.click/why_python/</guid>
       <description>python def hello_world(): print(&#34;Hello, World!&#34;) </description>
     </item>
     
     <item>
       <title>About Your Instructor</title>
-      <link>https://jdhagood.github.io/gtl/about/</link>
+      <link>https://gtlpython.click/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jdhagood.github.io/gtl/about/</guid>
+      <guid>https://gtlpython.click/about/</guid>
       <description>Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.
 Where am I from? I grew up in Clinton, Mississippi USA.
 Heading print(&amp;#34;Hello World&amp;#34;) for i in range(10): print(f&amp;#34;num = {i}&amp;#34;) Change of config file detected, rebuilding site (#35). 2024-12-23 16:17:56.743 -0600 Web Server is available at http://localhost:65294/ (bind address 127.</description>
