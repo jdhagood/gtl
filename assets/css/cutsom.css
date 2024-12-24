@@ -14,3 +14,10 @@
     color: #333;              /* Text color */
     font-family: Arial, sans-serif; /* Font family */
 }
+
+.icon {
+    width: 100;
+    border-radius: 50px;
+    display: block;
+    float: left;
+}

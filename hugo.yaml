@@ -37,4 +37,18 @@ markup:
     style: "base16-snazzy"         # Choose a syntax highlighting style (e.g., monokai, github, dracula, etc.)
     lineNos: false           # Disable line numbers (set to true if you want them)
     lineNumbersInTable: true # If line numbers are enabled, use a table layout
-  math: true
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)

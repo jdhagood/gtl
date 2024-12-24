@@ -16,18 +16,18 @@
       <description>&lt;p&gt;I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Life.&amp;rdquo; You will be greeted with one of Google&amp;rsquo;s easter eggs in the form of some little white squares on the side of your screen showing how much nerds love&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Why_python</title>
-      <link>https://gtlpython.click/why_python/</link>
-      <pubDate>Mon, 23 Dec 2024 14:54:26 -0600</pubDate>
-      <guid>https://gtlpython.click/why_python/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;hello_world&lt;/span&gt;():&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;Hello, World!&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
       <title>About Your Instructor</title>
       <link>https://gtlpython.click/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://gtlpython.click/about/</guid>
       <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://gtlpython.click/img/about/home.jpg&#34; alt=&#34;my_home&#34;&gt;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;&#xA;&#xD;&#xA;&lt;div style=&#34;text-align: center;&#34;&gt;&#xD;&#xA;    &lt;p&gt;&#xD;&#xA;        Download here: &lt;a href=&#34;https://gtlpython.click/zip_files/code.zip&#34; download&gt;Download the ZIP file&lt;/a&gt;&#xD;&#xA;    &lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>hello, world</title>
+      <link>https://gtlpython.click/why_python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://gtlpython.click/why_python/</guid>
+      <description>&lt;h1 id=&#34;downloading-python&#34;&gt;Downloading python&lt;/h1&gt;&#xA;&lt;p&gt;Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;python.org&lt;/a&gt; (3.13.1 when I wrote this).&lt;/p&gt;&#xA;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&lt;img src=&#34;https://gtlpython.click/img/why_python/path.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;&#xA;&lt;p&gt;To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.&lt;/p&gt;</description>
     </item>
     <item>
       <title>sketchpad</title>

@@ -7,10 +7,14 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <h2>Lecture 1: <a href = "why_python"> Why Python </a></h2>
-    <p>
-        Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
-    </p>
+    <img class="icon" src="/img/_index/icon1.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 1: <a href="why_python">Why Python</a></h2>
+        <p class="description">This lecture introduces the basics of Python programming, including why it is widely used and its advantages.</p>
+        <p>
+            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+        </p>
+    </div>
 </div>
 {{< /rawhtml >}}
 

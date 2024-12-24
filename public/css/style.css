@@ -58,4 +58,27 @@ thead, tfoot, tr:nth-child(even) { background: #eee; }
   border: 1px solid #ccc;   /* Optional: light border */
   color: #333;              /* Text color */
   font-family: Arial, sans-serif; /* Font family */
+  display: flex;            /* Flex layout for image and content */
+  align-items: flex-start;  /* Align items at the top */
+}
+
+.icon {
+  width: 200px;             /* Set desired width for the icon */
+  height: 200px;            /* Maintain consistent height */
+  border-radius: 20px;      /* Rounded corners for the icon */
+  object-fit: cover;        /* Ensure the image fits well */
+  margin-right: 15px;       /* Space between the icon and content */
+  flex-shrink: 0;           /* Prevent the icon from shrinking */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;   /* Stack the content vertically */
+}
+
+.description {
+  margin-top: 5px;          /* Space above the description */
+  margin-bottom: 10px;      /* Space below the description */
+  font-style: italic;       /* Optional: make the description italicized */
+  color: #555;              /* Slightly lighter color for the description */
 }
