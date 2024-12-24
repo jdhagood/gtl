@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Why_python | A minimal Hugo website</title>
+    <title>hello, world | A minimal Hugo website</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
     
@@ -26,15 +26,47 @@
     </nav>
 
 <div class="article-meta">
-<h1><span class="title">Why_python</span></h1>
+<h1><span class="title">hello, world</span></h1>
 
-<h2 class="date">2024/12/23</h2>
+
 </div>
 
 <main>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">hello_world</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Hello, World!&#34;</span>)</span></span></code></pre></div>
+<h1 id="downloading-python">Downloading python</h1>
+<p>Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from <a href="https://www.python.org/downloads/">python.org</a> (3.13.1 when I wrote this).</p>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+</style>
+<img src="/img/why_python/path.jpg" class="soft" alt="Soft-styled image">
 
+<p>To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.</p>
+<pre tabindex="0"><code>C:\Users\jdhag&gt;python --version
+Python 3.12.3
+</code></pre><p>You will get an error if you do not have python downloaded properly.</p>
+<h1 id="your-first-python-program">Your first python program</h1>
+<p>Belive it or not, you are ready to run your first python program. If you type &lsquo;python&rsquo; into your command prompt (or &lsquo;py&rsquo; if you&rsquo;re cool) then you will end up inside the python shell.</p>
+<pre tabindex="0"><code>C:\Users\jdhag&gt;python
+Python 3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)] on win32
+Type &#34;help&#34;, &#34;copyright&#34;, &#34;credits&#34; or &#34;license&#34; for more information.
+&gt;&gt;&gt; print(&#34;hello, world&#34;)
+hello, world
+&gt;&gt;&gt;
+</code></pre><p>You may have seen the &ldquo;hello, world&rdquo; example while learning other programing languages. It has become the prototypical first program that everyone should write when starting a new programming language. It is likely that this comes from 1974 Bell Laboratories internal memorandum by Brian Dernighan <em>Programming in C: A Tutorial</em>. He said that the inspiration for the phrase came from a cartoon he watched as a kid with a small chick hatching and then saying &ldquo;hello, world.&rdquo;</p>
+<p>to exit simply type &lsquo;quit()&rsquo;</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; quit()
+
+C:\Users\jdhag&gt;
+</code></pre><h1 id="why-python">Why Python?</h1>
+<p>This is a good question to ask when starting to learn any programming language. I think that the best way to answer this is to listen to what the original inventor of Python, Guido van Rossum, said in an interview when asked why he made python.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Hello World&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">10</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;num = </span><span style="color:#5af78e">{</span>i<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span></code></pre></div>
 </main>
 
   <footer>

@@ -16,15 +16,6 @@
     </item>
     
     <item>
-      <title>Why_python</title>
-      <link>https://gtlpython.click/why_python/</link>
-      <pubDate>Mon, 23 Dec 2024 14:54:26 -0600</pubDate>
-      
-      <guid>https://gtlpython.click/why_python/</guid>
-      <description>def hello_world(): print(&amp;#34;Hello, World!&amp;#34;) </description>
-    </item>
-    
-    <item>
       <title>About Your Instructor</title>
       <link>https://gtlpython.click/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -33,6 +24,17 @@
       <description>Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.
 Where am I from? I grew up in Clinton, Mississippi USA.
 Download here: Download the ZIP file $$\int^\infty_0 e^{-x^2}dx = \frac{\sqrt{\pi}}{2}$$ The formula for the Gaussian integral is \( \int^\infty_0 e^{-x^2}dx = \frac{\sqrt{\pi}}{2} \). $$ \begin{array}{|c|c|c|} \hline \text{Header 1} &amp; \text{Header 2} &amp; \text{Header 3} \\ \hline \text{Data 1} &amp; \text{Data 2} &amp; \text{Data 3} \\ \text{Data 4} &amp; \text{Data 5} &amp; \text{Data 6} \\ \hline \end{array} $$ print(&amp;#34;Hello World&amp;#34;) for i in range(10): print(f&amp;#34;num = {i}&amp;#34;) Change of config file detected, rebuilding site (#35).</description>
+    </item>
+    
+    <item>
+      <title>hello, world</title>
+      <link>https://gtlpython.click/why_python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/why_python/</guid>
+      <description>Downloading python Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from python.org (3.13.1 when I wrote this).
+To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.
+C:\Users\jdhag&amp;gt;python --version Python 3.12.3 You will get an error if you do not have python downloaded properly.</description>
     </item>
     
     <item>
