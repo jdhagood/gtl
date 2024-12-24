@@ -1,0 +1,16 @@
+.soft {
+    width: 100px;
+    border-radius: 10px;
+    display: block; /* Centering tweak: works with margin auto */
+    margin: 0 auto; /* Centers block elements horizontally */
+}
+
+.rounded-box {
+    background-color: #f0f8ff; /* Light blue background color */
+    border-radius: 10px;      /* Rounded corners */
+    padding: 15px;            /* Space inside the box */
+    margin: 10px 0;           /* Space around the box */
+    border: 1px solid #ccc;   /* Optional: light border */
+    color: #333;              /* Text color */
+    font-family: Arial, sans-serif; /* Font family */
+}

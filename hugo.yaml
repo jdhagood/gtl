@@ -29,6 +29,7 @@ menu:
 params:
   description: "A website built through Hugo and blogdown."
   footer: "&copy; JD Hagood {Year} | [Github](https://github.com/jdhagood/gtl) "
+  math: true  # Enable math rendering
 
 markup:
   highlight:
@@ -36,18 +37,4 @@ markup:
     style: "base16-snazzy"         # Choose a syntax highlighting style (e.g., monokai, github, dracula, etc.)
     lineNos: false           # Disable line numbers (set to true if you want them)
     lineNumbersInTable: true # If line numbers are enabled, use a table layout
-  goldmark:
-    renderer:
-      unsafe: true
-    extensions:
-      passthrough:
-        enable: true
-        delimiters:
-          block:
-          - - \[
-            - \]
-          - - $$
-            - $$
-          inline:
-          - - \(
-            - \)
+  math: true

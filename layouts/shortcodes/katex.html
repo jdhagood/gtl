@@ -1,0 +1,19 @@
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('{{ .Get "id" }}'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="{{ .Get "id" }}" class="math-content">
+      {{ .Inner }}
+    </div>
+  </div>
+  

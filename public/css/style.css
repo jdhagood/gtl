@@ -48,4 +48,14 @@ table {
 }
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
-thead, tfoot, tr:nth-child(even) { background: #eee; }
+thead, tfoot, tr:nth-child(even) { background: #eee; } 
+
+.rounded-box {
+  background-color: #f0f8ff; /* Light blue background color */
+  border-radius: 10px;      /* Rounded corners */
+  padding: 15px;            /* Space inside the box */
+  margin: 10px 0;           /* Space around the box */
+  border: 1px solid #ccc;   /* Optional: light border */
+  color: #333;              /* Text color */
+  font-family: Arial, sans-serif; /* Font family */
+}
