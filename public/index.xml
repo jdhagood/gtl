@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Landing Page on A minimal Hugo website</title>
-    <link>https://gtlpython.click/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content in Landing Page on A minimal Hugo website</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Dec 2024 22:24:53 -0600</lastBuildDate>
-    <atom:link href="https://gtlpython.click/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cellular_atomata</title>
-      <link>https://gtlpython.click/cellular_atomata/</link>
+      <link>http://localhost:1313/cellular_atomata/</link>
       <pubDate>Mon, 23 Dec 2024 22:24:53 -0600</pubDate>
-      <guid>https://gtlpython.click/cellular_atomata/</guid>
+      <guid>http://localhost:1313/cellular_atomata/</guid>
       <description>&lt;p&gt;I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Life.&amp;rdquo; You will be greeted with one of Google&amp;rsquo;s easter eggs in the form of some little white squares on the side of your screen showing how much nerds love&lt;/p&gt;</description>
     </item>
     <item>
       <title>About Your Instructor</title>
-      <link>https://gtlpython.click/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/about/</guid>
-      <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;    .image-container {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 20px 0;  &#xD;&#xA;    }&#xD;&#xA;    .caption {&#xD;&#xA;        font-size: 0.9em;&#xD;&#xA;        color: #555;  &#xD;&#xA;        margin-top: 10px;&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;image-container&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;https://gtlpython.click/img/about/family.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;    &#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xA;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;    .image-container {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 20px 0;  &#xD;&#xA;    }&#xD;&#xA;    .caption {&#xD;&#xA;        font-size: 0.9em;&#xD;&#xA;        color: #555;  &#xD;&#xA;        margin-top: 10px;&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;image-container&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;https://gtlpython.click/img/about/home.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;    &#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;    .image-container {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 20px 0;  &#xD;&#xA;    }&#xD;&#xA;    .caption {&#xD;&#xA;        font-size: 0.9em;&#xD;&#xA;        color: #555;  &#xD;&#xA;        margin-top: 10px;&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;image-container&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;http://localhost:1313/img/about/family.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;    &#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xA;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;    .image-container {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 20px 0;  &#xD;&#xA;    }&#xD;&#xA;    .caption {&#xD;&#xA;        font-size: 0.9em;&#xD;&#xA;        color: #555;  &#xD;&#xA;        margin-top: 10px;&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;image-container&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;http://localhost:1313/img/about/home.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;    &#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Audio Processing</title>
-      <link>https://gtlpython.click/audioprocessing/</link>
+      <link>http://localhost:1313/audioprocessing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/audioprocessing/</guid>
+      <guid>http://localhost:1313/audioprocessing/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;In this lab we will perform manipulations on audio files to produce some cool effects. Before we can start let&amp;rsquo;s talk about how sound is stored on a computer.&lt;/p&gt;&#xA;&lt;p&gt;When you use a microphone to record a sound, it measures the electrical signal from a transducer which is proportial to the pressure at the transducer many times a second. This produces a list of numbers, called samples (both positive, zero, and negative), corresponding to the pressue at a certain time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Generators</title>
-      <link>https://gtlpython.click/generators/</link>
+      <link>http://localhost:1313/generators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/generators/</guid>
+      <guid>http://localhost:1313/generators/</guid>
       <description>&lt;h1 id=&#34;reimplementing-range&#34;&gt;Reimplementing range&lt;/h1&gt;&#xA;&lt;p&gt;Suppose we wanted to reimplement python&amp;rsquo;s range function. To do so we may naïvely implement a function that retuns a list of numbers in our desired range like this:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;list_range&lt;/span&gt;(start, stop, step&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ff9f43&#34;&gt;1&lt;/span&gt;):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;assert&lt;/span&gt; step &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff9f43&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    out &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; []&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    current &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; start&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;while&lt;/span&gt; current &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;lt;&lt;/span&gt; stop:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        out&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;append(current)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        current &lt;span style=&#34;color:#ff6ac1&#34;&gt;+=&lt;/span&gt; step&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; out&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pr</description>
     </item>
     <item>
       <title>hello, world</title>
-      <link>https://gtlpython.click/hello_world/</link>
+      <link>http://localhost:1313/hello_world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/hello_world/</guid>
-      <description>&lt;h1 id=&#34;downloading-python&#34;&gt;Downloading python&lt;/h1&gt;&#xA;&lt;p&gt;Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;python.org&lt;/a&gt; (3.13.1 when I wrote this).&lt;/p&gt;&#xA;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;    .image-container {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 20px 0;  &#xD;&#xA;    }&#xD;&#xA;    .caption {&#xD;&#xA;        font-size: 0.9em;&#xD;&#xA;        color: #555;  &#xD;&#xA;        margin-top: 10px;&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;image-container&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;https://gtlpython.click/img/why_python/path.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;    &#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xA;&lt;p&gt;To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/hello_world/</guid>
+      <description>&lt;h1 id=&#34;downloading-python&#34;&gt;Downloading python&lt;/h1&gt;&#xA;&lt;p&gt;Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;python.org&lt;/a&gt; (3.13.1 when I wrote this).&lt;/p&gt;&#xA;&lt;style&gt;&#xD;&#xA;    .soft {&#xD;&#xA;        width: 600px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        display: block;&#xD;&#xA;        margin: 0 auto;  &#xD;&#xA;    }&#xD;&#xA;    .image-container {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 20px 0;  &#xD;&#xA;    }&#xD;&#xA;    .caption {&#xD;&#xA;        font-size: 0.9em;&#xD;&#xA;        color: #555;  &#xD;&#xA;        margin-top: 10px;&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;image-container&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;http://localhost:1313/img/why_python/path.jpg&#34; class=&#34;soft&#34; alt=&#34;Soft-styled image&#34;&gt;&#xD;&#xA;    &#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xA;&lt;p&gt;To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Recursion</title>
-      <link>https://gtlpython.click/recursion/</link>
+      <link>http://localhost:1313/recursion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/recursion/</guid>
+      <guid>http://localhost:1313/recursion/</guid>
       <description>&lt;p&gt;Recursion is one of the most useful tools that a programmer can have in their toolbelt. It can lead to very elegant solutions to problems that seem large or complicated at first by breaking it down into smaller pieces that can be more easily computed. Once you get the hang of it, you will also likely agree that the recursive programs are easier to understand. Let&amp;rsquo;s learn how to harness this power in python.&lt;/p&gt;</description>
     </item>
     <item>
       <title>sketchpad</title>
-      <link>https://gtlpython.click/sketchpad/</link>
+      <link>http://localhost:1313/sketchpad/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/sketchpad/</guid>
-      <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://gtlpython.click/img/about/home.jpg&#34; alt=&#34;my_home&#34;&gt;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;&#xA;&#xA;&lt;div style=&#34;text-align: center;&#34;&gt;&#xA;    &lt;p&gt;&#xA;        Download here: &lt;a href=&#34;https://gtlpython.click/zip_files/code.zip&#34; download&gt;Download the ZIP file&lt;/a&gt;&#xA;    &lt;/p&gt;</description>
+      <guid>http://localhost:1313/sketchpad/</guid>
+      <description>&lt;p&gt;Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.&lt;/p&gt;&#xA;&lt;h1 id=&#34;where-am-i-from&#34;&gt;Where am I from?&lt;/h1&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/about/home.jpg&#34; alt=&#34;my_home&#34;&gt;&#xA;I grew up in Clinton, Mississippi USA.&lt;/p&gt;&#xA;&#xA;&lt;div style=&#34;text-align: center;&#34;&gt;&#xA;    &lt;p&gt;&#xA;        Download here: &lt;a href=&#34;http://localhost:1313/zip_files/code.zip&#34; download&gt;Download the ZIP file&lt;/a&gt;&#xA;    &lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
