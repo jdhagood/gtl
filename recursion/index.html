@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recursion | A minimal Hugo website</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About Me</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Recursion</span></h1>
+
+
+</div>
+
+<main>
+<p>Recursion is one of the most useful tools that a programmer can have in their toolbelt. It can lead to very elegant solutions to problems that seem large or complicated at first by breaking it down into smaller pieces that can be more easily computed. Once you get the hang of it, you will also likely agree that the recursive programs are easier to understand. Let&rsquo;s learn how to harness this power in python.</p>
+<h1 id="to-understand-recursion-you-must-understand-recursion">To understand recursion you must understand recursion</h1>
+<p>You probably already use recursion in your everyday life and you do not know it. Imagine that you want to cook a yummy cake for your friend&rsquo;s birthday, Bobby B (the B stands for Bobby B).
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/recursion/cake.jpg" class="soft" alt="Soft-styled image">
+    
+    <div class="caption">Yummy!</div>
+    
+</div>
+</p>
+<p>Imagine that we had a function called &ldquo;do_action&rdquo; which represents what you do. We would like to execute</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;make your friend&#39;s cake&#34;</span>)
+</span></span></code></pre></div><p>This function would do some very complex tasks. The execution would require you to acquire the ingredients, combine the ingredients, bake the cake, and decorate the cake to name a few. However, we could step down a layer of abstraction and realize that we could just call &ldquo;do_action&rdquo; on all these smaller subtasks that we think of. We could then just call</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;get cake ingredients&#34;</span>)
+</span></span><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;combine cake ingredients&#34;</span>)
+</span></span><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;bake cake&#34;</span>)
+</span></span><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;decorate cake&#34;</span>)
+</span></span></code></pre></div><p>We could again just look at the task &ldquo;get cake ingredients&rdquo; and break it up into smaller actions as well</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;go to store&#34;</span>)
+</span></span><span style="display:flex;"><span>do_aciton(<span style="color:#5af78e">&#34;find cake ingredients&#34;</span>)
+</span></span><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;pay for cake ingredients&#34;</span>)
+</span></span><span style="display:flex;"><span>do_action(<span style="color:#5af78e">&#34;bring cake ingredients home&#34;</span>)
+</span></span></code></pre></div><p>As you can see we can break up the very complicated task of making Bobby B&rsquo;s cake into many smaller tasks. You will eventually get to a task so basic that it cannot be broken up into simpler tasks. This is where our recursive approach to breaking up the &ldquo;do_action&rdquo; function can end and we can successfully bake our cake! (side note: it is fun to think about how deep the recursion could go for &ldquo;do_action&rdquo;. This is dependent on what we consider a &ldquo;basic&rdquo; action. It could get to the level of &ldquo;open door&rdquo;, &ldquo;move left leg forward&rdquo;, or even &ldquo;fire this neuron&rdquo;. I will leave it as an exercise to philosophers to define what a basic action is!)</p>
+<p>We could take this analogy one step further and define the &ldquo;do_action&rdquo; function. Suppose that an &ldquo;action&rdquo; may be basic or composed of other actions. If we have a function called &ldquo;is_basic(action)&rdquo; that returns True or False depending on if the action is basic, and a function, &ldquo;do_basic_action(action)&rdquo;, that can execute a basic action, then we can define &ldquo;do_action&rdquo; as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">do_action</span>(action):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> is_basic(action):
+</span></span><span style="display:flex;"><span>        do_basic_action(action)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> sub_action <span style="color:#ff6ac1">in</span> action:
+</span></span><span style="display:flex;"><span>        do_action(sub_action)
+</span></span></code></pre></div><p>This is a recursive function. (Side note: this function ignores the noncommutativity of some actions like putting on socks and shoes (you have to put on your socks before you put on your shoes!) but it is just a toy example!) It is a function that calls itself during its execution on more basic versions of the problem until it reaches more basic versions of the problem it can solve.</p>
+<h1 id="fibonacci-numbers">Fibonacci Numbers</h1>
+<p>The Fibonacci sequence is one of the most famous sequences of numbers in math and is forced upon countless CS students when they are learning about recursion. You will be no different!
+They are defined recursively as follows:
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-0'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-0" class="math-content">
+      
+$$
+F_{n} = \begin{cases}
+0 \quad &\text{if } n = 0\\
+1 \quad &\text{if } n = 1\\
+F_{n-1} + F_{n-2} \quad &\text{otherwise}\\
+\end{cases}
+$$
+
+    </div>
+  </div>
+  </p>
+<p>So, for example</p>
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-1'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-1" class="math-content">
+      
+$$
+\begin{align*}
+F_0 &= 0\\
+F_1 &= 1\\
+F_2 &= F_1 + F_0 = 1 + 0 = 1\\
+F_3 &= F_2 + F_1 = 1 + 1 = 2\\
+F_4 &= F_3 + F_2 = 3 + 2 = 3\\
+&\quad\vdots
+\end{align*}
+$$
+
+    </div>
+  </div>
+  
+<p>Let&rsquo;s write a function to calculate these numbers. In my haste I typed this into my IDE and pressed run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">+</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(fib(<span style="color:#ff9f43">10</span>))
+</span></span></code></pre></div><p>Oh no, I got an error!</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff6ac1">return</span> fib<span style="color:#ff6ac1">(</span>n-2<span style="color:#ff6ac1">)</span> + fib<span style="color:#ff6ac1">(</span>n-1<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>           ^^^^^^^^
+</span></span><span style="display:flex;"><span>  <span style="color:#ff6ac1">[</span>Previous line repeated <span style="color:#ff9f43">996</span> more times<span style="color:#ff6ac1">]</span>
+</span></span><span style="display:flex;"><span>RecursionError: maximum recursion depth exceeded
+</span></span></code></pre></div><p>It looks like fib was called over 900 times and I reached the maximum recursion depth! This error helps to contain runaway recursion, like what I just did.</p>
+<p>The reason this did not work is because I forgot to include the base case. While this is an easy problem to spot on a simple program like this, it can be more difficult as your functions become more complicated!</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">elif</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">+</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(fib(<span style="color:#ff9f43">10</span>))
+</span></span></code></pre></div><p>And with this I get the number 55 printed into my terminal. Note that we had two base cases. Recursive functions can have any positive integer of base cases. (can you come up with a recursive function that would have 1000 base cases?)</p>
+<h1 id="factorials">Factorials!</h1>
+<p>In math class we define the factorial of a non-negative integer, <em>n</em>!, as the product of <em>n</em> and all the positive integers less than <em>n</em>. For example
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-2'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-2" class="math-content">
+      
+$$
+5! = 5\times4\times3\times2\times1 = 120
+$$
+
+    </div>
+  </div>
+  
+More precisely
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-3'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-3" class="math-content">
+      
+$$
+n! = \begin{cases}
+0 \quad &\text{if } n = 0\\
+n(n-1) \quad &\text{otherwise}
+\end{cases}
+$$
+
+    </div>
+  </div>
+  
+Or if you are feeling rather notationally inclined today
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-4'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-4" class="math-content">
+      
+$$
+n! = \prod^n_{k=0}k\quad n\in \mathbb{Z}^{+}
+$$
+
+    </div>
+  </div>
+  
+Note that we have 0!=1 because
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-5'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-5" class="math-content">
+      
+$$
+1! = 1\times 0! = 1 \implies 0! = 1
+$$
+
+    </div>
+  </div>
+  
+Please implement this as a recursive function using the same approach we used to calculate the Fibonacci numbers</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">factorial</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">pass</span> <span style="color:#78787e">#Please Implement</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    n <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#ff6ac1">=</span> factorial(<span style="color:#ff9f43">10</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;</span><span style="color:#5af78e">{</span>n<span style="color:#5af78e">}</span><span style="color:#5af78e">! = </span><span style="color:#5af78e">{</span>result<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span></code></pre></div><h1 id="flatten-a-list">Flatten a list</h1>
+<p>Let&rsquo;s say that we have a deeply nested list of integers like this one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>l <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, [<span style="color:#ff9f43">2</span>, [[<span style="color:#ff9f43">3</span>]]], <span style="color:#ff9f43">4</span>, [[<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">6</span>], <span style="color:#ff9f43">7</span>]]
+</span></span></code></pre></div><p>and we want to make a function called &ldquo;flatten&rdquo; that extracts the numbers from the list in order and returns a flattened list. For example</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> flatten(l)
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">6</span>, <span style="color:#ff9f43">7</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> flatten([])
+</span></span><span style="display:flex;"><span>[]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> flatten([<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">4</span>, [<span style="color:#ff9f43">5</span>]])
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> flatten([[[[[[[<span style="color:#ff9f43">0</span>]]]]]]])
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">0</span>]
+</span></span></code></pre></div><p>Let&rsquo;s reason through how we could implement this function. This is a difficult problem until you realize that the elements of our nested list are either other nested lists or integers. This means we can solve the problem recursively on the elements of our input list treating integers as our base case</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">flatten</span>(input_list):
+</span></span><span style="display:flex;"><span>    output <span style="color:#ff6ac1">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e">#fill in the logic to get the output</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> output
+</span></span></code></pre></div><h1 id="memoization">Memoization</h1>
+<p>Consider how we initially calculated the Fibonacci numbers</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">elif</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">+</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)
+</span></span></code></pre></div><p>If you try to run this function for a large number, like n = 100, it will take a very long time. This is because our function secretly sucks!</p>
+<p>Lets see how many times our function is being called when we calculate a Fibonacci number.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">count_recursive_calls</span>(func):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    A decorator to count the number of times a recursive function is called.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    call_count <span style="color:#ff6ac1">=</span> {<span style="color:#5af78e">&#34;count&#34;</span>: <span style="color:#ff9f43">0</span>}  <span style="color:#78787e"># Use a mutable object to store count</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">wrapper</span>(<span style="color:#ff6ac1">*</span>args, <span style="color:#ff6ac1">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Increment the call count each time the function is called</span>
+</span></span><span style="display:flex;"><span>        call_count[<span style="color:#5af78e">&#34;count&#34;</span>] <span style="color:#ff6ac1">+=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> func(<span style="color:#ff6ac1">*</span>args, <span style="color:#ff6ac1">**</span>kwargs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Attach the call count to the wrapper for easy access</span>
+</span></span><span style="display:flex;"><span>    wrapper<span style="color:#ff6ac1">.</span>call_count <span style="color:#ff6ac1">=</span> call_count
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> wrapper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">@count_recursive_calls</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">elif</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">+</span> fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    n <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">30</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#ff6ac1">=</span> fib(n)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;For n = </span><span style="color:#5af78e">{</span>n<span style="color:#5af78e">}</span><span style="color:#5af78e"> we called fib </span><span style="color:#5af78e">{</span>fib<span style="color:#ff6ac1">.</span>call_count[<span style="color:#5af78e">&#39;count&#39;</span>]<span style="color:#5af78e">}</span><span style="color:#5af78e"> times!&#34;</span>)
+</span></span></code></pre></div><p>If you are curious how this works, google &ldquo;python decorators&rdquo; (This is a more niche topic in python that we will not discuss much. Think of a decorator as an effect you can apply to a function on the fly.) Upon running this the terminal tells us:</p>
+<p>For n = 30 we called fib 2692537 times!</p>
+<p>We called the function over 2 million times! To see why, consider this tree diagram representing our function calls. Each node in the tree is one function call.</p>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/recursion/tree.jpg" class="soft" alt="Soft-styled image">
+    
+    <div class="caption">so. many. branches. O_o</div>
+    
+</div>
+
+<p>However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! Memoization (no, that is not a misspelling of memorization) solves this problem.</p>
+<p>Memoization is the technique of caching values as you compute so that you only need to compute each value at most one time. For example, we could cache the Fibonacci numbers in a dictionary as we calculate them to avoid duplicated work.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">memoized_fib</span>(n):
+</span></span><span style="display:flex;"><span>    cache <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff9f43">0</span>: <span style="color:#ff9f43">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff9f43">1</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">recr_fib</span>(n):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> cache:
+</span></span><span style="display:flex;"><span>            cache[n] <span style="color:#ff6ac1">=</span> recr_fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>) <span style="color:#ff6ac1">+</span> recr_fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> cache[n]
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> recr_fib(n)
+</span></span></code></pre></div><p>With this we can now calculate Fibonacci numbers up to the maximum recursion depth rather quickly. We can check how many times we call the function with</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">memoized_fib</span>(n):
+</span></span><span style="display:flex;"><span>    cache <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff9f43">0</span>: <span style="color:#ff9f43">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff9f43">1</span>: <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff9f43">@count_recursive_calls</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">recr_fib</span>(n):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> cache:
+</span></span><span style="display:flex;"><span>            cache[n] <span style="color:#ff6ac1">=</span> recr_fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>) <span style="color:#ff6ac1">+</span> recr_fib(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> cache[n]
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>    result <span style="color:#ff6ac1">=</span>  recr_fib(n)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;For n = </span><span style="color:#5af78e">{</span>n<span style="color:#5af78e">}</span><span style="color:#5af78e"> we called fib </span><span style="color:#5af78e">{</span>recr_fib<span style="color:#ff6ac1">.</span>call_count[<span style="color:#5af78e">&#39;count&#39;</span>]<span style="color:#5af78e">}</span><span style="color:#5af78e"> times!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> result
+</span></span></code></pre></div><p>and we get</p>
+<p>For n = 30 we called recr_fib 59 times!</p>
+<p>This is a huge improvement compared to 2.6 million!</p>
+<h1 id="recursion-vs-iteration">Recursion vs Iteration</h1>
+<p>You may look at many of the recursive examples we have done so far and think to yourself, I could have done these without recursion. For example, we could refactor our &ldquo;do_action&rdquo; function to an equivalent form:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">do_action</span>(action):
+</span></span><span style="display:flex;"><span>    stack <span style="color:#ff6ac1">=</span> [action]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> stack:
+</span></span><span style="display:flex;"><span>        current_action <span style="color:#ff6ac1">=</span> stack<span style="color:#ff6ac1">.</span>pop(<span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> is_basic(current_action):
+</span></span><span style="display:flex;"><span>            do_basic_action(current_action)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">for</span> sub_action <span style="color:#ff6ac1">in</span> action:
+</span></span><span style="display:flex;"><span>                stack<span style="color:#ff6ac1">.</span>append(sub_action)
+</span></span></code></pre></div><p>We essentially replaced the different frames that our recursive function was being called in with a variable called &ldquo;stack.&rdquo;</p>
+<p>For a more realistic example consider how we could iteratively generate the Fibonacci numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib_itterative</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> n <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    a, b <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> _ <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(n<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>):
+</span></span><span style="display:flex;"><span>        a, b <span style="color:#ff6ac1">=</span> b, a<span style="color:#ff6ac1">+</span>b
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> b
+</span></span></code></pre></div><p>You may be wondering if we can do this for all recursive programs. The answer turns out to be &ldquo;yes&rdquo; due to one of the most important theorems in all of theoretical computer science.</p>
+<p>Alan Turing, a name you may be familiar with, laid many of the foundations for the field of computer science in the 1930s. In a 1936 paper he introduced his namesake model of what &ldquo;computation&rdquo; is, the Turing Machine. This was essentially a fictional device that iteratively went along an infinitely long piece of tape with 1&rsquo;s and 0&rsquo;s on it, reading and writing to the tape as it went along. Turing showed that if you cleverly laid out the rules for the device, you could calculate almost anything (see <a href="https://en.wikipedia.org/wiki/Halting_problem">the halting problem</a> for an example of something that you could not compute).</p>
+<p>Turing was not alone in his investigations of computation in the 1930s. Alonzo Church also made a model of computation that he called the Lambda Calculus and also published on it in 1936. It relied on recursive computing with mathematical functions, and seemed to be just as valid a model of computation as Turing&rsquo;s. The question then became: who has the better model of computation, Church or Turing?</p>
+<p>This question was resolved with the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church Turing Thesis</a>. It essentially says that there is an isomorphism between Church&rsquo;s lambda calculus and Turing&rsquo;s machine; they are secretly the same thing (mathematically speaking). Because two really smart people independently came to the same conclusion with wildly different approaches, most all computer scientists agree to call something &ldquo;computable&rdquo; if it can be represented on a Turing machine.</p>
+<p>The consequence of the Church Turing Thesis that we care about is that it implies that all recursive functions can be written iteratively, and vice versa. Python is Turing complete (any python program can be represented on a Turing machine, and visa versa. This is true of most all programming languages) so even if you write a really complicated recursive function you believe cannot be written any other way, you are wrong because it has a representation on a Turing machine which is necessarily iterative! Your iterative functions also have representations in the lambda calculus meaning they can be represented recursively as well!</p>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © JD Hagood 2024 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

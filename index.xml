@@ -23,18 +23,48 @@
       <guid>https://gtlpython.click/about/</guid>
       <description>Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.
 Where am I from? I grew up in Clinton, Mississippi USA.
-Download here: Download the ZIP file $$\int^\infty_0 e^{-x^2}dx = \frac{\sqrt{\pi}}{2}$$ The formula for the Gaussian integral is \( \int^\infty_0 e^{-x^2}dx = \frac{\sqrt{\pi}}{2} \). $$ \begin{array}{|c|c|c|} \hline \text{Header 1} &amp; \text{Header 2} &amp; \text{Header 3} \\ \hline \text{Data 1} &amp; \text{Data 2} &amp; \text{Data 3} \\ \text{Data 4} &amp; \text{Data 5} &amp; \text{Data 6} \\ \hline \end{array} $$ print(&amp;#34;Hello World&amp;#34;) for i in range(10): print(f&amp;#34;num = {i}&amp;#34;) Change of config file detected, rebuilding site (#35).</description>
+What do I study? I am currently studying electrical engineering and computer science at the Massachusetts Institue of Technology (MIT). I am on the MIT Solar Electric Vehicle Team (SEVT) in the electrical engineering subteam.</description>
+    </item>
+    
+    <item>
+      <title>Audio Processing</title>
+      <link>https://gtlpython.click/audioprocessing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/audioprocessing/</guid>
+      <description>Introduction In this lab we will perform manipulations on audio files to produce some cool effects. Before we can start let&amp;rsquo;s talk about how sound is stored on a computer.
+When you use a microphone to record a sound, it measures the electrical signal from a transducer which is proportial to the pressure at the transducer many times a second. This produces a list of numbers, called samples (both positive, zero, and negative), corresponding to the pressue at a certain time.</description>
+    </item>
+    
+    <item>
+      <title>Generators</title>
+      <link>https://gtlpython.click/generators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/generators/</guid>
+      <description>Reimplementing range Suppose we wanted to reimplement python&amp;rsquo;s range function. To do so we may naïvely implement a function that retuns a list of numbers in our desired range like this:
+def list_range(start, stop, step=1): assert step &amp;gt;= 1 out = [] current = start while current &amp;lt; stop: out.append(current) current += step return out However, let&amp;rsquo;s try to use this function in the following program.
+for i in list_range(0, 1_000_000_000_000_000, 1): if i &amp;gt; 100: break print(i) You will eventually see the numbers 0-99 printed on the screen, but not after a considerable pause!</description>
     </item>
     
     <item>
       <title>hello, world</title>
-      <link>https://gtlpython.click/why_python/</link>
+      <link>https://gtlpython.click/hello_world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://gtlpython.click/why_python/</guid>
+      <guid>https://gtlpython.click/hello_world/</guid>
       <description>Downloading python Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from python.org (3.13.1 when I wrote this).
 To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.
 C:\Users\jdhag&amp;gt;python --version Python 3.12.3 You will get an error if you do not have python downloaded properly.</description>
+    </item>
+    
+    <item>
+      <title>Recursion</title>
+      <link>https://gtlpython.click/recursion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/recursion/</guid>
+      <description>Recursion is one of the most useful tools that a programmer can have in their toolbelt. It can lead to very elegant solutions to problems that seem large or complicated at first by breaking it down into smaller pieces that can be more easily computed. Once you get the hang of it, you will also likely agree that the recursive programs are easier to understand. Let&amp;rsquo;s learn how to harness this power in python.</description>
     </item>
     
     <item>

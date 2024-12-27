@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audio Processing | A minimal Hugo website</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About Me</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Audio Processing</span></h1>
+
+
+</div>
+
+<main>
+<h1 id="introduction">Introduction</h1>
+<p>In this lab we will perform manipulations on audio files to produce some cool effects. Before we can start let&rsquo;s talk about how sound is stored on a computer.</p>
+<p>When you use a microphone to record a sound, it measures the electrical signal from a transducer which is proportial to the pressure at the transducer many times a second. This produces a list of numbers, called samples (both positive, zero, and negative), corresponding to the pressue at a certain time.</p>
+<p>When you play the sound back an electrical signal is applied to the speaker accoring to the samples to recreate the sound.</p>
+<p>Sound can be recorded in <em>mono</em> or in <em>stero</em>. In <em>mono</em> each sample is a single value while in <em>stero</em> each sample is two values representing the left and right channels.</p>
+<h1 id="representation-of-sounds">Representation of sounds</h1>
+<p>The file we are working with are in the WAV format, but you do not need to worry about the nitty-gritty of how this format stores wave files. Throughout this lab we will represent sounds as a dictonary. For instance, a mono sound can be represnted as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>s <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;rate&#39;</span>: <span style="color:#ff9f43">8000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#39;samples&#39;</span>: [<span style="color:#ff9f43">1.00</span>, <span style="color:#ff9f43">0.91</span>, <span style="color:#ff9f43">0.67</span>, <span style="color:#ff9f43">0.31</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">0.10</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">0.50</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">0.81</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">0.98</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">0.98</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">0.81</span>],
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>for &lsquo;rate&rsquo; (an int) the sampling rate in samples per second and &lsquo;samples&rsquo; a list of floating point values.</p>
+<h1 id="backwards-audio">Backwards Audio</h1>
+<p>With this breif exposition we are ready to implement our first audio effect. Let&rsquo;s reverse some audio. Implement the &lsquo;backward&rsquo; function in your &rsquo;lab.py&rsquo;. If you do this correctly you should pass some test cases. Here is how you could, for example, reverse a cat&rsquo;s meow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># code in this block will only be run when you explicitly run your script,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># and not when the tests are being run.  this is a good place to put your</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># code for generating and saving sounds, or any other code you write for</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># testing, etc.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    meow <span style="color:#ff6ac1">=</span> load_wav(<span style="color:#5af78e">r</span><span style="color:#5af78e">&#34;audio_processing\sounds\meow.wav&#34;</span>)
+</span></span><span style="display:flex;"><span>    reversed_meow <span style="color:#ff6ac1">=</span> backwards(meow)
+</span></span><span style="display:flex;"><span>    write_wav(reversed_meow, <span style="color:#5af78e">&#34;reversed_meow.wav&#34;</span>)
+</span></span></code></pre></div><h1 id="mixing-audio">Mixing Audio</h1>
+<p>Now we will mix two different audio sources with a function called &ldquo;mix&rdquo;. This function will take in two differnt mono sounds and mix them according to a parameter <em>p</em>. The function should take <em>p</em> times the first song and add it to <em>1-p</em> times the second sound.</p>
+<p>If the two sounds have differenet sampling rates, the function should retun None, and if the two sounds have different lengths, then the output should should be the maximum of the lengths of the two input sounds.</p>
+<p>After you implement this you should pass some more test cases.</p>
+<h1 id="convolutional-filters">Convolutional Filters</h1>
+<p>Let us now make a very powerful audio effect called a convolution. Our function will take in</p>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © JD Hagood 2024 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
