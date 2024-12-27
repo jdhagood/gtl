@@ -239,7 +239,7 @@ We called the function over 2 million times! To see why, consider this tree diag
 {{< soft src="/img/recursion/tree.jpg" alt="Soft-styled image" caption="so. many. branches. O_o" >}}
 
 
-However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! Memoization (no, that is not a misspelling of memorization) solves this problem.
+However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times) Memoization (no, that is not a misspelling of memorization) solves this problem.
 
 
 Memoization is the technique of caching values as you compute so that you only need to compute each value at most one time. For example, we could cache the Fibonacci numbers in a dictionary as we calculate them to avoid duplicated work.
