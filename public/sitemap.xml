@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/cellular_atomata/</loc>
+    <loc>https://gtlpython.click/cellular_atomata/</loc>
     <lastmod>2024-12-23T22:24:53-06:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://gtlpython.click/</loc>
     <lastmod>2024-12-23T22:24:53-06:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://gtlpython.click/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/audioprocessing/</loc>
+    <loc>https://gtlpython.click/audioprocessing/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://gtlpython.click/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/generators/</loc>
+    <loc>https://gtlpython.click/generators/</loc>
   </url><url>
-    <loc>http://localhost:1313/hello_world/</loc>
+    <loc>https://gtlpython.click/hello_world/</loc>
   </url><url>
-    <loc>http://localhost:1313/recursion/</loc>
+    <loc>https://gtlpython.click/recursion/</loc>
   </url><url>
-    <loc>http://localhost:1313/sketchpad/</loc>
+    <loc>https://gtlpython.click/sketchpad/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://gtlpython.click/tags/</loc>
   </url>
 </urlset>
