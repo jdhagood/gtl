@@ -42,7 +42,7 @@ This webpage will be the main method of communication in this class. All reading
     }
 </style>
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/icon1.jpg" alt="Lecture 1 Icon">
+    <img class="icon" src="/img/icons/icon1.jpg" alt="Lecture 1 Icon">
     <div class="content">
         <h2>Lecture 1: <a href="hello_world">hello, world</a></h2>
         <p class="description">This lecture introduces the basics of Python programming, including why it is widely used and its advantages.</p>
@@ -55,7 +55,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/mandelbrot.jpg" alt="img">
+    <img class="icon" src="/img/icons/mandelbrot.jpg" alt="img">
     <div class="content">
         <h2>Lecture ??: <a href="recursion">Recursion</a></h2>
         <p class="description">An introduction to recursion, when to use it, and some cool applications!</p>
@@ -68,7 +68,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/sound.jpg" alt="img">
+    <img class="icon" src="/img/icons/sound.jpg" alt="img">
     <div class="content">
         <h2>Lecture 2: <a href="audioprocessing">Audio Processing</a></h2>
         <p class="description">Audio Processing</p>
@@ -81,7 +81,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/snail.jpg" alt="img">
+    <img class="icon" src="/img/icons/snail.jpg" alt="img">
     <div class="content">
         <h2>Lecture 3: <a href="why_python">Cellular Atomota</a></h2>
         <p class="description">Cellular Atomota.</p>
@@ -94,7 +94,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/custom_twocats.jpg" alt="img">
+    <img class="icon" src="/img/icons/custom_twocats.jpg" alt="img">
     <div class="content">
         <h2>Lecture 4: <a href="why_python">Image Processing</a></h2>
         <p class="description">Cellular Atomota.</p>
@@ -107,7 +107,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/sunflower.jpg" alt="img">
+    <img class="icon" src="/img/icons/sunflower.jpg" alt="img">
     <div class="content">
         <h2>Lecture 5: <a href="generators">Generators</a></h2>
         <p class="description">An introduction to generators featuring the fibbonaci numbers, prime numbers, and pseudo random numbers.</p>
@@ -120,7 +120,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/algebra.jpg" alt="img">
+    <img class="icon" src="/img/icons/algebra.jpg" alt="img">
     <div class="content">
         <h2>Lecture 6: <a href="why_python">Symbolic Algebra</a></h2>
         <p class="description">Classes and class inheritance while making a symbolic algebra framework.</p>
@@ -133,7 +133,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/minesweeper.jpg" alt="img">
+    <img class="icon" src="/img/icons/minesweeper.jpg" alt="img">
     <div class="content">
         <h2>Lecture 7: <a href="why_python">Mine Sweeper</a></h2>
         <p class="description">Classes and class inheritance while making a symbolic algebra framework.</p>
@@ -146,7 +146,7 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/wikipedia.jpg" alt="img">
+    <img class="icon" src="/img/icons/wikipedia.jpg" alt="img">
     <div class="content">
         <h2>Lecture 8: <a href="why_python">The Wikipedia Game</a></h2>
         <p class="description">Classes and class inheritance while making a symbolic algebra framework.</p>
