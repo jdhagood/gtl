@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recursion | A minimal Hugo website</title>
@@ -362,7 +362,7 @@ Please implement this as a recursive function using the same approach we used to
     
 </div>
 
-<p>However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! Memoization (no, that is not a misspelling of memorization) solves this problem.</p>
+<p>However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times) Memoization (no, that is not a misspelling of memorization) solves this problem.</p>
 <p>Memoization is the technique of caching values as you compute so that you only need to compute each value at most one time. For example, we could cache the Fibonacci numbers in a dictionary as we calculate them to avoid duplicated work.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">memoized_fib</span>(n):
 </span></span><span style="display:flex;"><span>    cache <span style="color:#ff6ac1">=</span> {
