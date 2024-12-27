@@ -5,5 +5,20 @@
         display: block;
         margin: 0 auto; /* Centers the element */
     }
+    .image-container {
+        text-align: center;
+        margin: 20px 0; /* Space around the image and caption */
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555; /* Slightly lighter color for captions */
+        margin-top: 10px;
+    }
 </style>
-<img src="{{ .Get "src" }}" class="soft" alt="{{ .Get "alt" }}">
+
+<div class="image-container">
+    <img src="{{ .Get "src" }}" class="soft" alt="{{ .Get "alt" }}">
+    {{ with .Get "caption" }}
+    <div class="caption">{{ . }}</div>
+    {{ end }}
+</div>

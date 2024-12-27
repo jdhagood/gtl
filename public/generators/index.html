@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generators | A minimal Hugo website</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About Me</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Generators</span></h1>
+
+
+</div>
+
+<main>
+<h1 id="reimplementing-range">Reimplementing range</h1>
+<p>Suppose we wanted to reimplement python&rsquo;s range function. To do so we may naïvely implement a function that retuns a list of numbers in our desired range like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">list_range</span>(start, stop, step<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">assert</span> step <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    out <span style="color:#ff6ac1">=</span> []
+</span></span><span style="display:flex;"><span>    current <span style="color:#ff6ac1">=</span> start
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> current <span style="color:#ff6ac1">&lt;</span> stop:
+</span></span><span style="display:flex;"><span>        out<span style="color:#ff6ac1">.</span>append(current)
+</span></span><span style="display:flex;"><span>        current <span style="color:#ff6ac1">+=</span> step
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> out
+</span></span></code></pre></div><p>However, let&rsquo;s try to use this function in the following program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> list_range(<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1_000_000_000_000_000</span>, <span style="color:#ff9f43">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> i <span style="color:#ff6ac1">&gt;</span> <span style="color:#ff9f43">100</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(i)
+</span></span></code></pre></div><p>You will eventually see the numbers 0-99 printed on the screen, but not after a considerable pause! Whats worse is that our program will now consume a relativly large amount of memory just to print out the first 100 values in our range. Python&rsquo;s native range function will not do this, so how can we imitate that?</p>
+<p>The answer only requires a small refactoring of our list_range function into a generator. This way, we can avoid having to preprocess the out list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">gen_range</span>(start, stop, step<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">assert</span> step <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    current <span style="color:#ff6ac1">=</span> start
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> current <span style="color:#ff6ac1">&lt;</span> stop:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">yield</span> current
+</span></span><span style="display:flex;"><span>        current <span style="color:#ff6ac1">+=</span> step
+</span></span></code></pre></div><p>We can now make our generator object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> g <span style="color:#ff6ac1">=</span> gen_range(<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1_000_000_000_000_000</span>, <span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> g
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span>generator <span style="color:#ff5c57">object</span> gen_range at <span style="color:#ff9f43">0x0000021C8D035B40</span><span style="color:#ff6ac1">&gt;</span>
+</span></span></code></pre></div><p>When we created g, the shell resolved it right away. There was no wait because all that python does is create the generator object and execute the program up to the keyword &lsquo;yield&rsquo;. In order to get past the &lsquo;yield&rsquo; keywork in the generator we can ask for the next item in the generator</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span></code></pre></div><p>Each time we call &rsquo;next&rsquo; the generator picks up from where it last yeilded from and runs until it yeilds the next number. It only does the miniumum computation requested from it. We can now use this generator in place of our list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> gen_range(<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1_000_000_000_000_000</span>, <span style="color:#ff9f43">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> i <span style="color:#ff6ac1">&gt;</span> <span style="color:#ff9f43">100</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(i)
+</span></span></code></pre></div><p>If you run this then we avoid the annoying delay that was present with the list_range implementation.</p>
+<h1 id="stopiteration-error">StopIteration Error</h1>
+<p>Some generators do not allow you to ask for the next element an infinite amount of times. For instance, consider this generator</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">gen1</span>():
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>     <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>     <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>     <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> g <span style="color:#ff6ac1">=</span> gen1()
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(g)
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>StopIteration
+</span></span></code></pre></div><p>As we can see, once the generator runs out of values the StopIteration error is raised. Without proper error handeling this can hault the entire program!</p>
+<h1 id="the-yield-from-keyword">The &lsquo;yield from&rsquo; keyword</h1>
+<p>Suppose that we have two generators and we want to make a generator from the two. A way that we could do this is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">gen1</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">gen2</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">yield</span> <span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">gen3</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> val <span style="color:#ff6ac1">in</span> gen1():
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">yield</span> val
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> val <span style="color:#ff6ac1">in</span> gen2():
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">yield</span> val
+</span></span></code></pre></div><p>However the &lsquo;yield from&rsquo; keyword makes the implementation much simplier</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">gen3</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">yield from</span> gen1()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">yield from</span> gen2()
+</span></span></code></pre></div><h1 id="the-fibonacci-numbers">The Fibonacci Numbers</h1>
+<p>No programing couse worth its salt would be complete without mentioning the Fibonacci sequence at least once (or 10 times&hellip;). As a refresher, the Fibonacci sequence is defined recusrivly as follows:</p>
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-0'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-0" class="math-content">
+      
+$$
+F_{n} = F_{n-1} + F_{n-2} \quad F_0=0 \quad F_1=1
+$$
+
+    </div>
+  </div>
+  
+<p>Therefore</p>
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-1'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-1" class="math-content">
+      
+$$
+\begin{align*}
+F_0 &= 0\\
+F_1 &= 1\\
+F_2 &= F_1 + F_0 = 1 + 0 = 1\\
+F_3 &= F_2 + F_1 = 1 + 1 = 2\\
+F_4 &= F_3 + F_2 = 3 + 2 = 3\\
+&\quad\vdots
+\end{align*}
+$$
+
+    </div>
+  </div>
+  
+<p>You can calculate small Fibonacci numbers by hand, but if you were asked to calculate The 500th Fibonacci number by hand using this simple approach, it would be rather tedious <div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('inline-math'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="inline-math" class="math-content">
+      
+(\( F_{500}\approx 2.26\times 10^{104}\) ).
+
+    </div>
+  </div>
+  </p>
+<p>Lets instead make a generator for the Fibonacci numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib</span>():
+</span></span><span style="display:flex;"><span>    a, b <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">yield</span> a
+</span></span><span style="display:flex;"><span>        a, b <span style="color:#ff6ac1">=</span> a, a<span style="color:#ff6ac1">+</span>b
+</span></span></code></pre></div><p>Which works as expected</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> f <span style="color:#ff6ac1">=</span> fib()
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">5</span>
+</span></span></code></pre></div><p>Lets take a moment to unpack what is going on here. We first initialize a and b to the 0th and 1st Fibonacci number. As we go through the infinite loop, we will always yield a. After yielding a we then set a to be the next Fibonacci number, which is stored in b, and set b to be the next next Fibonacci number which is a+b.</p>
+<h1 id="fibonacci-generalizations">Fibonacci Generalizations</h1>
+<p>There are three main generalizations of the Fibonacci numbers.</p>
+<ol>
+<li>
+<p>Start with different initial values. For example the Lucas numbers are defined as <div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-2'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-2" class="math-content">
+      
+$$
+L_{n} = L_{n-1} + L_{n-2} \quad L_0= 2 \quad L_1=1
+$$
+
+    </div>
+  </div>
+  </p>
+</li>
+<li>
+<p>Weight the numbers differently in the recurrance relation sum. For example the Pell numbers are defined by
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math--2'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math--2" class="math-content">
+      
+$$
+P_{n} = 2P_{n-1} + P_{n-2} \quad P_0= 0 \quad P_1=1
+$$
+
+    </div>
+  </div>
+  </p>
+</li>
+<li>
+<p>Sum more numbers in the recurrance relation. For instance we can define the Tribonaci sequence as
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-4'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-4" class="math-content">
+      
+$$
+T_{n} = T_{n-1} + T_{n-2} + T_{n-3} \quad T_0=T_1= 0 \quad T_2=1
+$$
+
+    </div>
+  </div>
+  </p>
+</li>
+</ol>
+<p>We will now use our newfound skills with generators to explore some of these generalizations!</p>
+<p>Our original Fibonacci generating function can easily be modified to start from differnt initial values.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">fib</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">yield</span> a
+</span></span><span style="display:flex;"><span>        a, b <span style="color:#ff6ac1">=</span> a, a<span style="color:#ff6ac1">+</span>b
+</span></span></code></pre></div><p>Which allows us to now make a generator for some of the Lucas numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> f <span style="color:#ff6ac1">=</span> fib(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(f)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">11</span>
+</span></span></code></pre></div><p>If we define the k-nacci numbers as
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-5'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-5" class="math-content">
+      
+$$
+F^k_{n} = F^k_{n-1} + F^k_{n-2} + \dots + F^k_{n-k}\quad F^k_0=F^k_1= \dots = F^k_{k-2} = 0 \quad F^k_{k-1}=1
+$$
+
+    </div>
+  </div>
+  
+can you make a generator for all of these? For example</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> f <span style="color:#ff6ac1">=</span> nfib(<span style="color:#ff9f43">10</span>)
+</span></span></code></pre></div><p>would make a generator for the 10-nacci numbers and assign it to the variable f.</p>
+<p>You can use python to explore the other generalizations.</p>
+<h1 id="primes">Primes</h1>
+<p>Your next task will be to make a generators for the prime numbers for the prime numbers. Recall that a prime number is a positive integer that is only divisible by 1 and itself. 1 is not a prime number (for those who are interested it is also not a composite number and it is called a &lsquo;unit&rsquo;. This is because any other definition would break the fundamental theorem of arithmetic). Therefore the first prime number is 2. Your generator should behave like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> p <span style="color:#ff6ac1">=</span> prime_gen()
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(p)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(p)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(p)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(p)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">7</span>
+</span></span></code></pre></div><p>When you are programming this you want to be mindful of efficient resource management.</p>
+<h1 id="pseudo-random-number-generator">Pseudo Random Number Generator</h1>
+<p>We will now use generators to make a pseudo random number generator (PRNG)! We call it &lsquo;pseudo random&rsquo; because we will algorithmically generate the random numbers, and so the numbers are determinisitc. However, if you did not know how the numbers were calculated, then they would appear pretty random!</p>
+<p>My favorite PRNG is the Wichman-Hill PRNG (we all have a favorite PRNG, right?). It is very simple yet effective at producing PRNs and is defined by three starting values, (s1, s2, s3), called the seed. A different seed will cause the PRNG to output a different sequence of PRNs. Upon each call to the PRNG we update the values s1, s2, and s3 accoring to these formulas:
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-6'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-6" class="math-content">
+      
+$$
+\begin{align*}
+s1 &:= 171\times s1 \mod 30269\\
+s2 &:= 172\times s1 \mod 30307\\
+s3 &:= 170\times s1 \mod 30323\\
+\end{align*}
+$$
+
+    </div>
+  </div>
+  
+30269, 30307, and 30323 were chosen because they are three prime number that are relativly close together and will lead to a peroid that is their LCM.</p>
+<p>We then output the value
+<div class="math-container">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById('block-math-7'), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\(", right: "\\)", display: false }
+          ]
+        });
+      });
+    </script>
+    <div id="block-math-7" class="math-content">
+      
+$$
+r := (s1/30269 + s2/30307 + s3/30323) \mod 1
+$$
+
+    </div>
+  </div>
+  </p>
+<p>Implement this as a generator.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> rand <span style="color:#ff6ac1">=</span> wichmann_hill(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.03381877363047378</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.7775418875596665</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.05273524613909042</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.7446240744053352</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.49036219114966934</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.9828543730370005</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">next</span>(rand)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.809150988177624</span>
+</span></span></code></pre></div>
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © JD Hagood 2024 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

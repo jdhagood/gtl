@@ -1,0 +1,135 @@
+<!-- binary-tree.html -->
+{{ define "tree-node" }}
+  <li class="{{ .class }}">
+    <span class="node">{{ .node.name }}</span>
+    {{ if or .node.left .node.right }}
+      <ul>
+        {{ with .node.left }}
+          {{ template "tree-node" dict "node" . "class" "left-child" }}
+        {{ end }}
+        {{ with .node.right }}
+          {{ template "tree-node" dict "node" . "class" "right-child" }}
+        {{ end }}
+      </ul>
+    {{ end }}
+  </li>
+{{ end }}
+
+{{ $root := .Get 0 }}
+<div class="binary-tree">
+  <ul>
+    {{ template "tree-node" dict "node" $root "class" "root" }}
+  </ul>
+</div>
+
+<style>
+.binary-tree {
+  text-align: center;
+  padding: 20px;
+  overflow-x: auto;
+  min-height: 100%;
+}
+
+.binary-tree ul {
+  position: relative;
+  padding: 1em 0;
+  white-space: nowrap;
+  margin: 0;
+  list-style: none;
+}
+
+.binary-tree ul::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.binary-tree li {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 1em 0.5em 0;
+}
+
+.binary-tree li::before,
+.binary-tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 1em;
+  border-top: 2px solid #ccc;
+}
+
+.binary-tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid #ccc;
+}
+
+.binary-tree li:only-child::after,
+.binary-tree li:only-child::before {
+  display: none;
+}
+
+.binary-tree li:first-child::before,
+.binary-tree li:last-child::after {
+  border: 0 none;
+}
+
+.binary-tree li:last-child::before {
+  border-right: 2px solid #ccc;
+  border-radius: 0 5px 0 0;
+}
+
+.binary-tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+.binary-tree .node {
+  display: inline-block;
+  border: 2px solid #ccc;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 0.9em;
+  min-width: 2em;
+}
+
+.binary-tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid #ccc;
+  width: 0;
+  height: 1em;
+}
+
+.binary-tree li.left-child {
+  margin-right: 1em;
+}
+
+.binary-tree li.right-child {
+  margin-left: 1em;
+}
+
+/* Added styles for better deep tree handling */
+.binary-tree {
+  transform-origin: top;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .binary-tree {
+    transform: scale(0.8);
+  }
+}
+
+.binary-tree ul ul {
+  margin-top: 1em;
+}
+</style>

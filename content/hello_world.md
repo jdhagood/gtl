@@ -42,3 +42,21 @@ print("Hello World")
 for i in range(10):
     print(f"num = {i}")
 ```
+
+# IDE
+Unless you already have a strongly perfered IDE with an integrated terminal, I highly reccomend using Visual Code Studio. It is my IDE of choice and will make following along with what I do a lot easier. The instilation is straightforward 
+
+# Black and Pylint
+It is just as important to write readable code as it is to write working code! If you want to colaborate with other people, or find yourself looking back at a piece of code you wrote many months ago, documentation and consistent formatting go a long way. 
+
+# Pytest
+In order to test if our python functions are working correctly, we will use pytest. To download it simply use pip.
+
+```bash
+C:\Users\jdhag> pip install pytest 
+```
+
+
+# More Practice
+{{< soft src="/img/why_python/leetcode.png" alt="Soft-styled image" >}}
+If you ever find yourself wanting more practice with python, I highly reccomend checking out [leetcode](https://leetcode.com/problemset/). This website is supposed to help you study for technical interviews, but I also used it to help me learn python. Change the language to python and start out with the easy questions which should be plently challenging enough for someone just staring out in python. If you get better you can go for the medium or hard questions. Even after you solve a question, it is helpful to look at how your submission faired aginst other submissions. Where can you improve your code? Have fun, and maybe this will even help you score a tech job one day.
