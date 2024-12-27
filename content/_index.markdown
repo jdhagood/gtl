@@ -6,8 +6,43 @@ title: Landing Page
 This webpage will be the main method of communication in this class. All readings and files can be found here. Please bookmark this page as it will be crucial for your success in this class.
 
 {{< rawhtml >}}
+<style>
+    .rounded-box {
+        display: flex;
+        align-items: center;
+        background-color:rgb(240, 242, 255); /* Light background */
+        border: 1px solid #ddd;   /* Light border */
+        border-radius: 15px;      /* Rounded corners */
+        padding: 15px;
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    .icon {
+        width: 175px;            /* Fixed width */
+        height: 175px;           /* Fixed height */
+        border-radius: 10px;
+        object-fit: cover;       /* Ensure proper scaling */
+        margin-right: 15px;      /* Space between icon and content */
+    }
+    .content h2 {
+        font-size: 1.5rem;
+        margin: 0 0 10px 0;
+    }
+    .content .description {
+        font-size: 1rem;
+        margin: 0 0 10px 0;
+        color: #555;             /* Subtle text color */
+    }
+    .content a {
+        color: #007bff;          /* Blue links */
+        text-decoration: none;
+    }
+    .content a:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+</style>
 <div class="rounded-box">
-    <img class="icon" src="/img/_index/icon1.jpg" alt="img">
+    <img class="icon" src="/img/_index/icon1.jpg" alt="Lecture 1 Icon">
     <div class="content">
         <h2>Lecture 1: <a href="hello_world">hello, world</a></h2>
         <p class="description">This lecture introduces the basics of Python programming, including why it is widely used and its advantages.</p>
