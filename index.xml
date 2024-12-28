@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Landing Page on A minimal Hugo website</title>
+    <title>Landing Page on GTL Python</title>
     <link>https://gtlpython.click/</link>
-    <description>Recent content in Landing Page on A minimal Hugo website</description>
+    <description>Recent content in Landing Page on GTL Python</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://gtlpython.click/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -22,9 +22,8 @@ Cellular Atomota I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Li
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/about/</guid>
-      <description>Hello, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language: python.
-Where am I from? I grew up in Clinton, Mississippi USA.
-What do I study? I am currently studying electrical engineering and computer science at the Massachusetts Institue of Technology (MIT). I am on the MIT Solar Electric Vehicle Team (SEVT) in the electrical engineering subteam.</description>
+      <description>Hello world, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language!
+Where am I from? I grew up in Clinton, Mississippi, USA with my parents and older sister. I attended a local highschool until my junior year and transferred to a public math and science magnet boarding school in the northern part of the state.</description>
     </item>
     
     <item>
