@@ -1,6 +1,6 @@
 baseurl: "https://gtlpython.click/"
 languageCode: "en-us"
-title: "A minimal Hugo website"
+title: "GTL Python"
 theme: "hugo-xmin"
 googleAnalytics: ""
 disqusShortname: ""
@@ -19,15 +19,9 @@ menu:
     - name: About Me
       url: "about/"
       weight: 2
-    - name: Categories
-      url: "categories/"
-      weight: 3
-    - name: Tags
-      url: "tags/"
-      weight: 4
 
 params:
-  description: "A website built through Hugo and blogdown."
+  description: "A website built through Hugo"
   footer: "&copy; JD Hagood {Year} | [Github](https://github.com/jdhagood/gtl) "
   math: true  # Enable math rendering
 
