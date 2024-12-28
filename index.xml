@@ -12,7 +12,8 @@
       <pubDate>Mon, 23 Dec 2024 22:24:53 -0600</pubDate>
       
       <guid>https://gtlpython.click/cellular_atomata/</guid>
-      <description>I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Life.&amp;rdquo; You will be greeted with one of Google&amp;rsquo;s easter eggs in the form of some little white squares on the side of your screen showing how much nerds love</description>
+      <description>Recap on Lists Last lecture we breifly discussed lists as a means of storing a list of objects and looked at their representation on the heap.
+Cellular Atomota I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Life.&amp;rdquo; You will be greeted with one of Google&amp;rsquo;s easter eggs in the form of some little white squares on the side of your screen showing how much nerds love</description>
     </item>
     
     <item>
@@ -53,8 +54,9 @@ for i in list_range(0, 1_000_000_000_000_000, 1): if i &amp;gt; 100: break print
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/hello_world/</guid>
-      <description>Downloading python Before we can jump into programing, everyone needs to download python. Download the latest version for your operating system from python.org (3.13.1 when I wrote this).
-To test that your instilation was successful and you now have python on your PATH system variable, open your terminal and run the following command.
+      <description>Why Python Short intro on python and why it is used.
+Downloading python Before we can jump into programming, everyone needs to download python. Download the latest version for your operating system from python.org (3.13.1 when I wrote this).
+To test that your installation was successful and you now have python on your PATH system variable, open your terminal and run the following command.
 C:\Users\jdhag&amp;gt;python --version Python 3.12.3 You will get an error if you do not have python downloaded properly.</description>
     </item>
     
