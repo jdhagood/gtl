@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://gtlpython.click/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Cellular_atomata</title>
-      <link>https://gtlpython.click/cellular_atomata/</link>
-      <pubDate>Mon, 23 Dec 2024 22:24:53 -0600</pubDate>
+      <title>Minesweeper</title>
+      <link>https://gtlpython.click/minesweeper/</link>
+      <pubDate>Thu, 02 Jan 2025 19:19:33 -0600</pubDate>
       
-      <guid>https://gtlpython.click/cellular_atomata/</guid>
-      <description>Recap on Lists Last lecture we breifly discussed lists as a means of storing a list of objects and looked at their representation on the heap.
-Cellular Atomota I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Life.&amp;rdquo; You will be greeted with one of Google&amp;rsquo;s easter eggs in the form of some little white squares on the side of your screen showing how much nerds love</description>
+      <guid>https://gtlpython.click/minesweeper/</guid>
+      <description>Humble Beginnings Windows XP is before even my time&amp;hellip; Minesweeper is a puzzle game that came out around the 1990s as a game for personal computers. If you are not familiar with the game I invite you to Google &amp;lsquo;minesweeper&amp;rsquo; and play Google&amp;rsquo;s version of the game.
+Implementing Minesweeper Your goal for this class will be to implement many of the functions required for a game of minesweeper. After you have these functions, you can then go and make your own version of the game.</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@ Cellular Atomota I invite you to google &amp;ldquo;Conway&amp;rsquo;s Game of Li
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/about/</guid>
-      <description>Hello world, my name is JD, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language!
+      <description>Hello world, my name is JD Hagood, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language!
 Where am I from? I grew up in Clinton, Mississippi, USA with my parents and older sister. I attended a local highschool until my junior year and transferred to a public math and science magnet boarding school in the northern part of the state.</description>
     </item>
     
@@ -34,6 +34,36 @@ Where am I from? I grew up in Clinton, Mississippi, USA with my parents and olde
       <guid>https://gtlpython.click/audioprocessing/</guid>
       <description>Introduction In this lab we will perform manipulations on audio files to produce some cool effects. Before we can start let&amp;rsquo;s talk about how sound is stored on a computer.
 When you use a microphone to record a sound, it measures the electrical signal from a transducer which is proportial to the pressure at the transducer many times a second. This produces a list of numbers, called samples (both positive, zero, and negative), corresponding to the pressue at a certain time.</description>
+    </item>
+    
+    <item>
+      <title>Binary Search</title>
+      <link>https://gtlpython.click/binarysearch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/binarysearch/</guid>
+      <description>Where did we leave the keys? Last summer my friends and I had a rented a Christler Pacifica that we endearingly named &amp;ldquo;Chrissy&amp;rdquo;.
+Chrissy! One day we realized that we lost Chrissy&amp;rsquo;s keys. We were fairly certain that the keys ended up in one of our bags, but there were quite a few of us with many differnt bags. It would take all day to go through them. Thankfully, the car had electroic ignition system, so you could start the car if the keys were anywhere inside the car.</description>
+    </item>
+    
+    <item>
+      <title>Cellular Atomata</title>
+      <link>https://gtlpython.click/cellular_atomata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/cellular_atomata/</guid>
+      <description>An introduction to functions You have likely encountered functions in other programming languages and seen their power. In thier most basic interpertation, you can think of functions like a macro that you can copy and paste anywhere in your code to make it shorter and more readable. In the example below we make a function called &amp;lsquo;greeting&amp;rsquo; that will print &amp;lsquo;ciao&amp;rsquo; whenever it is called.
+def greeting(): print(&amp;#34;Ciao&amp;#34;) greeting() This is the copy and paste functionality of functions and is rather boring.</description>
+    </item>
+    
+    <item>
+      <title>DFS</title>
+      <link>https://gtlpython.click/dfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/dfs/</guid>
+      <description>Sets If you have have so much as dipped your toes in higher level math, you have likely heard about sets. All of modern math is built on top of sets. In math a set is an unordered collection of objects. Sets can be constructed to hold almost anything anything from numbers to functions to cats and dogs to other sets (Russel has entered the chat).
+In python we can create a set using curly braces.</description>
     </item>
     
     <item>

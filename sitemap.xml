@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gtlpython.click/cellular_atomata/</loc>
-    <lastmod>2024-12-23T22:24:53-06:00</lastmod>
+    <loc>https://gtlpython.click/minesweeper/</loc>
+    <lastmod>2025-01-02T19:19:33-06:00</lastmod>
   </url><url>
     <loc>https://gtlpython.click/about/</loc>
   </url><url>
     <loc>https://gtlpython.click/audioprocessing/</loc>
   </url><url>
+    <loc>https://gtlpython.click/binarysearch/</loc>
+  </url><url>
     <loc>https://gtlpython.click/categories/</loc>
+  </url><url>
+    <loc>https://gtlpython.click/cellular_atomata/</loc>
+  </url><url>
+    <loc>https://gtlpython.click/dfs/</loc>
   </url><url>
     <loc>https://gtlpython.click/generators/</loc>
   </url><url>

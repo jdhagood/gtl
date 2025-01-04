@@ -47,12 +47,21 @@
         color: #555;  
         margin-top: 10px;
     }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
 </style>
 
 <div class="image-container">
     <img src="/img/recursion/cake.jpg" class="soft" alt="Soft-styled image">
     
-    <div class="caption">Yummy!</div>
+    <div class="caption">
+        Yummy!
+    </div>
     
 </div>
 </p>
@@ -349,16 +358,31 @@ Please implement this as a recursive function using the same approach we used to
         color: #555;  
         margin-top: 10px;
     }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
 </style>
 
 <div class="image-container">
     <img src="/img/recursion/tree.jpg" class="soft" alt="Soft-styled image">
     
-    <div class="caption">so. many. branches. O_o</div>
+    <div class="caption">
+        so. many. branches. O_o
+    </div>
     
 </div>
 
-<p>However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times) Memoization (no, that is not a misspelling of memorization) solves this problem.</p>
+<p>However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times)</p>
+<p>The enviroment diagram for what is going on helps us to furter see the problem. Look at all those frames being generated for just n = 5!
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fib%28n%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20elif%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20fib%28n-2%29%20%2B%20fib%28n-1%29%0A%0Ax%20%3D%20fib%285%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+</p>
+<p>Memoization (no, that is not a misspelling of memorization) solves this problem.</p>
 <p>Memoization is the technique of caching values as you compute so that you only need to compute each value at most one time. For example, we could cache the Fibonacci numbers in a dictionary as we calculate them to avoid duplicated work.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">memoized_fib</span>(n):
 </span></span><span style="display:flex;"><span>    cache <span style="color:#ff6ac1">=</span> {
@@ -427,7 +451,7 @@ Please implement this as a recursive function using the same approach we used to
   
   
   <hr/>
-  © JD Hagood 2024 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  © JD Hagood 2025 | <a href="https://github.com/jdhagood/gtl">Github</a>
   
   </footer>
   </body>
