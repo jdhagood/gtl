@@ -177,8 +177,6 @@ def flatten(input_list):
     output = []
     #fill in the logic to get the output
     return output
-
-
 ```
 # Memoization
 Consider how we initially calculated the Fibonacci numbers
@@ -191,7 +189,6 @@ def fib(n):
     return fib(n-2) + fib(n-1)
 ```
 If you try to run this function for a large number, like n = 100, it will take a very long time. This is because our function secretly sucks!
-
 
 Lets see how many times our function is being called when we calculate a Fibonacci number.
 ```python
@@ -239,7 +236,14 @@ We called the function over 2 million times! To see why, consider this tree diag
 {{< soft src="/img/recursion/tree.jpg" alt="Soft-styled image" caption="so. many. branches. O_o" >}}
 
 
-However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times) Memoization (no, that is not a misspelling of memorization) solves this problem.
+However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times)
+
+The enviroment diagram for what is going on helps us to furter see the problem. Look at all those frames being generated for just n = 5!
+{{< rawhtml >}}
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fib%28n%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20elif%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20fib%28n-2%29%20%2B%20fib%28n-1%29%0A%0Ax%20%3D%20fib%285%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+{{< /rawhtml >}}
+
+ Memoization (no, that is not a misspelling of memorization) solves this problem.
 
 
 Memoization is the technique of caching values as you compute so that you only need to compute each value at most one time. For example, we could cache the Fibonacci numbers in a dictionary as we calculate them to avoid duplicated work.

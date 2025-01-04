@@ -3,6 +3,7 @@ title = 'Generators'
 draft = false
 math = true
 +++
+
 # Reimplementing range
 Suppose we wanted to reimplement python's range function. To do so we may naïvely implement a function that retuns a list of numbers in our desired range like this:
 ```python

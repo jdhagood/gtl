@@ -1,0 +1,16 @@
+- id: "two-sum"
+  title: "Two Sum"
+  description: "Given an array of integers and a target, return indices of two numbers such that they add up to the target."
+  templateCode: |
+    def two_sum(nums, target):
+        # Your code here
+        return []
+  inputs:
+    - [[2, 7, 11, 15], 9]
+    - [[3, 2, 4], 6]
+    - [[3, 3], 6]
+  expectedOutputs:
+    - [0, 1]
+    - [1, 2]
+    - [0, 1]
+  functionName: "two_sum"

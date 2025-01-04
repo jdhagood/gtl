@@ -14,11 +14,20 @@
         color: #555; /* Slightly lighter color for captions */
         margin-top: 10px;
     }
+    .caption a {
+        color: #007BFF; /* Link color */
+        text-decoration: none; /* Remove underline */
+    }
+    .caption a:hover {
+        text-decoration: underline; /* Add underline on hover */
+    }
 </style>
 
 <div class="image-container">
     <img src="{{ .Get "src" }}" class="soft" alt="{{ .Get "alt" }}">
     {{ with .Get "caption" }}
-    <div class="caption">{{ . }}</div>
+    <div class="caption">
+        {{ . | markdownify }}
+    </div>
     {{ end }}
 </div>

@@ -57,8 +57,21 @@ This webpage will be the main method of communication in this class. All reading
 <div class="rounded-box">
     <img class="icon" src="/img/icons/snail.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 3: <a href="why_python">Cellular Atomota</a></h2>
-        <p class="description">Cellular Atomota.</p>
+        <h2>Lecture 1: <a href="cellular_atomata">Cellular Atomota</a></h2>
+        <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
+        <p>
+            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+        </p>
+    </div>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+<div class="rounded-box">
+    <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 2: <a href="binarysearch">Binary Search</a></h2>
+        <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -70,8 +83,8 @@ This webpage will be the main method of communication in this class. All reading
 <div class="rounded-box">
     <img class="icon" src="/img/icons/mandelbrot.jpg" alt="img">
     <div class="content">
-        <h2>Lecture ??: <a href="recursion">Recursion</a></h2>
-        <p class="description">An introduction to recursion, when to use it, and some cool applications!</p>
+        <h2>Lecture 3: <a href="recursion">Recursion</a></h2>
+        <p class="description">A more intensive study of functions in the enviroment diagram and recursion. An introduction to recursion, when to use it, and some cool applications!</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -83,8 +96,21 @@ This webpage will be the main method of communication in this class. All reading
 <div class="rounded-box">
     <img class="icon" src="/img/icons/sound.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 2: <a href="audioprocessing">Audio Processing</a></h2>
-        <p class="description">Audio Processing</p>
+        <h2>Lecture 4: <a href="audioprocessing">Audio Processing</a></h2>
+        <p class="description">Introducing dictionaries and pracitcing list skills</p>
+        <p>
+            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+        </p>
+    </div>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+<div class="rounded-box">
+    <img class="icon" src="/img/icons/hangman.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 5: <a href="audioprocessing">Hangman</a></h2>
+        <p class="description">Introducing string operations and how to read from text files</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -96,8 +122,21 @@ This webpage will be the main method of communication in this class. All reading
 <div class="rounded-box">
     <img class="icon" src="/img/icons/custom_twocats.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 4: <a href="why_python">Image Processing</a></h2>
-        <p class="description">Cellular Atomota.</p>
+        <h2>Lecture 6: <a href="why_python">Image Processing</a></h2>
+        <p class="description">More practice with lists</p>
+        <p>
+            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+        </p>
+    </div>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+<div class="rounded-box">
+    <img class="icon" src="/img/icons/slime_mold.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 6: <a href="DFS">DFS</a></h2>
+        <p class="description">DFS and introduction to sets</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -109,8 +148,21 @@ This webpage will be the main method of communication in this class. All reading
 <div class="rounded-box">
     <img class="icon" src="/img/icons/sunflower.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 5: <a href="generators">Generators</a></h2>
+        <h2>Lecture 7: <a href="generators">Generators</a></h2>
         <p class="description">An introduction to generators featuring the fibbonaci numbers, prime numbers, and pseudo random numbers.</p>
+        <p>
+            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+        </p>
+    </div>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+<div class="rounded-box">
+    <img class="icon" src="/img/icons/algebra.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 6: <a href="why_python">Symbolic Algebra</a></h2>
+        <p class="description">Classes and class inheritance while making a symbolic algebra framework.</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -135,7 +187,7 @@ This webpage will be the main method of communication in this class. All reading
 <div class="rounded-box">
     <img class="icon" src="/img/icons/minesweeper.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 7: <a href="why_python">Mine Sweeper</a></h2>
+        <h2>Lecture 7: <a href="minesweeper">Mine Sweeper</a></h2>
         <p class="description">Classes and class inheritance while making a symbolic algebra framework.</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
