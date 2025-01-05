@@ -17,6 +17,8 @@
       
       <li><a href="/about/">About Me</a></li>
       
+      <li><a href="/enviroment_model/">Enviroment Diagram</a></li>
+      
     </ul>
     <hr/>
     </nav>
@@ -62,10 +64,12 @@
     
 </div>
 
-<p>To test that your installation was successful and you now have python on your PATH system variable, open your terminal and run the following command.</p>
+<p>If you have a Windows machine and want to work with python in the system terminal, you should add python to your PATH variable. This just makes sure you can call the python.exe from any directory.</p>
+<p>To test that your installation was successful, open your terminal and run the following command.</p>
 <pre tabindex="0"><code>C:\Users\jdhag&gt;python --version
 Python 3.12.3
 </code></pre><p>You will get an error if you do not have python downloaded properly.</p>
+<p>If your installation was unsuccessful you can still follow along with <a href="https://www.online-python.com/">this online python IDE</a>, but this should not be a long term solution. Talk to me after class if you are still having difficulities.</p>
 <h1 id="your-first-python-program">Your first python program</h1>
 <p>Believe it or not, you are ready to run your first python program. If you type &lsquo;python&rsquo; into your command prompt (or &lsquo;py&rsquo; if you&rsquo;re cool) then you will end up inside the python shell.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>C:\Users\jdhag&gt;python
@@ -86,7 +90,7 @@ Python 3.12.3
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>C:\Users\jdhag<span style="color:#ff6ac1">&gt;</span>
 </span></span></code></pre></div><h1 id="variables">Variables</h1>
-<p>Let&rsquo;s continue to work in the python shell as we explore some of the basic functionalities of python. Like in most programming languages, we have variables. You assign a variable by simply using the &ldquo;=&rdquo; sign</p>
+<p>Let&rsquo;s continue to work in the python shell as we explore some of the basic functionalities of python (run the command &lsquo;py&rsquo; again to reenter the shell if you exited). Like in most programming languages, we have variables. You assign a variable by simply using the &ldquo;=&rdquo; sign</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x
 </span></span><span style="display:flex;"><span><span style="color:#ff9f43">10</span>
@@ -177,7 +181,7 @@ Python 3.12.3
 </span></span><span style="display:flex;"><span>IndexError: <span style="color:#ff5c57">list</span> index out of <span style="color:#ff5c57">range</span>
 </span></span></code></pre></div><p>If you try to reference an element in a list that is outside of the range of the list, you will get an IndexError.</p>
 <p>Notice that lists are zero indexed, meaning that in order to access the first element I had to call &lsquo;my_list[0]&rsquo; as opposed to &lsquo;my_list[1]&rsquo; which would actually return the second item.</p>
-<p>Lists have a lot of wonderful properties that we will explore next lecture.</p>
+<p>Lists have a lot of wonderful properties that we will explore in future lectures.</p>
 <h1 id="compiled-vs-interpreted-languages">Compiled vs Interpreted Languages</h1>
 <p>Python&rsquo;s dynamic types are thanks to the fact that it is an <em>interperted language</em>. This is in contrast to a <em>compiled language</em> like C.</p>
 <p>In C, before you can run a program, it must first be translated into binary machine code specific to the hardware it is running on (1s and 0s that are completely unreadable to most everyone on earth).</p>
@@ -240,13 +244,104 @@ Python 3.12.3
 <p>We would expect the line &lsquo;print(list_1[0])&rsquo; to print the integer 1. However, it prints 10 instead! The reason for this behavior is shown in the environment diagram. Whenever we call &rsquo;list_2 = list_1&rsquo; we create the list_2 variable and reference it to the same object. Because list_1 and list_2 refer to the same object, changing the object associated with list_2 also changes the object associated with list_1!</p>
 <p>This is called aliasing, and it is a common pitfall for many new programmers in python. With the environment diagram we can see why it happens and next lecture we will discuss how to avoid it!</p>
 <h1 id="ide">IDE</h1>
-<p>Unless you already have a strongly preferred IDE with an integrated terminal, I highly recommend using Visual Code Studio. It is my IDE of choice and will make following along with what I do a lot easier. The installation is straightforward</p>
-<h1 id="black-and-pylint">Black and Pylint</h1>
-<p>It is just as important to write readable code as it is to write working code! If you want to collaborate with other people, or find yourself looking back at a piece of code you wrote many months ago, documentation and consistent formatting go a long way.</p>
-<h1 id="pytest">Pytest</h1>
-<p>In order to test if our python functions are working correctly, we will use pytest. To download it simply use pip.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#5af78e">\U</span>sers<span style="color:#5af78e">\j</span>dhag&gt; pip install pytest
-</span></span></code></pre></div><h1 id="more-practice">More Practice</h1>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/vs.png" class="soft" alt="Soft-styled image">
+    
+</div>
+
+<p>Unless you already have a strongly preferred IDE (integrated development enviroment), I highly recommend using Visual Studio Code. It is my IDE of choice, and will make following along with what I do a lot easier. The installation is straightforward. You can download the installer <a href="https://code.visualstudio.com/download">here</a>.</p>
+<h1 id="jupyter-notebooks">Jupyter Notebooks</h1>
+<p>In this course you will turn assignments in using Jupyter notebooks that you download from this course&rsquo;s Moodle course. In order to edit these notebooks to get credit, you can use Visual Studio Code, but you will need to install an extension. Follow <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">this tutorial</a> to get everything configured.</p>
+<p>If you are having trouble getting your enviroment set up in time for an inpending problem set, you can always edit these notebooks in the <a href="https://jupyter.org/try-jupyter/lab/">online Jupyter Notebook demo editor</a>. Just remember to download your pset after you are done because I am pretty sure it does not save your work. This is why I do not recommend this approach long term.</p>
+<p>After you open a notebook you will be greeted with a series of coding questions like the one below.</p>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/jupyter_question.png" class="soft" alt="Soft-styled image">
+    
+</div>
+
+<p>Below the questions will be a place for you to implement your code. You will fill out the body of functions. These functions will be run aginst test cases. Test cases just check that the function provides the correct output for a given input. The credit you recieve for a question on if your function passes the test cases.</p>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/jupyter_ans.png" class="soft" alt="Soft-styled image">
+    
+</div>
+
+<p>Please do not try to hard-code the test cases into your function (a big if-else mess that outputs the correct value for each test case). The functions will be graded with additional hidden test cases so you will not recieve credit for this approach.</p>
+<h1 id="more-practice">More Practice</h1>
 <p><style>
     .soft {
         width: 600px;

@@ -42,8 +42,9 @@ When you use a microphone to record a sound, it measures the electrical signal f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/binarysearch/</guid>
-      <description>Where did we leave the keys? Last summer my friends and I had a rented a Christler Pacifica that we endearingly named &amp;ldquo;Chrissy&amp;rdquo;.
-Chrissy! One day we realized that we lost Chrissy&amp;rsquo;s keys. We were fairly certain that the keys ended up in one of our bags, but there were quite a few of us with many differnt bags. It would take all day to go through them. Thankfully, the car had electroic ignition system, so you could start the car if the keys were anywhere inside the car.</description>
+      <description>Conditionals Because we want our python programs to be more than glorified calculators, we need a way to conditially executing code
+Where did we leave the keys? Last summer my friends and I had a rented a Christler Pacifica that we endearingly named &amp;ldquo;Chrissy&amp;rdquo;.
+Chrissy! One day we realized that we lost Chrissy&amp;rsquo;s keys. We were fairly certain that the keys ended up in one of our bags, but there were quite a few of us with many differnt bags.</description>
     </item>
     
     <item>
@@ -67,6 +68,15 @@ In python we can create a set using curly braces.</description>
     </item>
     
     <item>
+      <title>Enviroment Model</title>
+      <link>https://gtlpython.click/enviroment_model/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/enviroment_model/</guid>
+      <description>The Environment Diagram When you are programming in any language, it is important to have a mental model of what you are doing. If you are blindly executing code and run into a bug, it can be nearly impossible to figure out how to fix it on your own if you are not aware of what exactly you are writing. Environment diagrams help demystify many confusing aspects of Python and shine light on why many of the things in Python are done the way they are.</description>
+    </item>
+    
+    <item>
       <title>Generators</title>
       <link>https://gtlpython.click/generators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -85,8 +95,7 @@ for i in list_range(0, 1_000_000_000_000_000, 1): if i &amp;gt; 100: break print
       <guid>https://gtlpython.click/hello_world/</guid>
       <description>Why Python Short intro on python and why it is used.
 Downloading python Before we can jump into programming, everyone needs to download python. Download the latest version for your operating system from python.org (3.13.1 when I wrote this).
-To test that your installation was successful and you now have python on your PATH system variable, open your terminal and run the following command.
-C:\Users\jdhag&amp;gt;python --version Python 3.12.3 You will get an error if you do not have python downloaded properly.</description>
+If you have a Windows machine and want to work with python in the system terminal, you should add python to your PATH variable. This just makes sure you can call the python.</description>
     </item>
     
     <item>
