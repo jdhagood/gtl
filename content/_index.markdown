@@ -3,7 +3,9 @@ title: Landing Page
 ---
 # Introduction to Python
 
-This webpage will be the main method of communication in this class. All readings and files can be found here. Please bookmark this page as it will be crucial for your success in this class.
+This webpage will be the main method of communication in this class. All readings and files can be found here. It will be updated as we cover more topics. Please bookmark this page to refer back to it throughout the course.
+
+If you have any questions or concerns email me at jdhagood@mit.edu.
 
 {{< rawhtml >}}
 <style>
@@ -41,11 +43,25 @@ This webpage will be the main method of communication in this class. All reading
         text-decoration: underline; /* Underline on hover */
     }
 </style>
+
 <div class="rounded-box">
     <img class="icon" src="/img/icons/icon1.jpg" alt="Lecture 0 Icon">
     <div class="content">
         <h2>Lecture 0: <a href="hello_world">hello, world</a></h2>
-        <p class="description">This lecture introduces the basics of Python programming, including why it is widely used and its advantages.</p>
+        <p class="description">Let's write our first python program! We're going to download python, play around in the shell, and discuss how assignments are turned in.</p>
+        <p>
+            Download p-set: <a href="/psets/hello_world.ipynb" download>hello_world.ipynb</a>
+        </p>
+    </div>
+</div>
+{{< /rawhtml >}}
+
+{{< rawhtml >}}
+<div class="rounded-box">
+    <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 2: <a href="binarysearch">Binary Search</a></h2>
+        <p class="description">Let's learn about the power of binary search algorithms to find lost keys and calculate the square root of 2. </p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -55,17 +71,18 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/icons/snail.jpg" alt="img">
+    <img class="icon" src="/img/icons/hangman.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 1: <a href="cellular_atomata">Cellular Atomota</a></h2>
-        <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
+        <h2>Lecture 2: <a href="hangman">Hangman</a></h2>
+        <p class="description">Let's start to program a game of Hangman while practicing our skills with lists and strings.</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
     </div>
 </div>
-{{< /rawhtml >}}
+{{< /rawhtml >}} 
 
+<!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
@@ -94,12 +111,12 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/icons/sound.jpg" alt="img">
+    <img class="icon" src="/img/icons/snail.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 4: <a href="audioprocessing">Audio Processing</a></h2>
-        <p class="description">Introducing dictionaries and pracitcing list skills</p>
+        <h2>Lecture 4: <a href="cellular_atomata">Cellular Atomota</a></h2>
+        <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
         <p>
-            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+            Download here: <a href="/psets/conway.ipynb" download>Download the ZIP file</a>
         </p>
     </div>
 </div>
@@ -107,10 +124,10 @@ This webpage will be the main method of communication in this class. All reading
 
 {{< rawhtml >}}
 <div class="rounded-box">
-    <img class="icon" src="/img/icons/hangman.jpg" alt="img">
+    <img class="icon" src="/img/icons/sound.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 5: <a href="audioprocessing">Hangman</a></h2>
-        <p class="description">Introducing string operations and how to read from text files</p>
+        <h2>Lecture 4: <a href="audioprocessing">Audio Processing</a></h2>
+        <p class="description">Introducing dictionaries and pracitcing list skills</p>
         <p>
             Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
         </p>
@@ -207,4 +224,4 @@ This webpage will be the main method of communication in this class. All reading
         </p>
     </div>
 </div>
-{{< /rawhtml >}}
+{{< /rawhtml >}} -->

@@ -2,7 +2,8 @@
 title = 'Binary Search'
 draft = false
 +++
-
+# Conditionals
+Because we want our python programs to be more than glorified calculators, we need a way to conditially executing code
 # Where did we leave the keys?
 Last summer my friends and I had a rented a Christler Pacifica that we endearingly named "Chrissy".
 
@@ -152,10 +153,10 @@ We are now running up aginst the percision of the float in python, so our curren
 
 Note that every itteration, our range of values that our root can fall within is cut in half, so our error halves at each itteration! Because the place value represented by digits follows an exponential and our error is exponentially decreasing with `itterations`, a linear increase in itterations leads to a linear increas in the number of correct digits.
 
-This approach for finding the inverse of a function with binary search is not unique to square roots. Can you think of other functions that this will work on. What about functions that it would not work on?
+This approach for finding the inverse of a function with binary search is not unique to square roots. Can you think of other functions that this will work on? What about functions that it would not work on?
 
 {{< katex id="block-math-3" >}}
-For those of you with a calculus background, you may know of an even better way to approximate the inverse of functions via Newton's Method. As an extra challenge try to implement the square_root function with Newton's Method. Comapir the convergence to our binary search approach. Which is better? Hint: \(\sqrt{n}\) is a root of the function \(x^2-n\)
+For those of you with a calculus background, you may know of an even better way to approximate the inverse of functions via Newton's Method. As an extra challenge try to implement the square_root function with Newton's Method. Comapir the convergence to our binary search approach. Which is better? Hint: \(\sqrt{n}\) is a root of the function \(x^2-n\).
 {{< /katex >}}
 
 # Main Takeaways

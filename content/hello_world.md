@@ -12,14 +12,16 @@ Before we can jump into programming, everyone needs to download python. Download
 
 {{< soft src="/img/hello_world/path.jpg" alt="Soft-styled image" >}}
 
+If you have a Windows machine and want to work with python in the system terminal, you should add python to your PATH variable. This just makes sure you can call the python.exe from any directory.
 
-To test that your installation was successful and you now have python on your PATH system variable, open your terminal and run the following command.
+To test that your installation was successful, open your terminal and run the following command.
 ```
 C:\Users\jdhag>python --version
 Python 3.12.3
 ```
-You will get an error if you do not have python downloaded properly.
+You will get an error if you do not have python downloaded properly. 
 
+If your installation was unsuccessful you can still follow along with [this online python IDE](https://www.online-python.com/), but this should not be a long term solution. Talk to me after class if you are still having difficulities.
 
 # Your first python program
 Believe it or not, you are ready to run your first python program. If you type 'python' into your command prompt (or 'py' if you're cool) then you will end up inside the python shell.
@@ -55,7 +57,7 @@ C:\Users\jdhag>
 
 
 # Variables
-Let's continue to work in the python shell as we explore some of the basic functionalities of python. Like in most programming languages, we have variables. You assign a variable by simply using the "=" sign
+Let's continue to work in the python shell as we explore some of the basic functionalities of python (run the command 'py' again to reenter the shell if you exited). Like in most programming languages, we have variables. You assign a variable by simply using the "=" sign
 
 
 ```python
@@ -182,7 +184,7 @@ If you try to reference an element in a list that is outside of the range of the
 Notice that lists are zero indexed, meaning that in order to access the first element I had to call 'my_list[0]' as opposed to 'my_list[1]' which would actually return the second item.
 
 
-Lists have a lot of wonderful properties that we will explore next lecture.
+Lists have a lot of wonderful properties that we will explore in future lectures.
 
 
 # Compiled vs Interpreted Languages
@@ -251,19 +253,25 @@ This is called aliasing, and it is a common pitfall for many new programmers in 
 
 
 # IDE
-Unless you already have a strongly preferred IDE with an integrated terminal, I highly recommend using Visual Code Studio. It is my IDE of choice and will make following along with what I do a lot easier. The installation is straightforward
+{{< soft src="/img/hello_world/vs.png" alt="Soft-styled image" >}}
+
+Unless you already have a strongly preferred IDE (integrated development enviroment), I highly recommend using Visual Studio Code. It is my IDE of choice, and will make following along with what I do a lot easier. The installation is straightforward. You can download the installer [here](https://code.visualstudio.com/download).
 
 
-# Black and Pylint
-It is just as important to write readable code as it is to write working code! If you want to collaborate with other people, or find yourself looking back at a piece of code you wrote many months ago, documentation and consistent formatting go a long way.
+# Jupyter Notebooks
+In this course you will turn assignments in using Jupyter notebooks that you download from this course's Moodle course. In order to edit these notebooks to get credit, you can use Visual Studio Code, but you will need to install an extension. Follow [this tutorial](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) to get everything configured. 
 
+If you are having trouble getting your enviroment set up in time for an inpending problem set, you can always edit these notebooks in the [online Jupyter Notebook demo editor](https://jupyter.org/try-jupyter/lab/). Just remember to download your pset after you are done because I am pretty sure it does not save your work. This is why I do not recommend this approach long term. 
 
-# Pytest
-In order to test if our python functions are working correctly, we will use pytest. To download it simply use pip.
+After you open a notebook you will be greeted with a series of coding questions like the one below. 
 
-```bash
-C:\Users\jdhag> pip install pytest
-```
+{{< soft src="/img/hello_world/jupyter_question.png" alt="Soft-styled image" >}}
+
+Below the questions will be a place for you to implement your code. You will fill out the body of functions. These functions will be run aginst test cases. Test cases just check that the function provides the correct output for a given input. The credit you recieve for a question on if your function passes the test cases.
+
+{{< soft src="/img/hello_world/jupyter_ans.png" alt="Soft-styled image" >}}
+
+Please do not try to hard-code the test cases into your function (a big if-else mess that outputs the correct value for each test case). The functions will be graded with additional hidden test cases so you will not recieve credit for this approach.
 
 # More Practice
 {{< soft src="/img/why_python/leetcode.png" alt="Soft-styled image" >}}

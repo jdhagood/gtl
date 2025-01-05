@@ -19,6 +19,9 @@ menu:
     - name: About Me
       url: "about/"
       weight: 2
+    - name: Enviroment Diagram
+      url: "enviroment_model/"
+      weight: 2
 
 params:
   description: "A website built through Hugo"
