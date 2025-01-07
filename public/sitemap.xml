@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gtlpython.click/</loc>
-    <lastmod>2025-01-04T21:29:29-06:00</lastmod>
+    <lastmod>2025-01-02T19:19:33-06:00</lastmod>
   </url><url>
     <loc>https://gtlpython.click/minesweeper/</loc>
     <lastmod>2025-01-02T19:19:33-06:00</lastmod>
@@ -20,9 +20,11 @@
   </url><url>
     <loc>https://gtlpython.click/dfs/</loc>
   </url><url>
-    <loc>https://gtlpython.click/enviroment_model/</loc>
+    <loc>https://gtlpython.click/environment_model/</loc>
   </url><url>
     <loc>https://gtlpython.click/generators/</loc>
+  </url><url>
+    <loc>https://gtlpython.click/hangman/</loc>
   </url><url>
     <loc>https://gtlpython.click/hello_world/</loc>
   </url><url>

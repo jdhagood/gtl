@@ -19,8 +19,8 @@ menu:
     - name: About Me
       url: "about/"
       weight: 2
-    - name: Enviroment Diagram
-      url: "enviroment_model/"
+    - name: Environment Diagram
+      url: "environment_model/"
       weight: 2
 
 params:

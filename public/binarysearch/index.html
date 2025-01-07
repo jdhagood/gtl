@@ -17,7 +17,7 @@
       
       <li><a href="/about/">About Me</a></li>
       
-      <li><a href="/enviroment_model/">Enviroment Diagram</a></li>
+      <li><a href="/environment_model/">Environment Diagram</a></li>
       
     </ul>
     <hr/>
@@ -31,9 +31,157 @@
 
 <main>
 <h1 id="conditionals">Conditionals</h1>
-<p>Because we want our python programs to be more than glorified calculators, we need a way to conditially executing code</p>
+<p>Let&rsquo;s review conditionals from the pset.</p>
+<p>The <code>if</code> statement in python has a simple syntax structure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> CONDITION:
+</span></span><span style="display:flex;"><span>    CODE_TO_RUN_IF_CONDITION_IS_TRUE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CODE_AFTER_IF_STATEMENT
+</span></span></code></pre></div><p><code>CONDITION</code> is a boolean expression. A boolean expression is a piece of code that returns <code>True</code> or <code>False</code> when it is executed. Below are a couple of boolean expressions with numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">3</span> <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">3</span> <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">3</span> <span style="color:#ff6ac1">&lt;</span> <span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">3</span> <span style="color:#ff6ac1">&gt;</span> <span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">False</span>
+</span></span></code></pre></div><p>For <code>a</code> and <code>b</code> numbers, Python gives us these Boolean operators to make Boolean expressions:</p>
+<ul>
+<li>Equals: <code>a == b</code> returns <code>True</code> if <code>a</code> and <code>b</code> have the same value</li>
+<li>Not Equals: <code>a != b</code></li>
+<li>Less than: <code>a &lt; b</code> returns <code>True</code> if a is strictly less than b</li>
+<li>Less than or equal to: <code>a &lt;= b</code> returns <code>True</code> if <code>a</code> is less than <code>b</code> or <code>a</code> equals <code>b</code></li>
+<li>Greater than: <code>a &gt; b</code> returns <code>True</code> if a is strictly greater than <code>b</code></li>
+<li>Greater than or equal to: <code>a &gt;= b</code> returns <code>True</code> is <code>a</code> is greater than <code>b</code> or <code>a</code> equals <code>b</code></li>
+</ul>
+<p>If <code>CONDITION</code> returns <code>True</code> then <code>CODE_TO_RUN_IF_CONDITION_IS_TRUE</code> is executed. Othersie <code>CODE_TO_RUN</code> is skipped. Note that regardless of if <code>CONDITION</code> is <code>True</code> or <code>False</code>, the <code>CODE_AFTER_IF_STATEMENT</code> still runs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> x <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">10</span>: <span style="color:#78787e">#check if x is equal to 10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value 10&#34;</span>)
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;DONE&#34;</span>)
+</span></span></code></pre></div><p>When you run this, both print statements indeed get executed. However, the program below only prints &ldquo;DONE&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">11</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> x <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">10</span>: <span style="color:#78787e">#check if x is equal to 10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value 10&#34;</span>)
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;DONE&#34;</span>)
+</span></span></code></pre></div><p>This is because the boolean expression <code>x == 10</code> returned <code>False</code>.</p>
+<p>If we want to execute another block of code in the case that our boolean expression returns <code>False</code>, we can use the <code>else</code> keyword.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> CONDITION:
+</span></span><span style="display:flex;"><span>    CODE_TO_RUN_IF_CONDITION_IS_TRUE
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    CODE_TO_RUN_IF_CONDITION_IS_FALSE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CODE_AFTER_IF_STATEMENT
+</span></span></code></pre></div><p>For example,</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> x <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">10</span>: <span style="color:#78787e">#check if x is equal to 10</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value 10&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x does not have value 10&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;DONE&#34;</span>)
+</span></span></code></pre></div><p>We can check for more conditions with the <code>elif</code> keyword (short for else-if).</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> x <span style="color:#ff6ac1">&gt;</span> <span style="color:#ff9f43">10</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value more than 10&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">elif</span> x <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">10</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value 10&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value less than 10&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;DONE&#34;</span>)
+</span></span></code></pre></div><p>Note that once a boolean expression evaluates to <code>True</code> in a long list of <code>if</code> and <code>elif</code> statements, the rest of the <code>elif</code> statements are ignored. Take this code for example.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">50</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> x <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">100</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value at least 100&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">elif</span> x <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">75</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value at least 75&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">elif</span> x <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">50</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value at least 50&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">elif</span> x <span style="color:#ff6ac1">&gt;=</span> <span style="color:#ff9f43">25</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value at least 25&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;x has value less than 25&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;DONE&#34;</span>)
+</span></span></code></pre></div><p>When you run it only &ldquo;x has value at least 50&rdquo; is printed and &ldquo;x has value at least 25&rdquo; is not printed!</p>
+<p>One useful Boolean operator to keep in your toolbelt is the <code>in</code> keyword. We can use it with lists to return <code>True</code> if an element is in the list or with strings to check if another string is a substring.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">in</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">in</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#5af78e">&#34;car&#34;</span> <span style="color:#ff6ac1">in</span> <span style="color:#5af78e">&#34;racecar&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#5af78e">&#34;horse&#34;</span> <span style="color:#ff6ac1">in</span> <span style="color:#5af78e">&#34;racecar&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">False</span>
+</span></span></code></pre></div><h1 id="the-for-loop">The for loop</h1>
+<p><code>for</code> loops are very versatile. In their most basic use case, they allow you to repeat a block of code multiple times.</p>
+<p>Suppose you wanted to print &ldquo;hello&rdquo; to the terminal 5 times. You could naively run the python script</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
+</span></span></code></pre></div><p>However, any time you see idential blocks of code one after another alarm bells should go off in your head screaming &lsquo;use a for loop!&rsquo; The following code does the exact same thing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> _ <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">5</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
+</span></span></code></pre></div><p>We can then change that &lsquo;5&rsquo; to any other number we want for our for loop to repeat as many times as possible! Try this for other numbers. What happens if you put in 0, negative numbers, or nonintegers?</p>
+<p>The power of the for loop does not stop at only saving you some keystrokes. It can also act as a counter!</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">5</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;i = &#34;</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff5c57">str</span>(i))
+</span></span></code></pre></div><p>This is what gets printed out to the terminal</p>
+<pre tabindex="0"><code>i = 0
+i = 1
+i = 2
+i = 3
+i = 4
+</code></pre><p>The for loop can be even more powerful and versatile, but we will explore these powers in future readings and psets.</p>
+<h1 id="the-while-loop">The while loop</h1>
+<p>The <code>while</code> loop allows us to repeat a block of code just like the for loop, but it does so based on a boolean expression. Take this program for example.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>counter <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> counter <span style="color:#ff6ac1">&lt;</span> <span style="color:#ff9f43">10</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(counter)
+</span></span><span style="display:flex;"><span>    counter <span style="color:#ff6ac1">=</span> counter <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>
+</span></span></code></pre></div><pre tabindex="0"><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</code></pre><p>Before each iteration of the while loop, the boolean expression <code>counter &lt; 10</code> is evaluated. If it is <code>True</code> then the contents of the loop are repeated and if it is <code>False</code> then the loop exits. We will see an example of where this behavior is useful in lecture today, but one immediate use case is to make an infinite loop.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;This will run forever!&#34;</span>)
+</span></span></code></pre></div><p>To stop this loop we would have to kill our program (Ctrl + C on Windows or Command + . on Mac).</p>
 <h1 id="where-did-we-leave-the-keys">Where did we leave the keys?</h1>
-<p>Last summer my friends and I had a rented a Christler Pacifica that we endearingly named &ldquo;Chrissy&rdquo;.</p>
+<p>Last summer my friends and I rented a Chrysler Pacifica that we endearingly named &ldquo;Chrissy&rdquo;.</p>
 <style>
     .soft {
         width: 600px;
@@ -68,20 +216,22 @@
     
 </div>
 
-<p>One day we realized that we lost Chrissy&rsquo;s keys. We were fairly certain that the keys ended up in one of our bags, but there were quite a few of us with many differnt bags. It would take all day to go through them. Thankfully, the car had electroic ignition system, so you could start the car if the keys were anywhere inside the car.</p>
+<p>One day we realized that we lost Chrissy&rsquo;s keys. We were fairly certain that the keys ended up in one of our bags, but there were quite a few of us with many different bags. It would take all day to go through them. Thankfully, the car had electronic ignition system, so you could start the car if the keys were anywhere inside the car.</p>
 <p>As a bunch of MIT students, we thought back to our intro CS classes and knew this problem could be solved most efficiently with a binary search! We put half of our luggage in Chrissy and pressed the ignition. The car did not start, so we immediatly know that half of the luggage did not have the keys cutting our search space in half.</p>
 <p>Next we put half of the remaing luggage into the car and pressed the ignition. It started up so we knew the keys were in that half of the luggage. We then took out half the luggage we put in the car and tried the ignition again.</p>
 <p>We repeated this process of narrowing down which bags could possible have the keys in them based on if the car started up until we were left with only one possible bag for the keys to be in. After a quick search in this bag we found the keys!</p>
 <h2 id="a-pythonic-implementation">A pythonic implementation</h2>
-<p>Lets see if we can implement this algorithm in python. We could write something like this:</p>
+<p>Let&rsquo;s see if we can implement this algorithm in python. We could write something like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">find_bag_with_keys</span>(number_of_bags, car_start):
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Finds the bag with the keys using a binary search approach.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - number_of_bags (int): Total number of bags.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - car_start (function): A function that takes a list of bag indices and returns
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">      True if the keys are in one of those bags (the car starts), False otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - int: The index of the bag containing the keys.
@@ -90,9 +240,11 @@
 </span></span><span style="display:flex;"><span>    left <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>
 </span></span><span style="display:flex;"><span>    right <span style="color:#ff6ac1">=</span> number_of_bags <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">1</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> left <span style="color:#ff6ac1">&lt;</span> right:
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Calculate the midpoint of the current search range</span>
 </span></span><span style="display:flex;"><span>        mid <span style="color:#ff6ac1">=</span> (left <span style="color:#ff6ac1">+</span> right) <span style="color:#ff6ac1">//</span> <span style="color:#ff9f43">2</span> <span style="color:#78787e"># //2 rounds down in the case left + right is odd</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Test the car with the first half of the current range</span>
 </span></span><span style="display:flex;"><span>        bags_to_test <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">list</span>(<span style="color:#ff5c57">range</span>(left, mid <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>))
@@ -103,19 +255,23 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Keys are in the right half outside the car</span>
 </span></span><span style="display:flex;"><span>            left <span style="color:#ff6ac1">=</span> mid <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return the index of the bag containing the keys</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> left
 </span></span></code></pre></div><p>In this function, we initialize two pointers, <code>left</code> and <code>right</code>, to keep track of our search window. All the bags are numbered and those that fall at or between <code>left</code> and <code>right</code> could have the keys in them. We then put all the bags between <code>left</code> and <code>mid</code> in the car to test it out. If the car starts up we can set <code>right = mid</code> to lower our upper bound and otherwise set <code>left = mid</code> to raise our lower bound. The falling upper bound and rising lower bound are going to meet at some point and <code>left &lt; right</code> will no longer hold because <code>left == right</code>. At this point we have found our bag!</p>
 <p>We can test our function in this program</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">from</span> random <span style="color:#ff6ac1">import</span> randint
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">make_car_start_function</span>(number_of_bags):
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Creates a car_start function that determines whether the car starts
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    based on the presence of the keys in a subset of bags.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - number_of_bags (int): Total number of bags.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - function: A function that takes a list of bag indices and returns True
@@ -124,25 +280,32 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Randomly select the index of the bag containing the keys</span>
 </span></span><span style="display:flex;"><span>    bag_with_keys <span style="color:#ff6ac1">=</span> randint(<span style="color:#ff9f43">0</span>, number_of_bags <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">1</span>)
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">car_start</span>(bags_to_test):
 </span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Checks if the keys are in the provided subset of bags.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Parameters:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        - bags_to_test (list of int): Indices of bags to test.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        - bool: True if the keys are in one of the tested bags, False otherwise.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> bag_with_keys <span style="color:#ff6ac1">in</span> bags_to_test
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> car_start
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#78787e"># Set up the car_start function for 20 bags</span>
 </span></span><span style="display:flex;"><span>car_start <span style="color:#ff6ac1">=</span> make_car_start_function(<span style="color:#ff9f43">20</span>)
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#78787e"># Use the binary search function to find the bag with the keys</span>
 </span></span><span style="display:flex;"><span>bag_with_keys <span style="color:#ff6ac1">=</span> find_bag_with_keys(<span style="color:#ff9f43">20</span>, car_start)
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#78787e"># Print the index of the bag containing the keys</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;The bag with the keys is: </span><span style="color:#5af78e">{</span>bag_with_keys<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
@@ -200,7 +363,7 @@ As you can see, the number of calls to car_start is, on average, \(log_2(n)\). T
   </div>
   
 <h1 id="square-roots">Square Roots</h1>
-<p>Let&rsquo;s use binary search to tackel a problem that must have been exausting before electronic calculators: root extraction.</p>
+<p>Let&rsquo;s use binary search to tackle a problem that must have been exhausted before electronic calculators: root extraction.</p>
 <div class="math-container">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
@@ -219,7 +382,8 @@ As you can see, the number of calls to car_start is, on average, \(log_2(n)\). T
       
 Recall that for a non-negative real number, \(n\), we define the square root of \(n\), \(\sqrt{n}\), as the non-negative real number such that \((\sqrt{n})^2 = n\).
 
-Unlike squaring a number, taking the square root of a number is not straightforward for most all real numbers. In fact, we cannot fully find the square root of most all numbers because the result is irrational and its decimal expansion is an infinite sequence of non-repeating numbers (much to Pythagors's chagrin, \(\sqrt{2}\) is irrational)!  Thas a bummer, but we can find some good appromimations of square roots.
+
+Unlike squaring a number, taking the square root of a number is not straightforward for most all real numbers. In fact, we cannot fully find the square root of most all numbers because the result is irrational and its decimal expansion is an infinite sequence of non-repeating numbers (much to Pythagors's chagrin, \(\sqrt{2}\) is irrational)!  That's a bummer, but we can still find some good approximations of square roots.
 
     </div>
   </div>
@@ -284,15 +448,18 @@ We want to make a function that takes in a positive real number, \(n\), and retu
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Approximates the square root of a number using binary search.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - n (float): The number to find the square root of.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - iterations (int): The number of iterations to perform for refinement.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    - float: The approximate square root of the number.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Define the search range</span>
 </span></span><span style="display:flex;"><span>    lower_bound, upper_bound <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">0</span>, <span style="color:#ff5c57">max</span>(<span style="color:#ff9f43">1</span>, n)
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Perform binary search for the specified number of iterations</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> _ <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(iterations):
@@ -302,12 +469,13 @@ We want to make a function that takes in a positive real number, \(n\), and retu
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
 </span></span><span style="display:flex;"><span>            lower_bound <span style="color:#ff6ac1">=</span> midpoint  <span style="color:#78787e"># Narrow search to upper half</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> lower_bound
-</span></span></code></pre></div><p>the first 16 digits of the square root of 2 are <a href="https://nerdparadise.com/math/reference/2sqrt10000">1.414213562373095</a>. We can calculate this with 51 itterations on our function.</p>
+</span></span></code></pre></div><p>The first 16 digits of the square root of 2 are <a href="https://nerdparadise.com/math/reference/2sqrt10000">1.414213562373095</a>. We can calculate this with 51 iterations on our function.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> square_root(<span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">51</span>)
 </span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.414213562373095</span>
-</span></span></code></pre></div><p>We are now running up aginst the percision of the float in python, so our current implementation cannot calculate the square root of 2 past this. To get past this would require either a more clever way to hold floating point numbers across multiple variables or modules that give you floating point numbers with more digits like <a href="https://mpmath.org/">mpmath</a>.</p>
-<p>Note that every itteration, our range of values that our root can fall within is cut in half, so our error halves at each itteration! Because the place value represented by digits follows an exponential and our error is exponentially decreasing with <code>itterations</code>, a linear increase in itterations leads to a linear increas in the number of correct digits.</p>
+</span></span></code></pre></div><p>We are now running up against the precision of the float in python, so our current implementation cannot calculate the square root of 2 past this. To get past this would require either a more clever way to hold floating point numbers across multiple variables or modules that give you floating point numbers with more digits like <a href="https://mpmath.org/">mpmath</a>.</p>
+<p>Note that every iteration, our range of values that our root can fall within is cut in half, so our error halves at each iteration! Because the place value represented by digits follows an exponential and our error is exponentially decreasing with <code>iterations</code>, a linear increase in iterations leads to a linear increase in the number of correct digits.</p>
 <p>This approach for finding the inverse of a function with binary search is not unique to square roots. Can you think of other functions that this will work on? What about functions that it would not work on?</p>
 <div class="math-container">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
@@ -325,13 +493,13 @@ We want to make a function that takes in a positive real number, \(n\), and retu
     </script>
     <div id="block-math-3" class="math-content">
       
-For those of you with a calculus background, you may know of an even better way to approximate the inverse of functions via Newton's Method. As an extra challenge try to implement the square_root function with Newton's Method. Comapir the convergence to our binary search approach. Which is better? Hint: \(\sqrt{n}\) is a root of the function \(x^2-n\).
+For those of you with a calculus background, you may know of an even better way to approximate the inverse of functions via Newton's Method. As an extra challenge try to implement the square_root function with Newton's Method. Compare the convergence to our binary search approach. Which is better? Hint: \(\sqrt{n}\) is a root of the function \(x^2-n\).
 
     </div>
   </div>
   
 <h1 id="main-takeaways">Main Takeaways</h1>
-<p>We looked at binary search in both a descret case (finding which bag had the car keys) and in a continuous case (finding the square root of a number). I hope that you have seen that binary search can be a very efficient algorithm compaired to naïve guess and check, especially when we have a large number of items. Binary search is a very general algorithm to have in your toolbox and will come in handy during your CS career.</p>
+<p>We looked at binary search in both a discrete case (finding which bag had the car keys) and in a continuous case (finding the square root of a number). I hope that you have seen that binary search can be a very efficient algorithm compared to naïve guess and check, especially when we have a large number of items. Binary search is a very general algorithm to have in your toolbox and will come in handy during your CS career.</p>
 
 </main>
 
