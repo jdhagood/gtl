@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hangman | GTL Python</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About Me</a></li>
+      
+      <li><a href="/environment_model/">Environment Diagram</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Hangman</span></h1>
+
+
+</div>
+
+<main>
+<p>Let&rsquo;s implement a simple game of hang man. If you are not familar with this game, it is a word guessing game. A starting word is chosen, generally by anohter person, but in our case from a random list. You always know how many letters are in this word and you take turns guessing letters in the word. If the letter you guessed is in the word, then its position(s) in the word are revealed to you. If the letter you guessed is not in the word, then you loose a life. You have a limited number of lives.</p>
+<p>If you guess all the letters in the word before you lose all your lives, then you win. Otherwise you lose (and a guy gets hung for some reason. Seems like high stakes for a silly little guessing game).</p>
+<p>For example, if the word was <code>'python'</code> then gameplay could look something like this;</p>
+<pre tabindex="0"><code>_ _ _ _ _ _
+Lives: 3
+Enter guess: a
+
+_ _ _ _ _ _
+Lives: 2
+Enter guess: o
+
+_ _ _ _ o _
+Lives: 2
+Enter guess: t
+
+_ _ t _ o _
+Lives: 2
+Enter guess: i
+
+_ _ t _ o _
+Lives: 1
+Enter guess: n
+
+_ _ t _ o n
+Lives: 1
+Enter guess: p
+
+p _ t _ o n
+Lives: 1
+Enter guess: y
+
+p y t _ o n
+Lives: 1
+Enter guess: h
+
+You Win! 
+The word was python.
+</code></pre><p>If you guessed <code>&quot;b&quot;</code> on the last guess rather than <code>&quot;h&quot;</code> then the output would be</p>
+<pre tabindex="0"><code>p y t _ o n
+Lives: 1
+Enter guess: b
+
+You Lose!
+The word was python
+</code></pre><h1 id="starting-words">Starting words</h1>
+<p>We will store our list of starting words in a filed called <code>words.txt</code>. You can download that file <a href="/helper_files/words.txt" download>here</a>.</p>
+<p>We will get a random word from this list with this function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_random_word</span>(file_path):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Get a random word form 
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    args:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        file_path (str): relative or absolute file path to words.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        word (str): a random word from words.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Open our file in python and store it in f. type(f) = &lt;class &#39;_io.TextIOWrapper&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>    words_file <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">open</span>(file_path, <span style="color:#5af78e">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Convert the text file to list; words_list = [&#34;able\n&#34; &#34;about\n&#34; &#34;account\n&#34;, ...]</span>
+</span></span><span style="display:flex;"><span>    words_list <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">list</span>(words_file)
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Use random.choice to choose a random word from our words_list</span>
+</span></span><span style="display:flex;"><span>    word <span style="color:#ff6ac1">=</span>  random<span style="color:#ff6ac1">.</span>choice(words_list)
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Get rid of the &#34;\n&#34; character at the end of each word</span>
+</span></span><span style="display:flex;"><span>    word <span style="color:#ff6ac1">=</span> word<span style="color:#ff6ac1">.</span>strip(<span style="color:#5af78e">&#34;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Close the </span>
+</span></span><span style="display:flex;"><span>    words_file<span style="color:#ff6ac1">.</span>close()
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># return our word</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> word
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(word)
+</span></span></code></pre></div><p>Understanding exactly how this function gets a random word is not critical, but if you are curious I tried to explain it through the comments in the code.
+Make sure that your file path to <code>word.txt</code> is correct. The <code>&quot;./&quot;</code> tells python to look for the file in the directory you are running your python script from. If it is not there you will get an error. If you cannot get the relative file location to work you can just put the absolute file location as a fail-safe. The code is no longer portable but at least it will work on your machine. Let me know if you are having trouble with this.</p>
+<p>We will work with this word string for the rest of the reading.</p>
+<h1 id="getting-input">Getting input</h1>
+<p>Python provides us with a really nice way to get user input from the termial using the <code>input</code> function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>user_input <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">input</span>(<span style="color:#5af78e">&#34;Please provide input: &#34;</span>) <span style="color:#78787e"># Wait to get input</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You entered: &#34;</span> <span style="color:#ff6ac1">+</span> user_input)
+</span></span></code></pre></div><p>The <code>input</code> function will print whatever string you pass as an argument (in our case it is <code>&quot;Please provide input: &quot;</code>) and then wait for the user to type something. You can type whatever string you want and press the &rsquo;enter&rsquo; key to submit your string.</p>
+<p>Note that if you are trying to run this in Visual Studio, you cannot just simply click the run button because you will only have access to the output of the program and will not be able to provide input. You will need to run it in the terminal.</p>
+<p>I put my program in a file called <code>'hangman.py'</code> in the directory <code>'python_sketchbook'</code>. I set my working direcotry to <code>'python_sketchbook'</code> and then ran this command.</p>
+<pre tabindex="0"><code>C:\Users\jdhag\python_sketchbook&gt;python hangman.py
+</code></pre><p>If you have Python on your PATH variable (like I reccomended in lecture 0), then this should run the <code>hangman.py</code> file in the terminal where you can provide input.</p>
+<pre tabindex="0"><code>Please provide input: I love Python!
+You entered: I love Python!
+</code></pre><p>Note that the user can put WHATEVER they want into this input. If we are making a hang man game, we only want the user to input a single letter. In the next section we will deal with this problem.</p>
+<h1 id="filtering-input">Filtering Input</h1>
+<p>Any time you are designing a program that humans will use, you need to consider how they will interact with that program and if their interactions can lead to crashes or bugs. (Some people, like me, intentially try to do this, so watch out! SQL injections are a prime example of this if you are familiar with these attacks.)</p>
+<p>One simple approach we can use to filter input is to check if it is valid or not. If it is valid we can proceed. If it is invalid we can provide the user with a short message about the correct input and ask again. Because we do not know how many times we need to keep asking the user to retry, this is a job for a <code>while</code> loop!</p>
+<p>Let&rsquo;s first make a function to check if the user input is valid.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">is_valid_input</span>(user_input):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    A function to check if the provided input is valid
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    args:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        user_input (str): the string from the user input
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    return:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Boolean (bool) for if the input was valid or not
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Only accept single characters</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> <span style="color:#ff5c57">len</span>(user_input) <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span></code></pre></div><p>Now we can filter the input with this approach.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>user_input <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">not</span> is_valid_input(user_input):
+</span></span><span style="display:flex;"><span>    user_input <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">input</span>(<span style="color:#5af78e">&#34;Please guess a letter: &#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You guessed: &#34;</span> <span style="color:#ff6ac1">+</span> user_input)
+</span></span></code></pre></div><p>This now works as expcted:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>C:\Users\jdhag\python_sketchbook<span style="color:#ff6ac1">&gt;</span>python hangman<span style="color:#ff6ac1">.</span>py
+</span></span><span style="display:flex;"><span>Please guess a letter: hello
+</span></span><span style="display:flex;"><span>Please guess a letter: <span style="color:#ff9f43">123</span>
+</span></span><span style="display:flex;"><span>Please guess a letter: a
+</span></span><span style="display:flex;"><span>You guessed: a
+</span></span></code></pre></div><p>If we wanted to provide the user with a short message about why their input was invalid we can refactor our code to the following.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>user_input <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">True</span>:
+</span></span><span style="display:flex;"><span>    user_input <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">input</span>(<span style="color:#5af78e">&#34;Please guess a letter: &#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> is_valid_input(user_input):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Please guess one letter at a time!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You guessed: &#34;</span> <span style="color:#ff6ac1">+</span> user_input)
+</span></span></code></pre></div><p>While it may look like we introduced an infite loop into our program that will prevent any future execution, the <code>break</code> keyword saves us. Whenver <code>break</code> is executed, it breaks us out of the current loop that we are in (this works for both <code>while</code> loops and <code>for</code> loops). We can see that the user is stuck in this infinite while loop until they eventually provide a valid input. We implemented the code this way so that the user is not yelled at every time it is their turn to guess. They are only yelled at after they guess wrong.</p>
+<p>Lets wrap this up into a handy funciton.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_user_guess</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    A function to return a valid guess from the user
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    args:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        none
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    return:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        user_input (str): the valid guess from teh user
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">is_valid_input</span>(user_input):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    A function to check if the provided input is valid
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    args:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        user_input (str): the string from the user input
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    return:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Boolean (bool) for if the input was valid or not
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Only accept single characters</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> <span style="color:#ff5c57">len</span>(user_input) <span style="color:#ff6ac1">==</span> <span style="color:#ff9f43">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    user_input <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">True</span>:
+</span></span><span style="display:flex;"><span>        user_input <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">input</span>(<span style="color:#5af78e">&#34;Please guess a letter: &#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> is_valid_input(user_input):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">break</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Please guess one letter at a time!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> user_input
+</span></span></code></pre></div><p>Notice how we define <code>is_valid_input</code> inside of <code>get_user_guess</code>. We call functions defined inside of other functions <em>&ldquo;helper functions&rdquo;</em>, because they help us to cleanly implement our main function. We can call <code>is_valid_input</code> anywhere inside of <code>get_user_guess</code>, but it will not be accessable outside of <code>get_user_guess</code>. This helps with organization and preventing us from accidentially redefining functions in other places. (and yes, you can have helper functions inside of helper functions inside of helper functions inside of&hellip; well, you get the point).</p>
+<p>On the pset you will be asked to make a better input filter. Right now we are only checking that a single character was entered. Therefore, <code>'1'</code>, <code>'@'</code>, <code>'/'</code>, and <code>'{'</code> are all considered valid inputs even though they would never be in a hangman word (unless the person making the hangman game was really, really evil. I am not that evil).</p>
+<p>We also are also accepting <code>'a'</code> and <code>'A'</code> as different inputs. In our hangman game we do not want the case of the letter to effect gameplay. We could either enforce all lowercase letters or all upper case letters in our input filter, or we could just convert all upper case letters to lower case letters for some input post processing. On the pset we will implement the latter approach because it leads to a better user experience in my opinion.</p>
+<h1 id="determining-if-a-guess-is-correct-or-not">Determining if a guess is correct or not</h1>
+<p>Now that we have a user&rsquo;s guess, how can we determine if it is correct or not? Remember when I mentioned how you can use the keyword <code>in</code> as a boolean operator with strings and lists? This is the perfect usecase!</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Shhh, the word is: &#34;</span> <span style="color:#ff6ac1">+</span> word) <span style="color:#78787e"># For demonstration</span>
+</span></span><span style="display:flex;"><span>user_guess <span style="color:#ff6ac1">=</span> get_user_guess()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">in</span> word:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Correct Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Incorrect Guess!&#34;</span>)
+</span></span></code></pre></div><p>Lets again roll this up into a function that will help us later</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">is_guess_correct</span>(guess, word):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> guess <span style="color:#ff6ac1">in</span> word
+</span></span></code></pre></div><h1 id="keeping-track-of-guesses-and-lives">Keeping track of guesses and lives</h1>
+<p>In order to know what letters to display in the word we need a way of tracking what the user has guessed. To do this we will use the aptly named list <code>correct_user_guesses</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>correct_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no correct guesses</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Shhh, the word is: &#34;</span> <span style="color:#ff6ac1">+</span> word) <span style="color:#78787e"># For demonstration</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user_guess <span style="color:#ff6ac1">=</span> get_user_guess()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> is_guess_correct(user_guess, word):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Correct Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> correct_user_guesses: <span style="color:#78787e"># avoid duplicate guesses</span>
+</span></span><span style="display:flex;"><span>        correct_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Incorrect Guess!&#34;</span>)
+</span></span></code></pre></div><p>We may also keep track of lives.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>correct_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no correct guesses</span>
+</span></span><span style="display:flex;"><span>lives <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e"># Changing this changes the difficulty of the game</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Shhh, the word is: &#34;</span> <span style="color:#ff6ac1">+</span> word) <span style="color:#78787e"># For demonstration</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user_guess <span style="color:#ff6ac1">=</span> get_user_guess()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> is_guess_correct(user_guess, word):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Correct Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> correct_user_guesses: <span style="color:#78787e"># avoid duplicate guesses</span>
+</span></span><span style="display:flex;"><span>        correct_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Incorrect Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>    lives <span style="color:#ff6ac1">-=</span> <span style="color:#ff9f43">1</span>
+</span></span></code></pre></div><p>We can also be nice and keep track of the incorrect user guesses. If the user guesses the same incorrect letter twice, they will only lose a life for the first time. Let&rsquo;s also remind the user when they guess a letter they have guessed before too.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>correct_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no correct guesses</span>
+</span></span><span style="display:flex;"><span>incorrect_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no incorrect guesses</span>
+</span></span><span style="display:flex;"><span>lives <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e"># Changing this changes the difficulty of the game</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Shhh, the word is: &#34;</span> <span style="color:#ff6ac1">+</span> word) <span style="color:#78787e"># For debugging</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user_guess <span style="color:#ff6ac1">=</span> get_user_guess()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> is_guess_correct(user_guess, word):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Correct Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> correct_user_guesses: <span style="color:#78787e"># avoid duplicate guesses</span>
+</span></span><span style="display:flex;"><span>        correct_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You have guessed that before.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Incorrect Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> incorrect_user_guesses:
+</span></span><span style="display:flex;"><span>        incorrect_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span>        lives <span style="color:#ff6ac1">-=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You have guessed that before&#34;</span>)
+</span></span></code></pre></div><h1 id="determining-win-state">Determining win state.</h1>
+<p>It is easy to determine when the game is lost because <code>lives</code> will at 0. However, determing when the game is won is more tricky. We need to check that we have guessed every letter in a word. Thankfully we are already keepign track of our correct guesses, so lets make a function to determine if we won or not.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">is_game_won</span>(word, correct_user_guesses):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> letter <span style="color:#ff6ac1">in</span> word:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> letter <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> correct_user_guesses:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span></code></pre></div><h1 id="the-main-game-loop">The main game loop</h1>
+<p>So far we have only been able to make one guess, but we need to be able to make guesses until we either guess all the letters in the word or run out of lives. Whenever we need to repeat some code an undetermined number of times until something happens, a <code>while</code> loop is the tool we need.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>correct_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no correct guesses</span>
+</span></span><span style="display:flex;"><span>incorrect_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no incorrect guesses</span>
+</span></span><span style="display:flex;"><span>lives <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e"># Changing this changes the difficulty of the game</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Shhh, the word is: &#34;</span> <span style="color:#ff6ac1">+</span> word) <span style="color:#78787e"># For debugging</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> lives <span style="color:#ff6ac1">&gt;</span> <span style="color:#ff9f43">0</span> <span style="color:#ff6ac1">and</span> <span style="color:#ff6ac1">not</span> is_game_won(word, correct_user_guesses):
+</span></span><span style="display:flex;"><span>    user_guess <span style="color:#ff6ac1">=</span> get_user_guess()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> is_guess_correct(user_guess, word):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Correct Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> correct_user_guesses: <span style="color:#78787e"># avoid duplicate guesses</span>
+</span></span><span style="display:flex;"><span>            correct_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You have guessed that before.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Incorrect Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> incorrect_user_guesses:
+</span></span><span style="display:flex;"><span>            incorrect_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span>            lives <span style="color:#ff6ac1">-=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You have guessed that before&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> is_game_won(word, correct_user_guesses):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You Win&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You Lose&#34;</span>)
+</span></span></code></pre></div><h1 id="displaying-our-word">Displaying our word</h1>
+<p>Hangman relies on the user being able to see where their guessed letters are in the word. We can make a function to display the current progress given <code>word</code> and <code>correct_user_guesses</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">display_hangman_word</span>(word, correct_user_guesses):
+</span></span><span style="display:flex;"><span>    hangman_word <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> letter <span style="color:#ff6ac1">in</span> word:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> letter <span style="color:#ff6ac1">in</span> correct_user_guesses:
+</span></span><span style="display:flex;"><span>            hangman_word <span style="color:#ff6ac1">+=</span> letter <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34; &#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>            hangman_word <span style="color:#ff6ac1">+=</span> <span style="color:#5af78e">&#34;_ &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(hangman_word)
+</span></span></code></pre></div><h1 id="bringing-it-all-together">Bringing it all together</h1>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>word <span style="color:#ff6ac1">=</span> get_random_word(<span style="color:#5af78e">&#34;./words.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>correct_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no correct guesses</span>
+</span></span><span style="display:flex;"><span>incorrect_user_guesses <span style="color:#ff6ac1">=</span> [] <span style="color:#78787e"># Start with no incorrect guesses</span>
+</span></span><span style="display:flex;"><span>lives <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e"># Changing this changes the difficulty of the game</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Shhh, the word is: &#34;</span> <span style="color:#ff6ac1">+</span> word) <span style="color:#78787e"># For debugging</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> lives <span style="color:#ff6ac1">&gt;</span> <span style="color:#ff9f43">0</span> <span style="color:#ff6ac1">and</span> <span style="color:#ff6ac1">not</span> is_game_won(word, correct_user_guesses):
+</span></span><span style="display:flex;"><span>    display_hangman_word(word, correct_user_guesses)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Lives: &#34;</span>, lives)
+</span></span><span style="display:flex;"><span>    user_guess <span style="color:#ff6ac1">=</span> get_user_guess()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> is_guess_correct(user_guess, word):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Correct Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> correct_user_guesses: <span style="color:#78787e"># avoid duplicate guesses</span>
+</span></span><span style="display:flex;"><span>            correct_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You have guessed that before.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Incorrect Guess!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> user_guess <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> incorrect_user_guesses:
+</span></span><span style="display:flex;"><span>            incorrect_user_guesses<span style="color:#ff6ac1">.</span>append(user_guess)
+</span></span><span style="display:flex;"><span>            lives <span style="color:#ff6ac1">-=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You have guessed that before&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> is_game_won(word, correct_user_guesses):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You Win&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;You Lose&#34;</span>)
+</span></span></code></pre></div><h1 id="take-aways">Take Aways</h1>
+<p>Other than give you a cool little game to play in your freetime, this lab introduced some tools and coding structures that will be useful throughout your CS career.</p>
+<p><code>while</code> loops are powerful structures for when you do not know exactly how many times a piece of code should itterate. We can make some really slick functions by combining the <code>while True</code> infite loop with the <code>break</code> keyword to bail out when we want to.</p>
+<p>The power of <code>for</code> loops to itterate over lists and strings was explored.</p>
+<p>However, by far the most important topic that was explored was the use of functions. When trying to implement something as complicated as hangman in python, it is not at all obvious at first how to do that! Throughout this reading we took that really hard task and split it up into easier tasks in the form of functions (<code>get_user_guess</code>, <code>is_game_won</code>, <code>display_hangman_word</code>). These smaller functions were much easier to think about, and once we wrote the function, we could essentially forget about how it worked under the hood and treat it like a keyword to build more complicated behavior. As your programs get larger and larger, managing complexity is the key to a sucessful project rather than a perpetual WIP!</p>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © JD Hagood 2025 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

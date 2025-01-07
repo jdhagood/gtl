@@ -17,7 +17,7 @@
       
       <li><a href="/about/">About Me</a></li>
       
-      <li><a href="/enviroment_model/">Enviroment Diagram</a></li>
+      <li><a href="/environment_model/">Environment Diagram</a></li>
       
     </ul>
     <hr/>
@@ -30,10 +30,75 @@
 </div>
 
 <main>
-<h1 id="why-python">Why Python</h1>
-<p>Short intro on python and why it is used.</p>
-<h1 id="downloading-python">Downloading python</h1>
-<p>Before we can jump into programming, everyone needs to download python. Download the latest version for your operating system from <a href="https://www.python.org/downloads/">python.org</a> (3.13.1 when I wrote this).</p>
+<h1 id="translation">Translation</h1>
+<p>Everything on this website is written in English, which may make learning Python harder than it has to be. If you would rather not read English and are using Google Chrome, I recommend the extension &ldquo;Immersive Translate&rdquo; that will translate webpages for you.
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/translate.jpg" class="soft" alt="Soft-styled image">
+    
+</div>
+</p>
+<p>Once you install the extension, you can configure the settings to translate from English to Italian
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/translated.jpg" class="soft" alt="Soft-styled image">
+    
+    <div class="caption">
+        The translated webpage
+    </div>
+    
+</div>
+</p>
+<h1 id="downloading-python">Downloading Python</h1>
+<p>Before we can jump into programming, everyone needs to download Python. Download the latest version for your operating system from <a href="https://www.python.org/downloads/">python.org</a> (3.13.1 when I wrote this).</p>
 <style>
     .soft {
         width: 600px;
@@ -62,23 +127,27 @@
 <div class="image-container">
     <img src="/img/hello_world/path.jpg" class="soft" alt="Soft-styled image">
     
+    <div class="caption">
+        Add python.exe to PATH
+    </div>
+    
 </div>
 
-<p>If you have a Windows machine and want to work with python in the system terminal, you should add python to your PATH variable. This just makes sure you can call the python.exe from any directory.</p>
+<p>If you have a Windows machine and want to work with Python in the system terminal, you should add Python to your PATH variable (HIGHLY RECOMMENDED). This just makes sure you can call the python.exe from any directory.</p>
 <p>To test that your installation was successful, open your terminal and run the following command.</p>
-<pre tabindex="0"><code>C:\Users\jdhag&gt;python --version
+<pre tabindex="0"><code>C:\Users\user&gt;python --version
 Python 3.12.3
 </code></pre><p>You will get an error if you do not have python downloaded properly.</p>
-<p>If your installation was unsuccessful you can still follow along with <a href="https://www.online-python.com/">this online python IDE</a>, but this should not be a long term solution. Talk to me after class if you are still having difficulities.</p>
-<h1 id="your-first-python-program">Your first python program</h1>
+<p>If your installation was unsuccessful you can still follow along with <a href="https://www.online-python.com/">this online python IDE</a>, but this should not be a long term solution. Talk to me after class if you are still having difficulties.</p>
+<h1 id="your-first-python-program">Your first Python program</h1>
 <p>Believe it or not, you are ready to run your first python program. If you type &lsquo;python&rsquo; into your command prompt (or &lsquo;py&rsquo; if you&rsquo;re cool) then you will end up inside the python shell.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>C:\Users\jdhag&gt;python
-</span></span><span style="display:flex;"><span>Python <span style="color:#ff9f43">3</span>.<span style="color:#ff9f43">12</span>.<span style="color:#ff9f43">3</span> (tags/v3.<span style="color:#ff9f43">12</span>.<span style="color:#ff9f43">3</span>:f6650f9, Apr  <span style="color:#ff9f43">9</span> <span style="color:#ff9f43">2024</span>, <span style="color:#ff9f43">14</span>:<span style="color:#ff9f43">05</span>:<span style="color:#ff9f43">25</span>) [MSC v.<span style="color:#ff9f43">1938</span> <span style="color:#ff9f43">64</span> bit (AMD64)] on win32
-</span></span><span style="display:flex;"><span>Type <span style="color:#5af78e">&#34;help&#34;</span>, <span style="color:#5af78e">&#34;copyright&#34;</span>, <span style="color:#5af78e">&#34;credits&#34;</span> or <span style="color:#5af78e">&#34;license&#34;</span> for more information.
-</span></span><span style="display:flex;"><span>&gt;&gt;&gt; print(<span style="color:#5af78e">&#34;hello, world&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>C:\Users\user<span style="color:#ff6ac1">&gt;</span>python
+</span></span><span style="display:flex;"><span>Python <span style="color:#ff9f43">3.12.3</span> (tags<span style="color:#ff6ac1">/</span>v3<span style="color:#ff9f43">.12.3</span>:f6650f9, Apr  <span style="color:#ff9f43">9</span> <span style="color:#ff9f43">2024</span>, <span style="color:#ff9f43">14</span>:<span style="color:#ff9f43">05</span>:<span style="color:#ff9f43">25</span>) [MSC v<span style="color:#ff9f43">.1938</span> <span style="color:#ff9f43">64</span> bit (AMD64)] on win32
+</span></span><span style="display:flex;"><span>Type <span style="color:#5af78e">&#34;help&#34;</span>, <span style="color:#5af78e">&#34;copyright&#34;</span>, <span style="color:#5af78e">&#34;credits&#34;</span> <span style="color:#ff6ac1">or</span> <span style="color:#5af78e">&#34;license&#34;</span> <span style="color:#ff6ac1">for</span> more information<span style="color:#ff6ac1">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;hello, world&#34;</span>)
 </span></span><span style="display:flex;"><span>hello, world
-</span></span><span style="display:flex;"><span>&gt;&gt;&gt;
-</span></span></code></pre></div><p>You may have seen the &ldquo;hello, world&rdquo; example while learning other programming languages. It has become the prototypical first program that everyone should write when starting a new programming language. It is likely that this comes from a 1974 Bell Laboratories internal memorandum by Brian Dernighan <em>Programming in C: A Tutorial</em>. He said that the inspiration for the phrase came from a cartoon he watched as a kid with a small chick hatching and then saying &ldquo;hello, world.&rdquo;</p>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span>
+</span></span></code></pre></div><p>You may have seen the &ldquo;hello, world&rdquo; example while learning other programming languages. It has become the prototypical first program that everyone should write when starting a new programming language. THe history behind this is a little fuzzy, but it likely comes from a 1974 Bell Laboratories internal memorandum by Brian Dernighan <em>Programming in C: A Tutorial</em>. He said that the inspiration for the phrase came from a cartoon he watched as a kid with a small chick hatching and then saying &ldquo;hello, world.&rdquo;</p>
 <p>You can try printing other stuff by changing the arguments of the print function.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;i love python&#34;</span>)
 </span></span><span style="display:flex;"><span>i love python
@@ -88,162 +157,10 @@ Python 3.12.3
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> quit()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>C:\Users\jdhag<span style="color:#ff6ac1">&gt;</span>
-</span></span></code></pre></div><h1 id="variables">Variables</h1>
-<p>Let&rsquo;s continue to work in the python shell as we explore some of the basic functionalities of python (run the command &lsquo;py&rsquo; again to reenter the shell if you exited). Like in most programming languages, we have variables. You assign a variable by simply using the &ldquo;=&rdquo; sign</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">10</span>
-</span></span></code></pre></div><p>Whenever we called &lsquo;x&rsquo; python knew it wasn&rsquo;t part of its keywords, so it instead looked if &lsquo;x&rsquo; had a value assigned to it. It indeed did, so it returned the value of &lsquo;10&rsquo;.</p>
-<p>If you have experience in some other languages, it may seem strange at first that we can just simply assign the number 10 to x before declaring that x is an integer type and will hold integers. This is because python is <em>dynamically typed</em>. This means that any variable can have any type. We can even change the variable types on the fly just by assigning different types to the variable.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">int</span><span style="color:#5af78e">&#39;&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.1415</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">float</span><span style="color:#5af78e">&#39;&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;hello, world&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">str</span><span style="color:#5af78e">&#39;&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(x)
-</span></span><span style="display:flex;"><span>hello, world
-</span></span></code></pre></div><p>Note that whenever you call the variable it returns the last thing that was stored in it.</p>
-<p>This is different from languages like C or Java which are <em>statically typed</em>. Once you declare a variable with a certain type, it cannot change!</p>
-<p>With great power comes great responsibility (and sometimes drawbacks)! Dynamically typed languages make implementing some programs very easy and quick, but they can also make some bugs harder to find and squash. They can also lead to the program running slower because the type of each variable is determined at runtime rather than at compile time!</p>
-<h1 id="math">Math</h1>
-<p>At the end of the day, programming a computer really is just a bunch of math (like actually, there is a <a href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence">direct correspondance</a>!), so let&rsquo;s see how to do some simple math on the shell.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e"># addition</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">5</span><span style="color:#78787e">#addition</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e">#addition</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e">#subtraction</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span><span style="color:#ff6ac1">*</span><span style="color:#ff9f43">5</span> <span style="color:#78787e">#multiplication</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">20</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span><span style="color:#ff6ac1">/</span><span style="color:#ff9f43">5</span> <span style="color:#78787e">#division</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.8</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span><span style="color:#ff6ac1">**</span><span style="color:#ff9f43">5</span> <span style="color:#78787e">#exponentiation</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1024</span>
-</span></span></code></pre></div><p>Note that exponentiation is not &lsquo;4^5&rsquo;. This is the bitwise xor operation that we will discuss later in the course.</p>
-<p>This works just as well on variables</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> y <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">6</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">+</span> y
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">-</span> y
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">-</span><span style="color:#ff9f43">3</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x<span style="color:#ff6ac1">*</span>y
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">18</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x<span style="color:#ff6ac1">/</span>y
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.5</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x<span style="color:#ff6ac1">**</span>y
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">729</span>
-</span></span></code></pre></div><p>If we want some more advanced math functions we can import the math module. We will talk about imports later in the course.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">import</span> math
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>sin(<span style="color:#ff9f43">1</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.8414709848078965</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>cos(<span style="color:#ff9f43">1</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.5403023058681398</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>tan(<span style="color:#ff9f43">1</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.5574077246549023</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>asin(<span style="color:#ff9f43">1</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.5707963267948966</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>acos(<span style="color:#ff9f43">1</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.0</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>atan(<span style="color:#ff9f43">1</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.7853981633974483</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>log(<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">10</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2.0</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>log(math<span style="color:#ff6ac1">.</span>e)
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.0</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>pi
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3.141592653589793</span>
-</span></span></code></pre></div><h1 id="lists">Lists</h1>
-<p>Lists are a very convenient data type in python and will come in handy throughout the course. A mastery of lists is vital for a mastery of python.</p>
-<p>Lists do exactly what their name implies, they hold a list of objects. You create them with square brackets, &lsquo;[ ]&rsquo;.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(my_list)
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">list</span><span style="color:#5af78e">&#39;&gt;</span>
-</span></span></code></pre></div><p>You can access the elements inside of the list like so:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">0</span>]
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">1</span>]
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">2</span>]
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">3</span>]
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">4</span>]
-</span></span><span style="display:flex;"><span>Traceback (most recent call last):
-</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
-</span></span><span style="display:flex;"><span>IndexError: <span style="color:#ff5c57">list</span> index out of <span style="color:#ff5c57">range</span>
-</span></span></code></pre></div><p>If you try to reference an element in a list that is outside of the range of the list, you will get an IndexError.</p>
-<p>Notice that lists are zero indexed, meaning that in order to access the first element I had to call &lsquo;my_list[0]&rsquo; as opposed to &lsquo;my_list[1]&rsquo; which would actually return the second item.</p>
-<p>Lists have a lot of wonderful properties that we will explore in future lectures.</p>
-<h1 id="compiled-vs-interpreted-languages">Compiled vs Interpreted Languages</h1>
-<p>Python&rsquo;s dynamic types are thanks to the fact that it is an <em>interperted language</em>. This is in contrast to a <em>compiled language</em> like C.</p>
-<p>In C, before you can run a program, it must first be translated into binary machine code specific to the hardware it is running on (1s and 0s that are completely unreadable to most everyone on earth).</p>
-<p>Contrast this with python. When you run a python program it is first compiled to a lower level language (like bytecode). This lower level language is not hardware specific so it will not be able to run on your computer. Instead it is read line by line by a virtual machine called the Python Virtual Machine (PVM). This is why we had to download python. Part of the installation was setting up this PMV to be able to read your code on the fly. (this technically means that python is not fully an interpreted language because it first needs to be compiled to bytecode for the PVM, but this is pedantic!)</p>
-<p>The main difference you need to worry about for compiled vs interpreted languages is that compiled languages generally run a lot faster than interpreted languages. Python can be very slow if you give it a lot to compute. However, the development time in a language like Python is generally much faster and more enjoyable due to all the neat tricks you can do with a compiled language, like dynamically typed variables.</p>
-<style>
-    .soft {
-        width: 600px;
-        border-radius: 10px;
-        display: block;
-        margin: 0 auto;  
-    }
-    .image-container {
-        text-align: center;
-        margin: 20px 0;  
-    }
-    .caption {
-        font-size: 0.9em;
-        color: #555;  
-        margin-top: 10px;
-    }
-    .caption a {
-        color: #007BFF;  
-        text-decoration: none;  
-    }
-    .caption a:hover {
-        text-decoration: underline;  
-    }
-</style>
-
-<div class="image-container">
-    <img src="/img/hello_world/python_bytecode.jpg" class="soft" alt="Soft-styled image">
-    
-</div>
-
-<p>Note that we can usually get the best of both worlds by letting python control statically typed programs. This is what many python libraries, like NumPy, do and act as wrappers around C and C++ functions, but I am getting ahead of myself.</p>
-<h1 id="the-environment-diagram">The Environment Diagram</h1>
-<p>When you are programming in any language, it is important to have a mental model of what you are doing. If you are blindly executing code and run into a bug, it can be nearly impossible to figure out how to fix it on your own if you are not aware of what exactly you are writing. Environment diagrams help demystify many confusing aspects of python and shine light on why many of the things in python are done the way they are. This will be a topic that we come back to many times throughout the course as we develop more advanced skills.</p>
-<p>Environment diagrams help us keep track of the objects at play in our python program, and how they evolve over the course of the program. We will keep track of two different places in memory where objects are stored: the <strong>heap</strong> and the <strong>stack</strong>. Names of objects are stored in the stack and the actual object is stored in the heap. We also keep track of <strong>frames</strong> in environment diagrams. Frames are where code is executed (this gives rise to local variables if you are familiar with these).</p>
-<p>Let&rsquo;s see how to construct an environment diagram. <a href="https://pythontutor.com/">Pythontutor.com</a> has a really nice interactive environment diagram generator that I will use throughout the course. Let&rsquo;s start with a very basic program</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
-</span></span><span style="display:flex;"><span>x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">20</span>
-</span></span></code></pre></div>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=x%20%3D%2010%0Ax%20%3D%2020&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=2&heapPrimitives=true&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-
-<p>In this interactive environment diagram the stack is represented under the frames and the heap is represented under the objects. When we execute &lsquo;x = 10&rsquo;, x is added to the stack as a <strong>variable</strong> which is <strong>bound</strong> to the object on the heap representing the integer 10. We call the arrow connecting the two the <strong>refrence</strong>.</p>
-<p>On the next line of code, &lsquo;x = 20&rsquo;, we change our mind and instead bound x to the integer 20.</p>
-<p>There is a secret intermediate step not shown. What happened to the integer representing 10 on the heap? It got garbage collected. Because python is an interpreted language, it can manage its memory during runtime automatically. This means that we can free up the memory on the heap being taken up by objects which are not bound to anything through a process called garbage collection. This means that you do not have to manage memory explicitly like in C or C++!</p>
-<p>Let&rsquo;s look at how lists are represented on the heap.
-
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=l%20%3D%20%5B1,%202,%203,%20%22python%20is%20fun%22%5D%0Ax%20%3D%20l%5B0%5D&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=2&heapPrimitives=true&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-</p>
-<p>Lists are represented as a sequence of references to the objects in them. This leads to some unexpected consequences. Take this code for example.
-
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=list_1%20%3D%20%5B1,%202,%203,%204%5D%0Alist_2%20%3D%20list_1%0Alist_2%5B0%5D%20%3D%2010%0Aprint%28list_1%5B0%5D%29%0Aprint%28list_2%5B0%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-</p>
-<p>We would expect the line &lsquo;print(list_1[0])&rsquo; to print the integer 1. However, it prints 10 instead! The reason for this behavior is shown in the environment diagram. Whenever we call &rsquo;list_2 = list_1&rsquo; we create the list_2 variable and reference it to the same object. Because list_1 and list_2 refer to the same object, changing the object associated with list_2 also changes the object associated with list_1!</p>
-<p>This is called aliasing, and it is a common pitfall for many new programmers in python. With the environment diagram we can see why it happens and next lecture we will discuss how to avoid it!</p>
-<h1 id="ide">IDE</h1>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:\Users\user<span style="color:#ff6ac1">&gt;</span>
+</span></span></code></pre></div><h1 id="ide">IDE</h1>
 <style>
     .soft {
         width: 600px;
@@ -274,10 +191,80 @@ Python 3.12.3
     
 </div>
 
-<p>Unless you already have a strongly preferred IDE (integrated development enviroment), I highly recommend using Visual Studio Code. It is my IDE of choice, and will make following along with what I do a lot easier. The installation is straightforward. You can download the installer <a href="https://code.visualstudio.com/download">here</a>.</p>
+<p>You do not want to do all your Python coding in the shell. Unless you already have a strongly preferred IDE (integrated development environment), I highly recommend using Visual Studio Code. It is my IDE of choice, and will make following along with what I do a lot easier. The installation is straightforward. You can download the installer for your OS <a href="https://code.visualstudio.com/download">here</a>.</p>
+<p>To start writing a python program just open a folder in Visual Studio and make a file inside that ends with the &ldquo;.py&rdquo; extension (this tells your computer to read the file as a python program file just like .png or .jpg tells your computer to read the file as an image file). Make sure to save it and press run to run the file.
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/vs_example.jpg" class="soft" alt="Soft-styled image">
+    
+    <div class="caption">
+        Don&rsquo;t forget to save :)
+    </div>
+    
+</div>
+</p>
 <h1 id="jupyter-notebooks">Jupyter Notebooks</h1>
-<p>In this course you will turn assignments in using Jupyter notebooks that you download from this course&rsquo;s Moodle course. In order to edit these notebooks to get credit, you can use Visual Studio Code, but you will need to install an extension. Follow <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">this tutorial</a> to get everything configured.</p>
-<p>If you are having trouble getting your enviroment set up in time for an inpending problem set, you can always edit these notebooks in the <a href="https://jupyter.org/try-jupyter/lab/">online Jupyter Notebook demo editor</a>. Just remember to download your pset after you are done because I am pretty sure it does not save your work. This is why I do not recommend this approach long term.</p>
+<p>In this course you will turn assignments in using Jupyter notebooks that you download from this course&rsquo;s Moodle or this website on the homepage under each lecture. In order to edit these notebooks to get credit, you can use Visual Studio Code, but you will need to install an extension. To do this, open Visual Studio, go to the extensions tab on the left side of the screen (4 boxes), search for &ldquo;jupyter&rdquo; and install the first result.</p>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/hello_world/jupyter_install.jpg" class="soft" alt="Soft-styled image">
+    
+    <div class="caption">
+        It should look like this.
+    </div>
+    
+</div>
+
+<p>If you are confused you can watch <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">this tutorial</a> to get everything configured.</p>
+<p>If you are having trouble getting your environment setup in time for an impending problem set, you can always edit these notebooks in the <a href="https://jupyter.org/try-jupyter/lab/">online Jupyter Notebook demo editor</a>. Just remember to download your pset after you are done because I am pretty sure it does not save your work. This is why I do not recommend this approach long term.</p>
 <p>After you open a notebook you will be greeted with a series of coding questions like the one below.</p>
 <style>
     .soft {
@@ -309,7 +296,7 @@ Python 3.12.3
     
 </div>
 
-<p>Below the questions will be a place for you to implement your code. You will fill out the body of functions. These functions will be run aginst test cases. Test cases just check that the function provides the correct output for a given input. The credit you recieve for a question on if your function passes the test cases.</p>
+<p>Below the questions will be a place for you to implement your code. You will fill out the body of functions. These functions will be run against test cases. Test cases just check that the function provides the correct output for a given input. You receive credit for a question if you pass all the test cases.</p>
 <style>
     .soft {
         width: 600px;
@@ -340,7 +327,311 @@ Python 3.12.3
     
 </div>
 
-<p>Please do not try to hard-code the test cases into your function (a big if-else mess that outputs the correct value for each test case). The functions will be graded with additional hidden test cases so you will not recieve credit for this approach.</p>
+<p>Please do not try to hard-code the test cases into your function (a big if-else mess that outputs the correct value for each test case). The functions will be graded with additional hidden test cases so you will not receive credit for this approach.</p>
+<h1 id="variables">Variables</h1>
+<p>Let&rsquo;s continue to work in the python shell as we explore some of the basic functionalities of python (run the command &lsquo;py&rsquo; again to reenter the shell if you exited). Like in most programming languages, we have variables. You assign a variable by simply using the &ldquo;=&rdquo; sign</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">10</span>
+</span></span></code></pre></div><p>Whenever we called &lsquo;x&rsquo; python knew it wasn&rsquo;t part of its keywords, so it instead looked if &lsquo;x&rsquo; had a value assigned to it. It indeed did, so it returned the value of &lsquo;10&rsquo;.</p>
+<p>If you have experience in some other languages, it may seem strange at first that we can just simply assign the number 10 to x before declaring that x is an integer type and will hold integers. This is because python is <em>dynamically typed</em>. This means that any variable can have any type. We can even change the variable types on the fly just by assigning different types to the variable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">int</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.1415</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">float</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;hello, world&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">str</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(x)
+</span></span><span style="display:flex;"><span>hello, world
+</span></span></code></pre></div><p>Note that whenever you call the variable it returns the last thing that was stored in it.</p>
+<p>This is different from languages like C which are <em>statically typed</em>. Once you declare a variable with a certain type, it cannot change!</p>
+<p>With great power comes great responsibility (and sometimes drawbacks)! Dynamically typed languages make implementing some programs very easy and quick, but they can also make some bugs harder to find and squash. They can also lead to the program running slower because the type of each variable is determined at runtime rather than at compile time!</p>
+<h1 id="python-types">Python Types</h1>
+<p>Python has many different types of objects that a variable can hold. I will present some of the basic ones here and as the course continues you will be introduced to more types. Lets start with the numeric types.</p>
+<p>The &lsquo;int&rsquo; type represents integers (numbers without a decimal part like -32, 0, and 40).</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">int</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><p>The &lsquo;float&rsquo; type represents numbers with decimal parts.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.1415926</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">float</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><p>Python even has a &lsquo;complex&rsquo; type for storing complex numbers (this probably won&rsquo;t be helpful to most people but as a math nerd I find it cool).</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3</span><span style="color:#ff6ac1">+</span><span style="color:#ff9f43">4</span>j
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">complex</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><p>Python strings are a type used to hold text. You can create strings with either single or double quotes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;Hello World&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">str</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;Hello World&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">str</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><h1 id="comments">Comments</h1>
+<p>It is important that your code is readalbe so that other people can understand what you were trying to do. Code comments allow us to write notes in our code that will be ignored when the program is running. There are two main ways to do this. We can use the &lsquo;#&rsquo; character for inline comments.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#78787e"># This is an inline comment</span>
+</span></span></code></pre></div><p>We can use &lsquo;&quot;&quot;&quot;&rsquo; to make a multiline comment.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">This is a multiline comment.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">Nothing between
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">the quotation marks
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">will run
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h1 id="math">Math</h1>
+<p>At the end of the day, programming a computer really is just a bunch of math (like actually, there is a <a href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence">direct correspondance</a>!), so let&rsquo;s see how to do some simple math on the shell.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e"># addition</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">5</span><span style="color:#78787e">#addition</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e">#addition</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">5</span> <span style="color:#78787e">#subtraction</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span><span style="color:#ff6ac1">*</span><span style="color:#ff9f43">5</span> <span style="color:#78787e">#multiplication</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">20</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span><span style="color:#ff6ac1">/</span><span style="color:#ff9f43">5</span> <span style="color:#78787e">#division</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.8</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span><span style="color:#ff6ac1">**</span><span style="color:#ff9f43">5</span> <span style="color:#78787e">#exponentiation</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1024</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">31</span> <span style="color:#ff6ac1">%</span> <span style="color:#ff9f43">2</span> <span style="color:#78787e">#remainder/mod (31 ÷ 2 = 15 remainder 1)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span></code></pre></div><p>Note that exponentiation is not &lsquo;4^5&rsquo;. This is the bitwise xor operation and will not return what you expect.</p>
+<p>This works just as well on variables</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> y <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">+</span> y
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">-</span> y
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">-</span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x<span style="color:#ff6ac1">*</span>y
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">18</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x<span style="color:#ff6ac1">/</span>y
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x<span style="color:#ff6ac1">**</span>y
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">729</span>
+</span></span></code></pre></div><p>If we want some more advanced math functions we can import the math module. We will talk about imports later in the course, but for now think of imports as a way for us to bring even more functionality and keywords into python. Python comes with a standard library that you can import from (like the math module) and you can download thousands of other modules for your specific needs. This is the power of python!</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">import</span> math
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>sin(<span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.8414709848078965</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>cos(<span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.5403023058681398</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>tan(<span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.5574077246549023</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>asin(<span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.5707963267948966</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>acos(<span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>atan(<span style="color:#ff9f43">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0.7853981633974483</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>log(<span style="color:#ff9f43">100</span>, <span style="color:#ff9f43">10</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>log(math<span style="color:#ff6ac1">.</span>e) <span style="color:#78787e"># default is the natural log</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>pi
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3.141592653589793</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>e
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2.718281828459045</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> math<span style="color:#ff6ac1">.</span>sinh(<span style="color:#ff9f43">1</span>) <span style="color:#78787e"># we&#39;ve even got hyperbolic trig! fancy!</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1.1752011936438014</span>
+</span></span></code></pre></div><h1 id="lists">Lists</h1>
+<p>Lists are a very convenient data type in python and will come in handy throughout the course. A mastery of lists is vital for a mastery of python.</p>
+<p>Lists do exactly what their name implies, they hold a list of objects. You create them with square brackets, &lsquo;[ ]&rsquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(my_list)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">list</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><p>You can access the elements inside of the list like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">0</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">2</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">4</span>]
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>IndexError: <span style="color:#ff5c57">list</span> index out of <span style="color:#ff5c57">range</span>
+</span></span></code></pre></div><p>Notice that lists are zero indexed, meaning that in order to access the first element I had to call &lsquo;my_list[0]&rsquo; as opposed to &lsquo;my_list[1]&rsquo; which would actually return the second item.</p>
+<p>If you try to reference an element in a list that is outside of the range of the list, you will get an IndexError.</p>
+<p>We can get elements from the back of the list by using negative indexing numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>] <span style="color:#78787e"># Last element</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">2</span>] <span style="color:#78787e"># Second to last element</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span></code></pre></div><p>We can also reassign specific entries in a list like so</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">10</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>] <span style="color:#78787e"># Notice how the element at index 0 changed</span>
+</span></span></code></pre></div><p>Just make sure you are trying to change a valid index in the list else Python will throw an error.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list[<span style="color:#ff9f43">5</span>] <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">10</span>
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>IndexError: <span style="color:#ff5c57">list</span> assignment index out of <span style="color:#ff5c57">range</span>
+</span></span></code></pre></div><p>Lists have a lot of wonderful properties and associated methods that we will explore in future lectures. A couple of good ones to keep in your tool belt for now is how you can get the length of a list</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">len</span>(my_list)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span>
+</span></span></code></pre></div><p>and how you can add elements to the end of a list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list<span style="color:#ff6ac1">.</span>append(<span style="color:#ff9f43">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>]
+</span></span></code></pre></div><p>You can also add two lists together to return a new list that is their concatenation (fancy word for &lsquo;glue together&rsquo;).</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">6</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> c <span style="color:#ff6ac1">=</span> a <span style="color:#ff6ac1">+</span> b
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> c
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">6</span>]
+</span></span></code></pre></div><p>There are many ways to shorten a list. One way to to delete items by index like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">del</span> my_list[<span style="color:#ff9f43">1</span>] <span style="color:#78787e"># provide index for the element you want to delete</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>]
+</span></span></code></pre></div><p>One thing that trips up all new python programmers is list alising. Take this code for example</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b <span style="color:#ff6ac1">=</span> a
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b[<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">12</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">12</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">12</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span></code></pre></div><p>Even though we only wanted to change the list associated with variable <code>b</code>, we ended up also changing the list associated with <code>a</code>! This is because <code>a</code> and <code>b</code> actually refer to the same list in memory (look at the page on the <a href="/enviroment_model">environment model</a> to see why this is the case). Mutating either <code>a</code> or <code>b</code> mutates the same list in memory leading to both variables changing! To fix this we can use the <code>.copy()</code> method which will return a copy of your list and avoid the aliasing problem (assuming that your list is filled with immutable objects)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b <span style="color:#ff6ac1">=</span> a<span style="color:#ff6ac1">.</span>copy()
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b[<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">12</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">12</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a
+</span></span><span style="display:flex;"><span>[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]
+</span></span></code></pre></div><h1 id="tuples-the-immutable-lists">Tuples: The immutable lists</h1>
+<p>Sometimes you want to make a list that does not change. For this you can use a <code>tuple</code>. You make a tuple using <code>()</code> parentheses.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a <span style="color:#ff6ac1">=</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> b <span style="color:#ff6ac1">=</span> (<span style="color:#ff9f43">1</span>,)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> c <span style="color:#ff6ac1">=</span> (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(a)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">tuple</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><p>You can get the length of a tuple the same way you get the length of a list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">len</span>(a)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">len</span>(b)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">len</span>(c)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span></code></pre></div><p>And you access elements the same way as lists too.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> c[<span style="color:#ff9f43">0</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> c[<span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span></code></pre></div><p>The only difference between a list and a tuple is that a tuple is immutable. We cannot change it. Trying to do so will throw an error.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> c[<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>TypeError: <span style="color:#5af78e">&#39;tuple&#39;</span> <span style="color:#ff5c57">object</span> does <span style="color:#ff6ac1">not</span> support item assignment
+</span></span></code></pre></div><p>We can also convert any list to a tuple using the <code>tuple</code> function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_list <span style="color:#ff6ac1">=</span> [<span style="color:#5af78e">&#34;Welcome&#34;</span>, <span style="color:#5af78e">&#34;to&#34;</span>, <span style="color:#5af78e">&#34;Python&#34;</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_tuple <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">tuple</span>(my_list)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(my_list_
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span> )
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>NameError: name <span style="color:#5af78e">&#39;my_list_&#39;</span> <span style="color:#ff6ac1">is</span> <span style="color:#ff6ac1">not</span> defined<span style="color:#ff6ac1">.</span> Did you mean: <span style="color:#5af78e">&#39;my_list&#39;</span><span style="color:#ff5c57">?</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(my_list)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">list</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(my_tuple)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">tuple</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span></code></pre></div><p>So, when should you use a tuple vs a list. If you know that you will not need to change your list of values, you should use a tuple, but if you need to mutate or change your variable then you should use a list.</p>
+<h1 id="an-introduction-to-functions">An introduction to functions</h1>
+<p>You have likely encountered functions in other programming languages and seen their power. In their most basic interpretation, you can think of functions like a macro that you can copy and paste anywhere in your code to make it shorter and more readable. In the example below we make a function called &lsquo;greeting&rsquo; that will print &lsquo;ciao&rsquo; whenever it is called.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>greeting()
+</span></span></code></pre></div><p>This is the copy and paste functionality of functions and is rather boring. We can make it more interesting by adding some arguments</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>(name):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao &#34;</span> <span style="color:#ff6ac1">+</span> name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>greeting(<span style="color:#5af78e">&#34;JD&#34;</span>)
+</span></span></code></pre></div><p>Now I get a nice greeting in the terminal! You can use this function to greet other people as well by changing the name argument when you call the function. You can easily add more arguments to the function by separating them with commas.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>(name, ending):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao &#34;</span> <span style="color:#ff6ac1">+</span> name <span style="color:#ff6ac1">+</span> ending)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>greeting(<span style="color:#5af78e">&#34;JD&#34;</span>, <span style="color:#5af78e">&#34;!&#34;</span>)
+</span></span></code></pre></div><p>Notice if we call the function as it is now without any arguments then we get an error. This is because we did not supply the values for the &rsquo;name&rsquo; and &rsquo;ending&rsquo; variable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> greeting()
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>TypeError: greeting() missing <span style="color:#ff9f43">2</span> required positional arguments: <span style="color:#5af78e">&#39;name&#39;</span> <span style="color:#ff6ac1">and</span> <span style="color:#5af78e">&#39;ending&#39;</span>
+</span></span></code></pre></div><p>We can fix this by assigning default values to the arguments in our function. These are values that the function will use if the argument is not supplied.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>(name <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>, ending <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>):
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>     <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao &#34;</span> <span style="color:#ff6ac1">+</span> name <span style="color:#ff6ac1">+</span> ending)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> greeting()
+</span></span><span style="display:flex;"><span>Ciao
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> greeting(<span style="color:#5af78e">&#34;JD&#34;</span>, <span style="color:#5af78e">&#34;!&#34;</span>)
+</span></span><span style="display:flex;"><span>Ciao JD<span style="color:#ff5c57">!</span>
+</span></span></code></pre></div><p>Now we have the best of both worlds!</p>
+<p>This is great, but what if we wanted to be able to make a function that could be used to calculate? For that we need to use the &lsquo;return&rsquo; keyword.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">circle_area</span>(radius):
+</span></span><span style="display:flex;"><span>    area <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.14</span> <span style="color:#ff6ac1">*</span> radius <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> area
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circle_radius <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>area <span style="color:#ff6ac1">=</span> circle_area(circle_radius)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;A circle with radius </span><span style="color:#5af78e">{</span>circle_radius<span style="color:#5af78e">}</span><span style="color:#5af78e"> units has an area of </span><span style="color:#5af78e">{</span>area<span style="color:#5af78e">}</span><span style="color:#5af78e"> units&#34;</span>)
+</span></span></code></pre></div><p>Even if you do not include a return statement in your function, like we did for the &lsquo;greeting&rsquo; function, there is a secret &lsquo;return None&rsquo; at the end.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> greeting()
+</span></span><span style="display:flex;"><span>Ciao
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(x)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">None</span>
+</span></span></code></pre></div><p>You may be wondering how to return multiple values from a function. The &lsquo;return&rsquo; keyword makes this easy by comma separating the values.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">circle_circumference_and_area</span>(radius):
+</span></span><span style="display:flex;"><span>    area <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.14</span> <span style="color:#ff6ac1">*</span> radius <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>    circumference <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> <span style="color:#ff9f43">3.14</span> <span style="color:#ff6ac1">*</span> radius
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> circumference, area
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circle_radius <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>circumference, area <span style="color:#ff6ac1">=</span> circle_circumference_and_area(circle_radius)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;A circle with radius </span><span style="color:#5af78e">{</span>circle_radius<span style="color:#5af78e">}</span><span style="color:#5af78e"> units has an area of </span><span style="color:#5af78e">{</span>area<span style="color:#5af78e">}</span><span style="color:#5af78e"> units and circumference of </span><span style="color:#5af78e">{</span>circumference<span style="color:#5af78e">}</span><span style="color:#5af78e"> units&#34;</span>)
+</span></span></code></pre></div><p>Notice how long my function name is becoming. It is worth pausing to note that good, descriptive function and variable names go a long way in helping your code maintain readability. Also note that I am using snake case to name my variables by putting underscores between words (this_is_snake_case) rather than using camel case and capitalizing new words (thisIsCamelCase). While either one is fine, stick with one and go with it. I use snake case in python (a python is a snake after all) and camel case in most other languages like C.</p>
+<h1 id="getting-help">Getting help</h1>
+<p>If you are in the Python shell, the <code>help</code> function can be very, well, helpful! If there is ever any python keyword that you are unsure of, just type call <code>help(&lt;keyword&gt;)</code>. For instance, if we wanted to know about the <code>print</code> function, this is what we would see:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> help(<span style="color:#ff5c57">print</span>)
+</span></span><span style="display:flex;"><span>Help on built<span style="color:#ff6ac1">-</span><span style="color:#ff6ac1">in</span> function <span style="color:#ff5c57">print</span> <span style="color:#ff6ac1">in</span> module builtins:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#ff6ac1">*</span>args, sep<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39; &#39;</span>, end<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#39;</span><span style="color:#5af78e">\n</span><span style="color:#5af78e">&#39;</span>, file<span style="color:#ff6ac1">=</span><span style="color:#ff6ac1">None</span>, flush<span style="color:#ff6ac1">=</span><span style="color:#ff6ac1">False</span>)
+</span></span><span style="display:flex;"><span>    Prints the values to a stream, <span style="color:#ff6ac1">or</span> to sys<span style="color:#ff6ac1">.</span>stdout by default<span style="color:#ff6ac1">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sep
+</span></span><span style="display:flex;"><span>      string inserted between values, default a space<span style="color:#ff6ac1">.</span>
+</span></span><span style="display:flex;"><span>    end
+</span></span><span style="display:flex;"><span>      string appended after the last value, default a newline<span style="color:#ff6ac1">.</span>
+</span></span><span style="display:flex;"><span>    file
+</span></span><span style="display:flex;"><span>      a file<span style="color:#ff6ac1">-</span>like <span style="color:#ff5c57">object</span> (stream); defaults to the current sys<span style="color:#ff6ac1">.</span>stdout<span style="color:#ff6ac1">.</span>
+</span></span><span style="display:flex;"><span>    flush
+</span></span><span style="display:flex;"><span>      whether to forcibly flush the stream<span style="color:#ff6ac1">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span>
+</span></span></code></pre></div><p>Wow, that is a lot of information, but it tells us some cool things. We now see that the print function can take in a bunch of arguments, and it prints them out with a separator. We can, for instance, change that separator to do some cool stuff.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>, sep<span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34; | &#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">|</span> <span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">|</span> <span style="color:#ff9f43">3</span> <span style="color:#ff6ac1">|</span> <span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span>
+</span></span></code></pre></div><p>We would have never known about the ability to change the separator if we didn&rsquo;t call <code>help(print)</code>!</p>
+<p>Google is a programmer&rsquo;s best friend, and being good at using search engines and reading stack overflow answers to solve problems as a programmer is a must. If you are working as a programmer, it is ok not to know how to do something, but you are fired if you do not know how to Google it! If you are curious about how to work with functions in Python, your answers are only one Google search for &ldquo;How to define functions in Python&rdquo; away. To be honest I learned pretty much everything I know in python from Google searches and youTube videos!</p>
+<p><a href="https://docs.python.org/3/">The Python Docs</a> are the holy scripture of Python. They can be dense, but you can&rsquo;t get help much closer to the source of pythonic Truth other than a technical call with Guido van Rossum himself!</p>
 <h1 id="more-practice">More Practice</h1>
 <p><style>
     .soft {
@@ -372,11 +663,11 @@ Python 3.12.3
     
 </div>
 
-If you ever find yourself wanting more practice with python, I highly recommend checking out <a href="https://leetcode.com/problemset/">leetcode</a>. This website is supposed to help you study for technical interviews, but I also used it to help me learn python. Change the language to python and start out with the easy questions which should be plenty challenging enough for someone just starting out in python. If you get better you can go for the medium or hard questions. Even after you solve a question, it is helpful to look at how your submission fared against other submissions. Where can you improve your code? Have fun, and maybe this will even help you score a tech job one day when you crush the technical interview.</p>
+If you ever find yourself wanting more practice with Python, I highly recommend checking out <a href="https://leetcode.com/problemset/">leetcode</a> if you haven&rsquo;t before. This website is supposed to help you study for technical interviews, but I also used it to help me learn Python. Change the language to Python and start out with the easy questions which should be plenty challenging enough for someone just starting out in Python. If you get better you can go for the medium or hard questions. Even after you solve a question, it is helpful to look at how your submission fared against other submissions. Where can you improve your code? Have fun, and maybe this will even help you score a tech job one day when you crush the technical interview. (I am morally obligated to interject here and mention that leetcode is not a holistic test of a programmer&rsquo;s skill! Personal projects are a way better learning tool but leetcode can be part of a balanced programming diet!)</p>
 <h1 id="why-learn-python-when-chat-gpt-exists">Why learn python when Chat GPT exists?</h1>
-<p>You may be asking why you need to learn python programming at all when LLMs like Chat GPT, Claude, and Github Copilot could do everything that I will ask you do to in this course probably better than you can.</p>
-<p>I found a reddit thread discussing this on r/learnprogramming. Under the replys that complained about &ldquo;this question&hellip;again&rdquo; and reccomendations for programmers to go ahead and throw in the towl and start an OF, one user compaired AI to a washing machibe. A washing machine can do laundry faster and better than you can, but you still have to put the clothes in, know what settings to select, take the clothes out, and verify that the clothes actually got cleaned unless you want to higher someone else to do this. Maybe this analogy breaks down when the washing machine becomes sentient and exterminates the human race because they are the real culprates behind dirty clothes, but the point still stands. Just as you need to understand and interact effectively with the washing machine, you need to understand python to be able to effectivly interact with an AI coding tool.</p>
-<p>AI is a stastical model, and only being able to program through the output of an LLM means that you are not truly in control of what you can program. To implement <em>your</em> (emphasis on <em>your own</em>) solutions or code your personal projects, you need to be able to roll up your sleves and do the coding yourself!</p>
+<p>You may be asking why you need to learn python programming at all when LLMs like Chat GPT, Claude, and Github Copilot could do everything that I will ask you to do in this course, probably better than you can.</p>
+<p>I found a reddit thread discussing this on r/learnprogramming. Under the replies that complained about &ldquo;this question&hellip;again&rdquo; and recommendations for programmers to go ahead and throw in the towel and start an OF, one user compared AI to a washing machine. A washing machine can do laundry faster and better than you can, but you still have to put the clothes in, know what settings to select, take the clothes out, and verify that the clothes actually got cleaned unless you want to higher someone else to do this. Maybe this analogy breaks down when the washing machine becomes sentient and exterminates the human race because they are the real culprits behind dirty clothes, but the point still stands. Just as you need to understand and interact effectively with the washing machine, you need to understand python to be able to effectively interact with an AI coding tool.</p>
+<p>AI is a statistical model, and only being able to program through the output of an LLM means that you are not truly in control of what you can program. To implement <em>your</em> (emphasis on <em>your own</em>) solutions or code your personal projects, you need to be able to roll up your sleeves and do the coding yourself!</p>
 
 </main>
 

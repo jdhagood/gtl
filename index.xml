@@ -42,9 +42,10 @@ When you use a microphone to record a sound, it measures the electrical signal f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/binarysearch/</guid>
-      <description>Conditionals Because we want our python programs to be more than glorified calculators, we need a way to conditially executing code
-Where did we leave the keys? Last summer my friends and I had a rented a Christler Pacifica that we endearingly named &amp;ldquo;Chrissy&amp;rdquo;.
-Chrissy! One day we realized that we lost Chrissy&amp;rsquo;s keys. We were fairly certain that the keys ended up in one of our bags, but there were quite a few of us with many differnt bags.</description>
+      <description>Conditionals Let&amp;rsquo;s review conditionals from the pset.
+The if statement in python has a simple syntax structure.
+if CONDITION: CODE_TO_RUN_IF_CONDITION_IS_TRUE CODE_AFTER_IF_STATEMENT CONDITION is a boolean expression. A boolean expression is a piece of code that returns True or False when it is executed. Below are a couple of boolean expressions with numbers.
+&amp;gt;&amp;gt;&amp;gt; 3 == 3 True &amp;gt;&amp;gt;&amp;gt; 3 == 4 False &amp;gt;&amp;gt;&amp;gt; 3 &amp;lt; 4 True &amp;gt;&amp;gt;&amp;gt; 3 &amp;gt; 4 False For a and b numbers, Python gives us these Boolean operators to make Boolean expressions:</description>
     </item>
     
     <item>
@@ -69,10 +70,10 @@ In python we can create a set using curly braces.</description>
     
     <item>
       <title>Enviroment Model</title>
-      <link>https://gtlpython.click/enviroment_model/</link>
+      <link>https://gtlpython.click/environment_model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://gtlpython.click/enviroment_model/</guid>
+      <guid>https://gtlpython.click/environment_model/</guid>
       <description>The Environment Diagram When you are programming in any language, it is important to have a mental model of what you are doing. If you are blindly executing code and run into a bug, it can be nearly impossible to figure out how to fix it on your own if you are not aware of what exactly you are writing. Environment diagrams help demystify many confusing aspects of Python and shine light on why many of the things in Python are done the way they are.</description>
     </item>
     
@@ -88,14 +89,21 @@ for i in list_range(0, 1_000_000_000_000_000, 1): if i &amp;gt; 100: break print
     </item>
     
     <item>
+      <title>Hangman</title>
+      <link>https://gtlpython.click/hangman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/hangman/</guid>
+      <description>Let&amp;rsquo;s implement a simple game of hang man. If you are not familar with this game, it is a word guessing game. A starting word is chosen, generally by anohter person, but in our case from a random list. You always know how many letters are in this word and you take turns guessing letters in the word. If the letter you guessed is in the word, then its position(s) in the word are revealed to you.</description>
+    </item>
+    
+    <item>
       <title>hello, world</title>
       <link>https://gtlpython.click/hello_world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/hello_world/</guid>
-      <description>Why Python Short intro on python and why it is used.
-Downloading python Before we can jump into programming, everyone needs to download python. Download the latest version for your operating system from python.org (3.13.1 when I wrote this).
-If you have a Windows machine and want to work with python in the system terminal, you should add python to your PATH variable. This just makes sure you can call the python.</description>
+      <description>Translation Everything on this website is written in English, which may make learning Python harder than it has to be. If you would rather not read English and are using Google Chrome, I recommend the extension &amp;ldquo;Immersive Translate&amp;rdquo; that will translate webpages for you. Once you install the extension, you can configure the settings to translate from English to Italian The translated webpage Downloading Python Before we can jump into programming, everyone needs to download Python.</description>
     </item>
     
     <item>
