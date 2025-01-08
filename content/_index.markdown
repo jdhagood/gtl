@@ -55,7 +55,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}}
-<!-- 
+
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
@@ -68,7 +68,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}}
-
+<!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/hangman.jpg" alt="img">
