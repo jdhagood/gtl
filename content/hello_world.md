@@ -539,7 +539,7 @@ print(*args, sep=' ', end='\n', file=None, flush=False)
 
 >>>
 ```
-Wow, that is a lot of information, but it tells us some cool things. We now see that the print function can take in a bunch of arguments, and it prints them out with a separator. We can, for instance, change that separator to do some cool stuff.
+Wow, that is a lot of information, but it tells us some cool things. We now see that the print function can take in a bunch of arguments, and it prints them out with a separator. We can, for instance, change that separator to do some cool stuff. 
 ```python
 >>> print(1, 2, 3, 4, sep=" | ")
 1 | 2 | 3 | 4
