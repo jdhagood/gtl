@@ -391,8 +391,7 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>                new_path <span style="color:#ff6ac1">=</span> current_path <span style="color:#ff6ac1">+</span> [neighbor]
 </span></span><span style="display:flex;"><span>                queue<span style="color:#ff6ac1">.</span>append(new_path)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return None if no solution exists</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> []  <span style="color:#78787e"># Return None if no solution exists</span>
 </span></span></code></pre></div><p>This is where sets really shine. If our maze was very big, then we would visit a lot of differnt places in our BFS algorithm. If we stored all of our visited spaces in a list, then it would take a long time to evaluage <code>neighbor not in visited</code> because it runs in O(n) time. However, with a set this line only runs in O(1) time!</p>
 <h2 id="main-takeaways">Main Takeaways</h2>
 <p>As we implemented this BFS algorithm, we saw how many of the differnt data structures in python came together to solve a nontrival problem. However, more importantly, we saw the basic compoents of a BFS search algorithm that can be used to solve a varity of other problems.</p>
