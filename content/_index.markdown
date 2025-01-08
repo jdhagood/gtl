@@ -55,7 +55,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}}
-<!-- 
+
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
@@ -63,12 +63,12 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
         <h2>Lecture 2: <a href="binarysearch">Binary Search</a></h2>
         <p class="description">Let's learn about the power of binary search algorithms to find lost keys and calculate the square root of 2. </p>
         <p>
-            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+            Download here: <a href="/psets/binary_search.zip" download>Download the ZIP file</a>
         </p>
     </div>
 </div>
 {{< /rawhtml >}}
-
+<!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/hangman.jpg" alt="img">
