@@ -4,7 +4,6 @@ draft = false
 math = true
 +++
 
-
 Hello world, my name is JD Hagood, and I will be your instructor for this introduction to python class! I am looking forward to meeting everyone and teaching my favorite programming language!
 
 
