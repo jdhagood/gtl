@@ -382,8 +382,7 @@ def solve_maze(slime_mold_maze):
                 new_path = current_path + [neighbor]
                 queue.append(new_path)
 
-    # Return None if no solution exists
-    return []
+    return []  # Return None if no solution exists
 ```
 This is where sets really shine. If our maze was very big, then we would visit a lot of differnt places in our BFS algorithm. If we stored all of our visited spaces in a list, then it would take a long time to evaluage `neighbor not in visited` because it runs in O(n) time. However, with a set this line only runs in O(1) time!
 
