@@ -138,6 +138,23 @@ $$
 </div>
 
 
+<p>Note that when a function returns a value, the function is done executing. This means anything after a return statement will not be executed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">return_example</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;This is executed&#34;</span>) <span style="color:#78787e"># This will print</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;This is not executed&#34;</span>) <span style="color:#78787e"># This will not print</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>return_example()
+</span></span></code></pre></div><p>We can use this to our advantage to bail out of functions at any time. For example, if we had a list of boolean values and we wanted to know if any of the values in there are True (and we didn&rsquo;t know about the &lsquo;any&rsquo; keyword), the we could write our function in this elegant way:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">any_true</span>(input_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> value <span style="color:#ff6ac1">in</span> input_list:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> value:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">True</span>, <span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">False</span>]
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(any_true(my_list))
+</span></span></code></pre></div><p>As soon as the for loop comes across a true value, we return true and don&rsquo;t even bother checking the rest of the values in the for loop because they do not matter. If the for loop exits then we know that there were no true values in the list so we can instead return false.</p>
 
 </main>
 
