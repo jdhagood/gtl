@@ -2,7 +2,7 @@
 title = 'Hangman'
 +++
 
-Let's implement a simple game of hang man. If you are not familar with this game, it is a word guessing game. A starting word is chosen, generally by anohter person, but in our case from a random list. You always know how many letters are in this word and you take turns guessing letters in the word. If the letter you guessed is in the word, then its position(s) in the word are revealed to you. If the letter you guessed is not in the word, then you loose a life. You have a limited number of lives.
+Let's implement a simple game of hang man. If you are not familar with this game, it is a word guessing game. A starting word is chosen, generally by anohter person, but in our case from a random list. You always know how many letters are in this word and you take turns guessing letters in the word. If the letter you guessed is in the word, then the letter position(s) in the word are revealed to you. If the letter you guessed is not in the word, then you loose a life. You have a limited number of lives.
 
 If you guess all the letters in the word before you lose all your lives, then you win. Otherwise you lose (and a guy gets hung for some reason. Seems like high stakes for a silly little guessing game).
 
@@ -87,6 +87,7 @@ word = get_random_word("./words.txt")
 print(word)
 ```
 Understanding exactly how this function gets a random word is not critical, but if you are curious I tried to explain it through the comments in the code. 
+
 Make sure that your file path to `word.txt` is correct. The `"./"` tells python to look for the file in the directory you are running your python script from. If it is not there you will get an error. If you cannot get the relative file location to work you can just put the absolute file location as a fail-safe. The code is no longer portable but at least it will work on your machine. Let me know if you are having trouble with this.
 
 We will work with this word string for the rest of the reading.
@@ -124,7 +125,7 @@ Any time you are designing a program that humans will use, you need to consider 
 
 One simple approach we can use to filter input is to check if it is valid or not. If it is valid we can proceed. If it is invalid we can provide the user with a short message about the correct input and ask again. Because we do not know how many times we need to keep asking the user to retry, this is a job for a `while` loop! 
 
-Let's first make a function to check if the user input is valid.
+Let's first make a function to check if the user input is valid. Our function could look something like this:
 
 ```Python
 def is_valid_input(user_input):
@@ -138,8 +139,25 @@ def is_valid_input(user_input):
     # Only accept single characters
     if len(user_input) == 1:
         return True
-    return False
+    else:
+        return False
 ```
+If we wanted to save on some lines of code, we could refactor the function.
+
+```Python
+def is_valid_input(user_input):
+    """
+    A function to check if the provided input is valid
+    args:
+        user_input (str): the string from the user input
+    return:
+        Boolean (bool) for if the input was valid or not
+    """
+    # Only accept single characters
+    return len(user_input) == 1
+```
+Make sure you understand why these functions are the same.
+
 Now we can filter the input with this approach.
 
 ```Python
@@ -174,7 +192,7 @@ print("You guessed: " + user_input)
 ```
 While it may look like we introduced an infite loop into our program that will prevent any future execution, the `break` keyword saves us. Whenver `break` is executed, it breaks us out of the current loop that we are in (this works for both `while` loops and `for` loops). We can see that the user is stuck in this infinite while loop until they eventually provide a valid input. We implemented the code this way so that the user is not yelled at every time it is their turn to guess. They are only yelled at after they guess wrong.
 
-Lets wrap this up into a handy funciton. 
+Let's wrap this up into a handy funciton. 
 
 ```Python
 def get_user_guess():
@@ -183,20 +201,20 @@ def get_user_guess():
     args:
         none
     return:
-        user_input (str): the valid guess from teh user
+        user_input (str): the valid guess from the user
     """
     def is_valid_input(user_input):
-    """
-    A function to check if the provided input is valid
-    args:
-        user_input (str): the string from the user input
-    return:
-        Boolean (bool) for if the input was valid or not
-    """
-    # Only accept single characters
-    if len(user_input) == 1:
-        return True
-    return False
+        """
+        A function to check if the provided input is valid
+        args:
+            user_input (str): the string from the user input
+        return:
+            Boolean (bool) for if the input was valid or not
+        """
+        # Only accept single characters
+        if len(user_input) == 1:
+            return True
+        return False
 
     user_input = ""
 

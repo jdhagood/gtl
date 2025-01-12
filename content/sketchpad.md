@@ -58,3 +58,26 @@ Rebuilt in 84 ms
 </div>
 {{< /rawhtml >}}
 
+
+Note that when a function returns a value, the function is done executing. This means anything after a return statement will not be executed.
+```python
+def return_example():
+    print("This is executed") # This will print
+    return
+    print("This is not executed") # This will not print
+
+return_example()
+```
+We can use this to our advantage to bail out of functions at any time. For example, if we had a list of boolean values and we wanted to know if any of the values in there are True (and we didn't know about the 'any' keyword), the we could write our function in this elegant way:
+
+```python
+def any_true(input_list):
+    for value in input_list:
+        if value:
+            return True
+    return False
+
+my_list = [False, False, False, True, False, False]
+print(any_true(my_list))
+```
+As soon as the for loop comes across a true value, we return true and don't even bother checking the rest of the values in the for loop because they do not matter. If the for loop exits then we know that there were no true values in the list so we can instead return false. 

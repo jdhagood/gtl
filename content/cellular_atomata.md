@@ -267,11 +267,6 @@ So enumerate basically puts each element in a list in a tuple with its index. Wh
 I invite you to google "Conway's Game of Life." You will be greeted with one of Google's easter eggs in the form of some little white squares on the side of your screen showing how much nerds love this little game.
 {{< soft src="/img/cellular_atomata/Conway.gif" alt="Soft-styled image" caption="Conway's Game of Life" >}}
 The pattern of squares you see is due to a simple ruleset
-* Rule 1: Any alive cell surrounded by 1 or fewer alive cells dies by isolation
-* Rule 2: Any alive cell surrounded by 2 or 3 alive cells survives to the next generation
-* Rule 3: Any alive cell surrounded by 4 or more alive cells dies by overcrowding
-* Rule 4: Any dead cell surrounded by exactly 3 alive cells becomes alive next generation through reproduction 
-
 {{< soft src="/img/cellular_atomata/conway_rules.png" alt="Soft-styled image" caption="Conway's Game of Life" >}}
 These rules were chosen by mathmatician John Conway and collegues while playing this game on a Go board becase they produced the most interesting outputs. I invite you to play around with Conway's game of life [here](https://playgameoflife.com/)! (I also cannot help but bring up the fact that [Conway's game of life is turing complete](https://www.alanzucconi.com/2020/10/13/conways-game-of-life/) which means that we can represent the [game of life in the game of life](https://www.youtube.com/watch?v=xP5-iIeKXE8).)
 

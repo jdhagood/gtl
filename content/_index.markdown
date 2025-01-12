@@ -63,7 +63,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
         <h2>Lecture 2: <a href="binarysearch">Binary Search</a></h2>
         <p class="description">Let's learn about the power of binary search algorithms to find lost keys and calculate the square root of 2. </p>
         <p>
-            Download here: <a href="/psets/binary_search.zip" download>Download the ZIP file</a>
+            Download p-set: <a href="/psets/binary_search.ipynb" download>binary_search.ipynb</a>
         </p>
     </div>
 </div>
