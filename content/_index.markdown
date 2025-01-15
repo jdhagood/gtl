@@ -60,7 +60,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
 <div class="rounded-box">
     <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 2: <a href="binarysearch">Binary Search</a></h2>
+        <h2>Lecture 1: <a href="binarysearch">Binary Search</a></h2>
         <p class="description">Let's learn about the power of binary search algorithms to find lost keys and calculate the square root of 2. </p>
         <p>
             Download p-set: <a href="/psets/binary_search.ipynb" download>binary_search.ipynb</a>
@@ -68,20 +68,20 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}}
-<!-- 
+
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/hangman.jpg" alt="img">
     <div class="content">
         <h2>Lecture 2: <a href="hangman">Hangman</a></h2>
-        <p class="description">Let's start to program a game of Hangman while practicing our skills with lists and strings.</p>
+        <p class="description">Let's start program a game of Hangman while practicing our skills with lists and strings.</p>
         <p>
-            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+            Download p-set: <a href="" download>You will download this next class!</a>
         </p>
     </div>
 </div>
 {{< /rawhtml >}} 
-
+<!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
