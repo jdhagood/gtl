@@ -3,110 +3,8 @@ title = 'Cellular Atomata'
 draft = false
 +++
 
-
-# An introduction to functions
-You have likely encountered functions in other programming languages and seen their power. In thier most basic interpertation, you can think of functions like a macro that you can copy and paste anywhere in your code to make it shorter and more readable. In the example below we make a function called 'greeting' that will print 'ciao' whenever it is called. 
-
-```python
-def greeting():
-    print("Ciao")
-
-greeting()
-```
-
-This is the copy and paste functionality of functions and is rather boring. We can make it more interesting by adding some arguments
-
-```python
-def greeting(name):
-    print("Ciao " + name)
-
-greeting("JD")
-```
-Now I get a nice greeting in the terminal! You can use this function to greet other people as well by changing the name argument when you call the function. You can easily add more arguments to the function by seperating them with commas.
-```python
-def greeting(name, ending):
-    print("Ciao " + name + ending)
-
-greeting("JD", "!")
-```
-Notice if we call the function as it is now without any arguments then we get an error. This is because we did not supply the values for the 'name' and 'ending' variable.
-```python
->>> greeting()
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: greeting() missing 2 required positional arguments: 'name' and 'ending'
-```
-We can fix this by assigning default values to the arguments in our function. These are values that the function will use if the argument is not supplied.
-```python
->>> def greeting(name = "", ending = ""):
-...     print("Ciao " + name + ending)
-...
->>> greeting()
-Ciao
->>> greeting("JD", "!")
-Ciao JD!
-```
-Now we have the best of both worlds!
-
-This is great, but what if we wanted to be able to make a function that could be used to calculate? For that we need to use the 'return' keyword.
-```python
-def circle_area(radius):
-    area = 3.14 * radius ** 2
-    return area
-
-circle_radius = 2
-area = circle_area(circle_radius)
-print(f"A circle with radius {circle_radius} units has an area of {area} units")
-```
-Even if you do not include a return statement in your function, like we did for the 'greeting' function, there is a secret 'return None' at the end.
-```python
->>> x = greeting()
-Ciao
->>> print(x)
-None
-```
-You may be wondering how to return multiple values from a function. The 'return' keyword makes this easy by comma seperating the values.
-
-```python
-def circle_circumfrence_and_area(radius):
-    area = 3.14 * radius ** 2
-    circumfrence = 2 * 3.14 * radius
-    return circumfrence, area
-
-circle_radius = 2
-circumfrence, area = circle_circumfrence_and_area(circle_radius)
-print(f"A circle with radius {circle_radius} units has an area of {area} units and circumfrence of {circumfrence} units")
-```
-Notice how long my function name is becoming. It is worth pausing to note that good, descriptive function and variable names go a long way in helping your code maintain readability. Also note that I am using snake case to name my variables by puting underscores between words (this_is_snake_case) rather than using camel case and capitalizing new words (thisIsCamelCase). While either one is fine, stick with one and go with it. I use snake case in python (a python is a snake after all) and camel case in most other languages like C. 
-
-Note that when a function returns a value, the function is done executing. This means anything after a return statement will not be executed.
-```python
-def return_example():
-    print("This is executed") # This will print
-    return
-    print("This is not executed") # This will not print
-
-return_example()
-```
-We can use this to our advantage to bail out of functions at any time. For example, if we had a list of boolean values and we wanted to know if any of the values in there are True (and we didn't know about the 'any' keyword), the we could write our function in this elegant way:
-
-```python
-def any_true(input_list):
-    for value in input_list:
-        if value:
-            return True
-    return False
-
-my_list = [False, False, False, True, False, False]
-print(any_true(my_list))
-```
-As soon as the for loop comes across a true value, we return true and don't even bother checking the rest of the values in the for loop because they do not matter. If the for loop exits then we know that there were no true values in the list so we can instead return false. 
-
-# Recap on Lists
-Last lecture we breifly discussed lists as a means of storing a list of objects and looked at their representation on the heap. 
-
 # For loops with range
-For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times. 
+For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times. We have seen them in this course before but it is worth going over them again.
 
 Suppose you wanted to "hello" to the terminal 5 times. You could naively run the python script
 ```python
@@ -362,9 +260,7 @@ Now lets put it all together. I invite you to play around with the rules and see
 {{< /rawhtml >}}
 
 # Main Takeaways
-In this lecture we covered a lot of gound. We discussed functions and how to use them to both encapsulate blocks of code and return values. Both of these use cases will be important as we continue in the course.
-
-Nested for loops allow us to itterate over two or more values at onece. Just as we can image one for loop itterating over a 1D list of numbers, n-nested for loops can itterate over an nD array of numbers.
+In this lecture we covered a lot of gound. We discussed nested for loops to allow us to itterate over two or more values at onice. Just as we can image one for loop itterating over a 1D list of numbers, n-nested for loops can itterate over an n-D array of numbers.
 
 We saw how for loops can help us repeat blocks of code mutliple times with an incramenting variable. We also saw how easy python makes it for us to itterate through a list or string with the 'in' keyword. 
 

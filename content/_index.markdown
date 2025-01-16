@@ -81,19 +81,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}} 
-<!-- 
-{{< rawhtml >}}
-<div class="rounded-box">
-    <img class="icon" src="/img/icons/broken_egg.jpg" alt="img">
-    <div class="content">
-        <h2>Lecture 2: <a href="binarysearch">Binary Search</a></h2>
-        <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
-        <p>
-            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
-        </p>
-    </div>
-</div>
-{{< /rawhtml >}}
+
 
 {{< rawhtml >}}
 <div class="rounded-box">
@@ -102,12 +90,12 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
         <h2>Lecture 3: <a href="recursion">Recursion</a></h2>
         <p class="description">A more intensive study of functions in the enviroment diagram and recursion. An introduction to recursion, when to use it, and some cool applications!</p>
         <p>
-            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
+            No pset to download :)
         </p>
     </div>
 </div>
 {{< /rawhtml >}}
-
+<!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/snail.jpg" alt="img">
@@ -115,7 +103,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
         <h2>Lecture 4: <a href="cellular_atomata">Cellular Atomota</a></h2>
         <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
         <p>
-            Download here: <a href="/psets/conway.ipynb" download>Download the ZIP file</a>
+            Download here: <a href="/psets/conway.ipynb" download>conway.ipynb</a>
         </p>
     </div>
 </div>
