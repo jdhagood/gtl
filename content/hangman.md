@@ -272,6 +272,16 @@ def get_user_guess():
 
     return user_input
 ```
+We could have also exited the infite while loop like so. Recall that when we return a value from a function we exit from that function.
+```
+while True:
+    user_input = input("Please guess a letter: ")
+    if is_valid_input(user_input):
+        return user_input
+    print("Please guess one letter at a time!")
+```
+Both of these are valid and do the same thing.
+
 Notice how we define `is_valid_input` inside of `get_user_guess`. We call functions defined inside of other functions _"helper functions"_, because they help us to cleanly implement our main function. We can call `is_valid_input` anywhere inside of `get_user_guess`, but it will not be accessible outside of `get_user_guess`. This helps with organization and preventing us from accidentally redefining functions in other places. (and yes, you can have helper functions inside of helper functions inside of helper functions inside of... well, you get the point).
 
 
