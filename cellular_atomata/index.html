@@ -30,80 +30,8 @@
 </div>
 
 <main>
-<h1 id="an-introduction-to-functions">An introduction to functions</h1>
-<p>You have likely encountered functions in other programming languages and seen their power. In thier most basic interpertation, you can think of functions like a macro that you can copy and paste anywhere in your code to make it shorter and more readable. In the example below we make a function called &lsquo;greeting&rsquo; that will print &lsquo;ciao&rsquo; whenever it is called.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>greeting()
-</span></span></code></pre></div><p>This is the copy and paste functionality of functions and is rather boring. We can make it more interesting by adding some arguments</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>(name):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao &#34;</span> <span style="color:#ff6ac1">+</span> name)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>greeting(<span style="color:#5af78e">&#34;JD&#34;</span>)
-</span></span></code></pre></div><p>Now I get a nice greeting in the terminal! You can use this function to greet other people as well by changing the name argument when you call the function. You can easily add more arguments to the function by seperating them with commas.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>(name, ending):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao &#34;</span> <span style="color:#ff6ac1">+</span> name <span style="color:#ff6ac1">+</span> ending)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>greeting(<span style="color:#5af78e">&#34;JD&#34;</span>, <span style="color:#5af78e">&#34;!&#34;</span>)
-</span></span></code></pre></div><p>Notice if we call the function as it is now without any arguments then we get an error. This is because we did not supply the values for the &rsquo;name&rsquo; and &rsquo;ending&rsquo; variable.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> greeting()
-</span></span><span style="display:flex;"><span>Traceback (most recent call last):
-</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
-</span></span><span style="display:flex;"><span>TypeError: greeting() missing <span style="color:#ff9f43">2</span> required positional arguments: <span style="color:#5af78e">&#39;name&#39;</span> <span style="color:#ff6ac1">and</span> <span style="color:#5af78e">&#39;ending&#39;</span>
-</span></span></code></pre></div><p>We can fix this by assigning default values to the arguments in our function. These are values that the function will use if the argument is not supplied.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">greeting</span>(name <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>, ending <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>):
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>     <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;Ciao &#34;</span> <span style="color:#ff6ac1">+</span> name <span style="color:#ff6ac1">+</span> ending)
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> greeting()
-</span></span><span style="display:flex;"><span>Ciao
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> greeting(<span style="color:#5af78e">&#34;JD&#34;</span>, <span style="color:#5af78e">&#34;!&#34;</span>)
-</span></span><span style="display:flex;"><span>Ciao JD<span style="color:#ff5c57">!</span>
-</span></span></code></pre></div><p>Now we have the best of both worlds!</p>
-<p>This is great, but what if we wanted to be able to make a function that could be used to calculate? For that we need to use the &lsquo;return&rsquo; keyword.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">circle_area</span>(radius):
-</span></span><span style="display:flex;"><span>    area <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.14</span> <span style="color:#ff6ac1">*</span> radius <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">2</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> area
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>circle_radius <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span>
-</span></span><span style="display:flex;"><span>area <span style="color:#ff6ac1">=</span> circle_area(circle_radius)
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;A circle with radius </span><span style="color:#5af78e">{</span>circle_radius<span style="color:#5af78e">}</span><span style="color:#5af78e"> units has an area of </span><span style="color:#5af78e">{</span>area<span style="color:#5af78e">}</span><span style="color:#5af78e"> units&#34;</span>)
-</span></span></code></pre></div><p>Even if you do not include a return statement in your function, like we did for the &lsquo;greeting&rsquo; function, there is a secret &lsquo;return None&rsquo; at the end.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> x <span style="color:#ff6ac1">=</span> greeting()
-</span></span><span style="display:flex;"><span>Ciao
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(x)
-</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">None</span>
-</span></span></code></pre></div><p>You may be wondering how to return multiple values from a function. The &lsquo;return&rsquo; keyword makes this easy by comma seperating the values.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">circle_circumfrence_and_area</span>(radius):
-</span></span><span style="display:flex;"><span>    area <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">3.14</span> <span style="color:#ff6ac1">*</span> radius <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">2</span>
-</span></span><span style="display:flex;"><span>    circumfrence <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">*</span> <span style="color:#ff9f43">3.14</span> <span style="color:#ff6ac1">*</span> radius
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> circumfrence, area
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>circle_radius <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">2</span>
-</span></span><span style="display:flex;"><span>circumfrence, area <span style="color:#ff6ac1">=</span> circle_circumfrence_and_area(circle_radius)
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;A circle with radius </span><span style="color:#5af78e">{</span>circle_radius<span style="color:#5af78e">}</span><span style="color:#5af78e"> units has an area of </span><span style="color:#5af78e">{</span>area<span style="color:#5af78e">}</span><span style="color:#5af78e"> units and circumfrence of </span><span style="color:#5af78e">{</span>circumfrence<span style="color:#5af78e">}</span><span style="color:#5af78e"> units&#34;</span>)
-</span></span></code></pre></div><p>Notice how long my function name is becoming. It is worth pausing to note that good, descriptive function and variable names go a long way in helping your code maintain readability. Also note that I am using snake case to name my variables by puting underscores between words (this_is_snake_case) rather than using camel case and capitalizing new words (thisIsCamelCase). While either one is fine, stick with one and go with it. I use snake case in python (a python is a snake after all) and camel case in most other languages like C.</p>
-<p>Note that when a function returns a value, the function is done executing. This means anything after a return statement will not be executed.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">return_example</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;This is executed&#34;</span>) <span style="color:#78787e"># This will print</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;This is not executed&#34;</span>) <span style="color:#78787e"># This will not print</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>return_example()
-</span></span></code></pre></div><p>We can use this to our advantage to bail out of functions at any time. For example, if we had a list of boolean values and we wanted to know if any of the values in there are True (and we didn&rsquo;t know about the &lsquo;any&rsquo; keyword), the we could write our function in this elegant way:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">any_true</span>(input_list):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> value <span style="color:#ff6ac1">in</span> input_list:
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> value:
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">True</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">False</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>my_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">True</span>, <span style="color:#ff6ac1">False</span>, <span style="color:#ff6ac1">False</span>]
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(any_true(my_list))
-</span></span></code></pre></div><p>As soon as the for loop comes across a true value, we return true and don&rsquo;t even bother checking the rest of the values in the for loop because they do not matter. If the for loop exits then we know that there were no true values in the list so we can instead return false.</p>
-<h1 id="recap-on-lists">Recap on Lists</h1>
-<p>Last lecture we breifly discussed lists as a means of storing a list of objects and looked at their representation on the heap.</p>
 <h1 id="for-loops-with-range">For loops with range</h1>
-<p>For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times.</p>
+<p>For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times. We have seen them in this course before but it is worth going over them again.</p>
 <p>Suppose you wanted to &ldquo;hello&rdquo; to the terminal 5 times. You could naively run the python script</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
@@ -430,8 +358,7 @@ These rules were chosen by mathmatician John Conway and collegues while playing 
 
 </p>
 <h1 id="main-takeaways">Main Takeaways</h1>
-<p>In this lecture we covered a lot of gound. We discussed functions and how to use them to both encapsulate blocks of code and return values. Both of these use cases will be important as we continue in the course.</p>
-<p>Nested for loops allow us to itterate over two or more values at onece. Just as we can image one for loop itterating over a 1D list of numbers, n-nested for loops can itterate over an nD array of numbers.</p>
+<p>In this lecture we covered a lot of gound. We discussed nested for loops to allow us to itterate over two or more values at onice. Just as we can image one for loop itterating over a 1D list of numbers, n-nested for loops can itterate over an n-D array of numbers.</p>
 <p>We saw how for loops can help us repeat blocks of code mutliple times with an incramenting variable. We also saw how easy python makes it for us to itterate through a list or string with the &lsquo;in&rsquo; keyword.</p>
 <p>We ended the lecture by applying some of these concepts to cellular atomata.</p>
 

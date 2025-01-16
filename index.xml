@@ -54,8 +54,9 @@ if CONDITION: CODE_TO_RUN_IF_CONDITION_IS_TRUE CODE_AFTER_IF_STATEMENT CONDITION
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/cellular_atomata/</guid>
-      <description>An introduction to functions You have likely encountered functions in other programming languages and seen their power. In thier most basic interpertation, you can think of functions like a macro that you can copy and paste anywhere in your code to make it shorter and more readable. In the example below we make a function called &amp;lsquo;greeting&amp;rsquo; that will print &amp;lsquo;ciao&amp;rsquo; whenever it is called.
-def greeting(): print(&amp;#34;Ciao&amp;#34;) greeting() This is the copy and paste functionality of functions and is rather boring.</description>
+      <description>For loops with range For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times. We have seen them in this course before but it is worth going over them again.
+Suppose you wanted to &amp;ldquo;hello&amp;rdquo; to the terminal 5 times. You could naively run the python script
+print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) However, any time you see idential blocks of code one after another alarm bells should go off in your head screaming &amp;lsquo;use a for loop!</description>
     </item>
     
     <item>
