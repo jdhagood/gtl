@@ -219,7 +219,14 @@ You entered: I love Python!
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> user_input
-</span></span></code></pre></div><p>Notice how we define <code>is_valid_input</code> inside of <code>get_user_guess</code>. We call functions defined inside of other functions <em>&ldquo;helper functions&rdquo;</em>, because they help us to cleanly implement our main function. We can call <code>is_valid_input</code> anywhere inside of <code>get_user_guess</code>, but it will not be accessible outside of <code>get_user_guess</code>. This helps with organization and preventing us from accidentally redefining functions in other places. (and yes, you can have helper functions inside of helper functions inside of helper functions inside of&hellip; well, you get the point).</p>
+</span></span></code></pre></div><p>We could have also exited the infite while loop like so. Recall that when we return a value from a function we exit from that function.</p>
+<pre tabindex="0"><code>while True:
+    user_input = input(&#34;Please guess a letter: &#34;)
+    if is_valid_input(user_input):
+        return user_input
+    print(&#34;Please guess one letter at a time!&#34;)
+</code></pre><p>Both of these are valid and do the same thing.</p>
+<p>Notice how we define <code>is_valid_input</code> inside of <code>get_user_guess</code>. We call functions defined inside of other functions <em>&ldquo;helper functions&rdquo;</em>, because they help us to cleanly implement our main function. We can call <code>is_valid_input</code> anywhere inside of <code>get_user_guess</code>, but it will not be accessible outside of <code>get_user_guess</code>. This helps with organization and preventing us from accidentally redefining functions in other places. (and yes, you can have helper functions inside of helper functions inside of helper functions inside of&hellip; well, you get the point).</p>
 <p>On the pset you will be asked to make a better input filter. Right now we are only checking that a single character was entered. Therefore, <code>'1'</code>, <code>'@'</code>, <code>'/'</code>, and <code>'{'</code> are all considered valid inputs even though they would never be in a hangman word (unless the person making the hangman game was really, really evil. I am not that evil).</p>
 <p>We also are also accepting <code>'a'</code> and <code>'A'</code> as different inputs. In our hangman game we do not want the case of the letter to affect gameplay. We could either enforce all lowercase letters or all upper case letters in our input filter, or we could just convert all upper case letters to lower case letters for some input post processing. On the pset we will implement the latter approach because it leads to a better user experience in my opinion.</p>
 <p>Take some time now to answer the first question on the pset.</p>
