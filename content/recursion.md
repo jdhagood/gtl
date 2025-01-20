@@ -5,12 +5,18 @@ math = true
 +++
 
 
+
+
 Recursion is one of the most useful tools that a programmer can have in their toolbelt. It can lead to very elegant solutions to problems that seem large or complicated at first by breaking it down into smaller pieces that can be more easily computed. Once you get the hang of it, you will also likely agree that the recursive programs are easier to understand. Let's learn how to harness this power in python.
+
+
 
 
 # To understand recursion you must understand recursion
 You probably already use recursion in your everyday life and you do not know it. Imagine that you want to cook a yummy cake for your friend's birthday, Bobby B (the B stands for Bobby B).
 {{< soft src="/img/recursion/cake.jpg" alt="Soft-styled image" caption="Yummy!" >}}
+
+
 
 
 Imagine that we had a function called "do_action" which represents what you do. We would like to execute
@@ -34,6 +40,8 @@ do_action("bring cake ingredients home")
 As you can see we can break up the very complicated task of making Bobby B's cake into many smaller tasks. You will eventually get to a task so basic that it cannot be broken up into simpler tasks. This is where our recursive approach to breaking up the "do_action" function can end and we can successfully bake our cake! (side note: it is fun to think about how deep the recursion could go for "do_action". This is dependent on what we consider a "basic" action. It could get to the level of "open door", "move left leg forward", or even "fire this neuron". I will leave it as an exercise to philosophers to define what a basic action is!)
 
 
+
+
  We could take this analogy one step further and define the "do_action" function. Suppose that an "action" may be basic or composed of other actions. If we have a function called "is_basic(action)" that returns True or False depending on if the action is basic, and a function, "do_basic_action(action)", that can execute a basic action, then we can define "do_action" as follows:
 ```python
 def do_action(action):
@@ -44,6 +52,8 @@ def do_action(action):
         do_action(sub_action)
 ```
  This is a recursive function. (Side note: this function ignores the noncommutativity of some actions like putting on socks and shoes (you have to put on your socks before you put on your shoes!) but it is just a toy example!) It is a function that calls itself during its execution on more basic versions of the problem until it reaches more basic versions of the problem it can solve.
+
+
 
 
 # Fibonacci Numbers
@@ -60,7 +70,11 @@ $$
 {{< /katex >}}
 
 
+
+
 So, for example
+
+
 
 
 {{< katex id="block-math-1" >}}
@@ -77,10 +91,14 @@ $$
 {{< /katex >}}
 
 
+
+
 Let's write a function to calculate these numbers. In my haste I typed this into my IDE and pressed run:
 ```python
 def fib(n):
     return fib(n-2) + fib(n-1)
+
+
 
 
 if __name__ == "__main__":
@@ -96,7 +114,11 @@ RecursionError: maximum recursion depth exceeded
 It looks like fib was called over 900 times and I reached the maximum recursion depth! This error helps to contain runaway recursion, like what I just did.
 
 
+
+
 The reason this did not work is because I forgot to include the base case. While this is an easy problem to spot on a simple program like this, it can be more difficult as your functions become more complicated!
+
+
 
 
 ```python
@@ -108,10 +130,14 @@ def fib(n):
     return fib(n-2) + fib(n-1)
 
 
+
+
 if __name__ == "__main__":
     print(fib(10))
 ```
 And with this I get the number 55 printed into my terminal. Note that we had two base cases. Recursive functions can have any positive integer of base cases. (can you come up with a recursive function that would have 1000 base cases?)
+
+
 
 
 # Factorials!
@@ -148,10 +174,59 @@ def factorial(n):
     pass #Please Implement
 
 
+
+
 if __name__ == "__main__":
     n = 10
     result = factorial(10)
     print(f"{n}! = {result}")
+```
+
+
+# GCD
+The greatest common divisor (GCD) of two non negative integers for which one is nonzero, `a` and `b`, is the largest number that divides both `a` and `b`.
+{{< katex id="block-MATH-5" >}}
+$$
+\begin{align*}
+&GCD(2, 4) = 2\\
+&GCD(43, 97) = 1\\
+&GCD(100, 100) = 100\\
+&GCD(44, 26) = 2\\
+&GCD(62, 53) = 1\\
+&GCD(39, 9) = 3\\
+&GCD(100, 75) = 25\\
+&GCD(0, 42) = 42\\
+&GCD(78, 0) = 70\\
+&GCD(0, 0) = \infty (\text{this is why one of the integers has to be non zero})
+\end{align*}
+$$
+{{< /katex >}}
+
+
+Note that the GCD exists for any pair of non negative integers (other than (0, 0)) because it is an integer bounded below by 1 (`a` and `b` are both trivially divisible by 1) and bounded above by `min(a, b)` (a number cannot be divisible by a number greater than itself). However, finding the GCD of any two numbers, especially for very large numbers, can be very hard. Fortunately, there once lived a very smart Greek guy named Euclid who came up with an algorithm to make finding the GCD of two numbers much easier in what is now called the Euclidean Algorithm.
+
+
+{{< soft src="/img/recursion/euclid.jpg" alt="Soft-styled image"  caption="Euclid (the bald guy) teaching geometry in Raphael's _School of Athens_" >}}
+
+
+Even though he didn't write it in this language, Eculid essentially discovered that
+{{< katex id="block-MATH-6" >}}
+$$
+\begin{align*}
+GCD(a, b) = GCD((a \mod b), b)\\
+GCD(a, b) = GCD(a, (b \mod a))
+\end{align*}
+$$
+{{< /katex >}}
+This means that we can continuously rewrite the problem of finding the GCD of a number with smaller and smaller numbers until we get to numbers so small that the GCD is obvious. Implement this algorithm recursively. Think about what your base case should be!
+
+
+```python
+def GCD(a, b):
+    """
+    Recursive function to return the greatest common divisor of a and b using the Euclidean algorithm.
+    """
+    pass #Please Implement
 ```
 
 
@@ -190,6 +265,7 @@ def fib(n):
 ```
 If you try to run this function for a large number, like n = 100, it will take a very long time. This is because our function secretly sucks!
 
+
 Lets see how many times our function is being called when we calculate a Fibonacci number.
 ```python
 def count_recursive_calls(func):
@@ -199,15 +275,21 @@ def count_recursive_calls(func):
     call_count = {"count": 0}  # Use a mutable object to store count
 
 
+
+
     def wrapper(*args, **kwargs):
         # Increment the call count each time the function is called
         call_count["count"] += 1
         return func(*args, **kwargs)
 
 
+
+
     # Attach the call count to the wrapper for easy access
     wrapper.call_count = call_count
     return wrapper
+
+
 
 
 @count_recursive_calls
@@ -219,6 +301,8 @@ def fib(n):
     return fib(n-2) + fib(n-1)
 
 
+
+
 if __name__ == "__main__":
     n = 30
     result = fib(n)
@@ -227,23 +311,35 @@ if __name__ == "__main__":
 If you are curious how this works, google "python decorators" (This is a more niche topic in python that we will not discuss much. Think of a decorator as an effect you can apply to a function on the fly.) Upon running this the terminal tells us:
 
 
+
+
 For n = 30 we called fib 2692537 times!
+
+
 
 
 We called the function over 2 million times! To see why, consider this tree diagram representing our function calls. Each node in the tree is one function call.
 
 
+
+
 {{< soft src="/img/recursion/tree.jpg" alt="Soft-styled image" caption="so. many. branches. O_o" >}}
+
+
 
 
 However, this tree also shows us our problem! We are duplicating a lot of work by recalculating Fibonacci numbers that we have seen before. For example, we call fib(27) 3 times! (Funny enough, we call fib(k) fib(30 - k + 1) times)
 
-The enviroment diagram for what is going on helps us to furter see the problem. Look at all those frames being generated for just n = 5!
+
+The environment diagram for what is going on helps us to further see the problem. Look at all those frames being generated for just n = 5!
 {{< rawhtml >}}
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20fib%28n%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%200%0A%20%20%20%20elif%20n%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20return%20fib%28n-2%29%20%2B%20fib%28n-1%29%0A%0Ax%20%3D%20fib%285%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=0&heapPrimitives=true&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 {{< /rawhtml >}}
 
+
  Memoization (no, that is not a misspelling of memorization) solves this problem.
+
+
 
 
 Memoization is the technique of caching values as you compute so that you only need to compute each value at most one time. For example, we could cache the Fibonacci numbers in a dictionary as we calculate them to avoid duplicated work.
@@ -280,7 +376,11 @@ def memoized_fib(n):
 and we get
 
 
+
+
 For n = 30 we called recr_fib 59 times!
+
+
 
 
 This is a huge improvement compared to 2.6 million!
@@ -291,8 +391,12 @@ def do_action(action):
     stack = [action]
 
 
+
+
     while stack:
         current_action = stack.pop(0)
+
+
 
 
         if is_basic(current_action):
@@ -302,6 +406,8 @@ def do_action(action):
                 stack.append(sub_action)
 ```
 We essentially replaced the different frames that our recursive function was being called in with a variable called "stack."
+
+
 
 
 For a more realistic example consider how we could iteratively generate the Fibonacci numbers.
@@ -318,16 +424,27 @@ def fib_itterative(n):
 ```
 
 
+
+
 You may be wondering if we can do this for all recursive programs. The answer turns out to be "yes" due to one of the most important theorems in all of theoretical computer science.
+
+
 
 
 Alan Turing, a name you may be familiar with, laid many of the foundations for the field of computer science in the 1930s. In a 1936 paper he introduced his namesake model of what "computation" is, the Turing Machine. This was essentially a fictional device that iteratively went along an infinitely long piece of tape with 1's and 0's on it, reading and writing to the tape as it went along. Turing showed that if you cleverly laid out the rules for the device, you could calculate almost anything (see [the halting problem](https://en.wikipedia.org/wiki/Halting_problem) for an example of something that you could not compute).
 
 
+
+
 Turing was not alone in his investigations of computation in the 1930s. Alonzo Church also made a model of computation that he called the Lambda Calculus and also published on it in 1936. It relied on recursive computing with mathematical functions, and seemed to be just as valid a model of computation as Turing's. The question then became: who has the better model of computation, Church or Turing?
+
+
 
 
 This question was resolved with the [Church Turing Thesis](https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis). It essentially says that there is an isomorphism between Church's lambda calculus and Turing's machine; they are secretly the same thing (mathematically speaking). Because two really smart people independently came to the same conclusion with wildly different approaches, most all computer scientists agree to call something "computable" if it can be represented on a Turing machine.
 
 
+
+
 The consequence of the Church Turing Thesis that we care about is that it implies that all recursive functions can be written iteratively, and vice versa. Python is Turing complete (any python program can be represented on a Turing machine, and visa versa. This is true of most all programming languages) so even if you write a really complicated recursive function you believe cannot be written any other way, you are wrong because it has a representation on a Turing machine which is necessarily iterative! Your iterative functions also have representations in the lambda calculus meaning they can be represented recursively as well!
+
