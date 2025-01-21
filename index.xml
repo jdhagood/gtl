@@ -80,10 +80,10 @@ In python we can create a set using curly braces.</description>
     
     <item>
       <title>ESP32 AP</title>
-      <link>https://gtlpython.click/esp32ap/</link>
+      <link>https://gtlpython.click/esp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://gtlpython.click/esp32ap/</guid>
+      <guid>https://gtlpython.click/esp/</guid>
       <description>A simple example program to set up an ESP32 as an Access Point to server a webpage to control an LED on an local wireless network.
 import network # Import the network module to set up Wi-Fi import socket # Import the socket module for handling HTTP requests import machine # Import the machine module for controlling hardware led = machine.Pin(14, machine.Pin.OUT) # Create a Pin object for the LED, set as output # Configure the ESP32 as an Access Point (AP) ssid = &amp;#34;ESP32-AP&amp;#34; # Wi-Fi network name (SSID); Change this to something unique password = &amp;#34;12345678&amp;#34; # Password for the Wi-Fi network (must be at least 8 characters); Change this to something unique # Create an Access Point instance ap = network.</description>
     </item>

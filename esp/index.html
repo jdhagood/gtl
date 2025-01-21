@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESP32 AP | GTL Python</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About Me</a></li>
+      
+      <li><a href="/environment_model/">Environment Diagram</a></li>
+      
+      <li><a href="/esp/">ESP32 AP</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">ESP32 AP</span></h1>
+
+
+</div>
+
+<main>
+<p>A simple example program to set up an ESP32 as an Access Point to server a webpage to control an LED on an local wireless network.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> network  <span style="color:#78787e"># Import the network module to set up Wi-Fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> socket   <span style="color:#78787e"># Import the socket module for handling HTTP requests</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">import</span> machine  <span style="color:#78787e"># Import the machine module for controlling hardware</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>led <span style="color:#ff6ac1">=</span> machine<span style="color:#ff6ac1">.</span>Pin(<span style="color:#ff9f43">14</span>, machine<span style="color:#ff6ac1">.</span>Pin<span style="color:#ff6ac1">.</span>OUT)  <span style="color:#78787e"># Create a Pin object for the LED, set as output</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Configure the ESP32 as an Access Point (AP)</span>
+</span></span><span style="display:flex;"><span>ssid <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;ESP32-AP&#34;</span>          <span style="color:#78787e"># Wi-Fi network name (SSID); Change this to something unique</span>
+</span></span><span style="display:flex;"><span>password <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;12345678&#34;</span>      <span style="color:#78787e"># Password for the Wi-Fi network (must be at least 8 characters); Change this to something unique</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Create an Access Point instance</span>
+</span></span><span style="display:flex;"><span>ap <span style="color:#ff6ac1">=</span> network<span style="color:#ff6ac1">.</span>WLAN(network<span style="color:#ff6ac1">.</span>AP_IF)  <span style="color:#78787e"># Create a WLAN object in AP mode</span>
+</span></span><span style="display:flex;"><span>ap<span style="color:#ff6ac1">.</span>active(<span style="color:#ff6ac1">True</span>)                   <span style="color:#78787e"># Activate the Access Point</span>
+</span></span><span style="display:flex;"><span>ap<span style="color:#ff6ac1">.</span>config(essid<span style="color:#ff6ac1">=</span>ssid, password<span style="color:#ff6ac1">=</span>password)  <span style="color:#78787e"># Set the SSID and password for the AP</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Print the Access Point details</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;Access Point active. Connect to Wi-Fi: </span><span style="color:#5af78e">{</span>ssid<span style="color:#5af78e">}</span><span style="color:#5af78e">, Password: </span><span style="color:#5af78e">{</span>password<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">f</span><span style="color:#5af78e">&#34;IP address: </span><span style="color:#5af78e">{</span>ap<span style="color:#ff6ac1">.</span>ifconfig()[<span style="color:#ff9f43">0</span>]<span style="color:#5af78e">}</span><span style="color:#5af78e">&#34;</span>)  <span style="color:#78787e"># Print the AP&#39;s IP address (default: 192.168.4.1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># HTML content for the webpage</span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># This is the basic HTML page served by the ESP32, with buttons to control the LED</span>
+</span></span><span style="display:flex;"><span>html <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;&#34;&lt;!DOCTYPE html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&lt;head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;title&gt;LED Control&lt;/title&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;style&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        body { font-family: Arial; text-align: center; }
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        button { padding: 20px; margin: 10px; font-size: 20px; }
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;/style&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&lt;/head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;h1&gt;ESP32 LED Control&lt;/h1&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;button onclick=&#34;toggleLED(&#39;on&#39;)&#34;&gt;Turn LED ON&lt;/button&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;button onclick=&#34;toggleLED(&#39;off&#39;)&#34;&gt;Turn LED OFF&lt;/button&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        // JavaScript function to send LED control requests
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        function toggleLED(state) {
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            fetch(&#39;/led?state=&#39; + state);  // Send a GET request to the ESP32 with the LED state
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># This function returns the HTML content when the ESP32 receives a request</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">web_page</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> html
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Start a socket server to listen for incoming connections</span>
+</span></span><span style="display:flex;"><span>addr <span style="color:#ff6ac1">=</span> socket<span style="color:#ff6ac1">.</span>getaddrinfo(<span style="color:#5af78e">&#39;0.0.0.0&#39;</span>, <span style="color:#ff9f43">80</span>)[<span style="color:#ff9f43">0</span>][<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>]  <span style="color:#78787e"># Get address info for the server</span>
+</span></span><span style="display:flex;"><span>s <span style="color:#ff6ac1">=</span> socket<span style="color:#ff6ac1">.</span>socket()                              <span style="color:#78787e"># Create a socket object</span>
+</span></span><span style="display:flex;"><span>s<span style="color:#ff6ac1">.</span>bind(addr)                                     <span style="color:#78787e"># Bind the socket to the address and port</span>
+</span></span><span style="display:flex;"><span>s<span style="color:#ff6ac1">.</span>listen(<span style="color:#ff9f43">1</span>)                                      <span style="color:#78787e"># Start listening for connections (max 1 client at a time)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;Listening on&#39;</span>, addr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Main loop to handle client requests</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">while</span> <span style="color:#ff6ac1">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Accept a new connection from a client</span>
+</span></span><span style="display:flex;"><span>    conn, addr <span style="color:#ff6ac1">=</span> s<span style="color:#ff6ac1">.</span>accept()  <span style="color:#78787e"># Wait for a client to connect</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;Connection from&#39;</span>, addr)  <span style="color:#78787e"># Print the client&#39;s address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Receive the client&#39;s HTTP request</span>
+</span></span><span style="display:flex;"><span>    request <span style="color:#ff6ac1">=</span> conn<span style="color:#ff6ac1">.</span>recv(<span style="color:#ff9f43">1024</span>)  <span style="color:#78787e"># Receive up to 1024 bytes of data</span>
+</span></span><span style="display:flex;"><span>    request <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">str</span>(request)     <span style="color:#78787e"># Convert the request to a string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;Request:&#39;</span>, request) <span style="color:#78787e"># Print the HTTP request for debugging</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Check the request for LED control commands</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> <span style="color:#5af78e">&#39;/led?state=on&#39;</span> <span style="color:#ff6ac1">in</span> request:  <span style="color:#78787e"># If the request contains &#39;state=on&#39;</span>
+</span></span><span style="display:flex;"><span>        led<span style="color:#ff6ac1">.</span>value(<span style="color:#ff9f43">1</span>)                <span style="color:#78787e"># Turn the LED ON</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;LED turned ON&#34;</span>)      <span style="color:#78787e"># Print confirmation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">if</span> <span style="color:#5af78e">&#39;/led?state=off&#39;</span> <span style="color:#ff6ac1">in</span> request: <span style="color:#78787e"># If the request contains &#39;state=off&#39;</span>
+</span></span><span style="display:flex;"><span>        led<span style="color:#ff6ac1">.</span>value(<span style="color:#ff9f43">0</span>)                <span style="color:#78787e"># Turn the LED OFF</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;LED turned OFF&#34;</span>)     <span style="color:#78787e"># Print confirmation</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Serve the webpage</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#ff6ac1">=</span> web_page()  <span style="color:#78787e"># Get the HTML content</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Send the HTTP response to the client</span>
+</span></span><span style="display:flex;"><span>    conn<span style="color:#ff6ac1">.</span>send(<span style="color:#5af78e">&#34;HTTP/1.1 200 OK</span><span style="color:#5af78e">\r\n</span><span style="color:#5af78e">Content-Type: text/html</span><span style="color:#5af78e">\r\n\r\n</span><span style="color:#5af78e">&#34;</span> <span style="color:#ff6ac1">+</span> response)
+</span></span><span style="display:flex;"><span>    conn<span style="color:#ff6ac1">.</span>close()           <span style="color:#78787e"># Close the connection to the client</span>
+</span></span></code></pre></div>
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © JD Hagood 2025 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
