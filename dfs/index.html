@@ -128,7 +128,7 @@ In math a set is an unordered collection of objects. Sets can be constructed to 
 </div>
 
 
-<p>How was the jerry able to do that despite having no brain? If you watch the video carefully you can notice that the slime mold was growing into many of the nooks and crannies of the maze until it found food. After it found food it killed off all the paths it explored that didn&rsquo;t find food. You can image why the slime mold evolved to do this. The bigger the slime mold grows, the more it has to eat. It wants to eat the maximum abount of food while having the smallest body to increase its chances of survival and reproduction. It sends out feelers in every direction until it finds something.</p>
+<p>How was the Jerry able to do that despite having no brain? If you watch the video carefully you can notice that the slime mold was growing into many of the nooks and crannies of the maze until it found food. After it found food it killed off all the paths it explored that didn&rsquo;t find food. You can image why the slime mold evolved to do this. The bigger the slime mold grows, the more it has to eat. It wants to eat the maximum abount of food while having the smallest body to increase its chances of survival and reproduction. It sends out feelers in every direction until it finds something.</p>
 <p>This is is what computer scientests would call a breadth first search (BFS) algorithm. This algorithm runs on graph structures and answers the question &ldquo;how can I get from point A to point B in the shortest distance possible.&rdquo;</p>
 <p>Let&rsquo;s make a BFS algorithm to mimick what jerry does. We will represent the maze as a 2d matrix. &lsquo;#&rsquo; represents a wall that the slime mode cannot grow into, &lsquo;O&rsquo; represents an oat, the end goal of the slime mold. The following is a valid starting maze:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[[<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
@@ -175,17 +175,18 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position):
 </span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns open neighboring squares adjacent to the given position and a flag indicating if the oat is found.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Parameters:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            position (tuple): Current position in the maze.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            list: A list of valid neighboring positions.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            bool: True if the oat is found in the neighbors, False otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns valid neighboring squares adjacent to the given position.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Placeholder implementation; this should be replaced with the actual logic.</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> [], <span style="color:#ff6ac1">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Need to Implement!!</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">found_oat</span>(position):
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns if the oat is at a given location
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        maze <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>]
+</span></span><span style="display:flex;"><span>        y, x <span style="color:#ff6ac1">=</span> position
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> maze[y][x] <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;O&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Unpack maze start position</span>
 </span></span><span style="display:flex;"><span>    start_position <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;start&#34;</span>]
@@ -199,10 +200,12 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>        current_path <span style="color:#ff6ac1">=</span> queue<span style="color:#ff6ac1">.</span>pop(<span style="color:#ff9f43">0</span>)
 </span></span><span style="display:flex;"><span>        current_position <span style="color:#ff6ac1">=</span> current_path[<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get neighbors and check if the oat is found</span>
-</span></span><span style="display:flex;"><span>        neighbors, found_oat <span style="color:#ff6ac1">=</span> get_neighbors(current_position)
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> found_oat:
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if we found the oat</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> found_oat(current_position):
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> current_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get neighbors</span>
+</span></span><span style="display:flex;"><span>        neighbors <span style="color:#ff6ac1">=</span> get_neighbors(current_position)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Add valid neighbors to the queue</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> neighbor <span style="color:#ff6ac1">in</span> neighbors:
@@ -210,29 +213,20 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>            new_path <span style="color:#ff6ac1">=</span> current_path <span style="color:#ff6ac1">+</span> [neighbor]
 </span></span><span style="display:flex;"><span>            queue<span style="color:#ff6ac1">.</span>append(new_path)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return None if no solution exists</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return -1 if no solution exists</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>
 </span></span></code></pre></div><p>The code above is a lot to take in! You may need to read it a couple of times before it makes sense. The intuition is that we represent potential paths that the slime mold can take as lists of tuples. Every time the while loop cycles, we pop off the first path in the queue. We then consider all the places we can go from from the end of the path using the <code>get_neighbors</code> function that we are yet to implement. This function also checks if we have found the oat at the end of the path. If we found the oat we can go ahead and return the path! Otherwise we itterate through the neighbors and make each of them the end to a new path in the queue.</p>
 <p>One very import thing to notice is how we are popping and adding paths to the queue. Notice how we pop <strong>from the front of the queue</strong> and add our paths <strong>to the back of the queue</strong>. This ensures that all the paths in the queue grow at the same rate. If you instead both popped and added to the back of the queue this would be a depth first search algorithm (DFS). We will not cover DFS algorithms, but after you understand BFS, it is not hard to understand DFS with a quick Google search.</p>
 <h2 id="get_neighbors">get_neighbors</h2>
 <p>The algorithm above is very generic and does not fully encode the problem we are trying to solve. The real differentiating factor in DFS algorithms is how you get your neighbors at the end of a path. For us we can use something like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position, slime_mold_maze):
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position):
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns valid neighboring squares adjacent to the given position and a flag indicating if the oat is found.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        position (tuple): Current position in the maze (row, column).
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        slime_mold_maze (dict): A dictionary representing the maze, containing dimensions and other properties.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        tuple:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            - list: A list of valid neighboring positions (tuples).
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            - bool: True if the oat is found in the neighbors, False otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns valid neighboring squares adjacent to the given position.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Define the four possible directions of movement: up, down, left, right</span>
 </span></span><span style="display:flex;"><span>    directions <span style="color:#ff6ac1">=</span> [
-</span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),   <span style="color:#78787e"># Up</span>
-</span></span><span style="display:flex;"><span>        (<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),  <span style="color:#78787e"># Down</span>
+</span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),   <span style="color:#78787e"># Down</span>
+</span></span><span style="display:flex;"><span>        (<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),  <span style="color:#78787e"># Up</span>
 </span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>),   <span style="color:#78787e"># Right</span>
 </span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">0</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)   <span style="color:#78787e"># Left</span>
 </span></span><span style="display:flex;"><span>    ]
@@ -242,7 +236,6 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># List to store valid neighbors</span>
 </span></span><span style="display:flex;"><span>    neighbors <span style="color:#ff6ac1">=</span> []
-</span></span><span style="display:flex;"><span>    found_oat <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">False</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Iterate over all possible directions</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> direction <span style="color:#ff6ac1">in</span> directions:
@@ -253,20 +246,16 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>            maze_square <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x]
 </span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Check if the new position is not a wall</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> maze_square <span style="color:#ff6ac1">!=</span> <span style="color:#5af78e">&#34;#&#34;</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Check if the new position is the oat</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">if</span> maze_square <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;O&#34;</span>:
-</span></span><span style="display:flex;"><span>                    found_oat <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">True</span>
-</span></span><span style="display:flex;"><span>                
 </span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Add to the list of neighbors</span>
 </span></span><span style="display:flex;"><span>                neighbors<span style="color:#ff6ac1">.</span>append(new_position)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> neighbors, found_oat
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> neighbors
 </span></span></code></pre></div><p>We can now substitue this back in our function <code>solve_maze</code> and test our function out! I made a quick function to print out the solution and let the algorithm run.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">print_solution</span>(slime_mold_maze, sol):
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> y <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(slime_mold_maze[<span style="color:#5af78e">&#34;dimensions&#34;</span>][<span style="color:#ff9f43">0</span>]):
 </span></span><span style="display:flex;"><span>        row <span style="color:#ff6ac1">=</span> []
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> x <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(slime_mold_maze[<span style="color:#5af78e">&#34;dimensions&#34;</span>][<span style="color:#ff9f43">1</span>]):
-</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (y, x) <span style="color:#ff6ac1">in</span> sol:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (y, x) <span style="color:#ff6ac1">in</span> sol <span style="color:#ff6ac1">and</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x] <span style="color:#ff6ac1">!=</span> <span style="color:#5af78e">&#34;O&#34;</span>:
 </span></span><span style="display:flex;"><span>                row<span style="color:#ff6ac1">.</span>append(<span style="color:#5af78e">&#34;*&#34;</span>)
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">else</span>:
 </span></span><span style="display:flex;"><span>                row<span style="color:#ff6ac1">.</span>append(slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x])
@@ -279,12 +268,13 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
 </span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]],
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;dimensions&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">4</span>),
-</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;start&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;start&#34;</span>: (<span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">0</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sol <span style="color:#ff6ac1">=</span> solve_maze(slime_mold_maze)
 </span></span><span style="display:flex;"><span>print_solution(slime_mold_maze, sol)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;O&#39;</span>]
+</span></span></code></pre></div><p>When we run the program, this is the solution our algorithm came up with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;O&#39;</span>]
 </span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>]
 </span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>]
 </span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>]
@@ -321,21 +311,12 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position):
 </span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns valid neighboring squares adjacent to the given position and a flag indicating if the oat is found.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Parameters:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            position (tuple): Current position in the maze (row, column).
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            slime_mold_maze (dict): A dictionary representing the maze, containing dimensions and other properties.
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">            tuple:
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                - list: A list of valid neighboring positions (tuples).
-</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">                - bool: True if the oat is found in the neighbors, False otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns valid neighboring squares adjacent to the given position.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Define the four possible directions of movement: up, down, left, right</span>
 </span></span><span style="display:flex;"><span>        directions <span style="color:#ff6ac1">=</span> [
-</span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),   <span style="color:#78787e"># Up</span>
-</span></span><span style="display:flex;"><span>            (<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),  <span style="color:#78787e"># Down</span>
+</span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),   <span style="color:#78787e"># Down</span>
+</span></span><span style="display:flex;"><span>            (<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),  <span style="color:#78787e"># Up</span>
 </span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>),   <span style="color:#78787e"># Right</span>
 </span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">0</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)   <span style="color:#78787e"># Left</span>
 </span></span><span style="display:flex;"><span>        ]
@@ -345,7 +326,6 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># List to store valid neighbors</span>
 </span></span><span style="display:flex;"><span>        neighbors <span style="color:#ff6ac1">=</span> []
-</span></span><span style="display:flex;"><span>        found_oat <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">False</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Iterate over all possible directions</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> direction <span style="color:#ff6ac1">in</span> directions:
@@ -356,21 +336,24 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>                maze_square <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x]
 </span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Check if the new position is not a wall</span>
 </span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">if</span> maze_square <span style="color:#ff6ac1">!=</span> <span style="color:#5af78e">&#34;#&#34;</span>:
-</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Check if the new position is the oat</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#ff6ac1">if</span> maze_square <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;O&#34;</span>:
-</span></span><span style="display:flex;"><span>                        found_oat <span style="color:#ff6ac1">=</span> <span style="color:#ff6ac1">True</span>
-</span></span><span style="display:flex;"><span>                    
 </span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Add to the list of neighbors</span>
 </span></span><span style="display:flex;"><span>                    neighbors<span style="color:#ff6ac1">.</span>append(new_position)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> neighbors, found_oat
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> neighbors
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">found_oat</span>(position):
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns if the oat is at a given location
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        maze <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>]
+</span></span><span style="display:flex;"><span>        y, x <span style="color:#ff6ac1">=</span> position
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> maze[y][x] <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;O&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Unpack maze start position</span>
 </span></span><span style="display:flex;"><span>    start_position <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;start&#34;</span>]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Initialize the queue with the starting position</span>
 </span></span><span style="display:flex;"><span>    queue <span style="color:#ff6ac1">=</span> [[start_position]]
-</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Initilize the visited set with the starting postion</span>
 </span></span><span style="display:flex;"><span>    visited <span style="color:#ff6ac1">=</span> {start_position}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Perform Breadth-First Search (BFS) to find the oat</span>
@@ -379,21 +362,23 @@ We can try to solve the maze with a function that looks something like this:</p>
 </span></span><span style="display:flex;"><span>        current_path <span style="color:#ff6ac1">=</span> queue<span style="color:#ff6ac1">.</span>pop(<span style="color:#ff9f43">0</span>)
 </span></span><span style="display:flex;"><span>        current_position <span style="color:#ff6ac1">=</span> current_path[<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get neighbors and check if the oat is found</span>
-</span></span><span style="display:flex;"><span>        neighbors, found_oat <span style="color:#ff6ac1">=</span> get_neighbors(current_position)
-</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> found_oat:
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if we found the oat</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> found_oat(current_position):
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> current_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get neighbors</span>
+</span></span><span style="display:flex;"><span>        neighbors <span style="color:#ff6ac1">=</span> get_neighbors(current_position)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Add valid neighbors to the queue</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> neighbor <span style="color:#ff6ac1">in</span> neighbors:
-</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Check if we have not explored this square yet</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> neighbor <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> visited:
 </span></span><span style="display:flex;"><span>                visited<span style="color:#ff6ac1">.</span>add(neighbor)
 </span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Create a new path to avoid aliasing</span>
 </span></span><span style="display:flex;"><span>                new_path <span style="color:#ff6ac1">=</span> current_path <span style="color:#ff6ac1">+</span> [neighbor]
 </span></span><span style="display:flex;"><span>                queue<span style="color:#ff6ac1">.</span>append(new_path)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> []  <span style="color:#78787e"># Return None if no solution exists</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return -1 if no solution exists</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>
 </span></span></code></pre></div><p>This is where sets really shine. If our maze was very big, then we would visit a lot of differnt places in our BFS algorithm. If we stored all of our visited spaces in a list, then it would take a long time to evaluage <code>neighbor not in visited</code> because it runs in O(n) time. However, with a set this line only runs in O(1) time!</p>
 <h2 id="main-takeaways">Main Takeaways</h2>
 <p>As we implemented this BFS algorithm, we saw how many of the differnt data structures in python came together to solve a nontrival problem. However, more importantly, we saw the basic compoents of a BFS search algorithm that can be used to solve a varity of other problems.</p>
