@@ -84,7 +84,7 @@ Whats interesting about these guys though is that they can solve mazes!
 {{< /rawhtml >}}
 
 
-How was the jerry able to do that despite having no brain? If you watch the video carefully you can notice that the slime mold was growing into many of the nooks and crannies of the maze until it found food. After it found food it killed off all the paths it explored that didn't find food. You can image why the slime mold evolved to do this. The bigger the slime mold grows, the more it has to eat. It wants to eat the maximum abount of food while having the smallest body to increase its chances of survival and reproduction. It sends out feelers in every direction until it finds something.
+How was the Jerry able to do that despite having no brain? If you watch the video carefully you can notice that the slime mold was growing into many of the nooks and crannies of the maze until it found food. After it found food it killed off all the paths it explored that didn't find food. You can image why the slime mold evolved to do this. The bigger the slime mold grows, the more it has to eat. It wants to eat the maximum abount of food while having the smallest body to increase its chances of survival and reproduction. It sends out feelers in every direction until it finds something.
 
 This is is what computer scientests would call a breadth first search (BFS) algorithm. This algorithm runs on graph structures and answers the question "how can I get from point A to point B in the shortest distance possible."
 
@@ -144,17 +144,18 @@ def solve_maze(slime_mold_maze):
 
     def get_neighbors(position):
         """
-        Returns open neighboring squares adjacent to the given position and a flag indicating if the oat is found.
-
-        Parameters:
-            position (tuple): Current position in the maze.
-
-        Returns:
-            list: A list of valid neighboring positions.
-            bool: True if the oat is found in the neighbors, False otherwise.
+        Returns valid neighboring squares adjacent to the given position.
         """
-        # Placeholder implementation; this should be replaced with the actual logic.
-        return [], False
+        # Need to Implement!!
+        pass
+
+    def found_oat(position):
+        """
+        Returns if the oat is at a given location
+        """
+        maze = slime_mold_maze["maze"]
+        y, x = position
+        return maze[y][x] == "O"
 
     # Unpack maze start position
     start_position = slime_mold_maze["start"]
@@ -168,10 +169,12 @@ def solve_maze(slime_mold_maze):
         current_path = queue.pop(0)
         current_position = current_path[-1]
 
-        # Get neighbors and check if the oat is found
-        neighbors, found_oat = get_neighbors(current_position)
-        if found_oat:
+        # Check if we found the oat
+        if found_oat(current_position):
             return current_path
+
+        # Get neighbors
+        neighbors = get_neighbors(current_position)
 
         # Add valid neighbors to the queue
         for neighbor in neighbors:
@@ -179,9 +182,8 @@ def solve_maze(slime_mold_maze):
             new_path = current_path + [neighbor]
             queue.append(new_path)
 
-    # Return None if no solution exists
-    return None
-
+    # Return -1 if no solution exists
+    return -1
 ```
 The code above is a lot to take in! You may need to read it a couple of times before it makes sense. The intuition is that we represent potential paths that the slime mold can take as lists of tuples. Every time the while loop cycles, we pop off the first path in the queue. We then consider all the places we can go from from the end of the path using the `get_neighbors` function that we are yet to implement. This function also checks if we have found the oat at the end of the path. If we found the oat we can go ahead and return the path! Otherwise we itterate through the neighbors and make each of them the end to a new path in the queue.
 
@@ -191,23 +193,14 @@ One very import thing to notice is how we are popping and adding paths to the qu
 ## get_neighbors
 The algorithm above is very generic and does not fully encode the problem we are trying to solve. The real differentiating factor in DFS algorithms is how you get your neighbors at the end of a path. For us we can use something like this:
 ```python
-def get_neighbors(position, slime_mold_maze):
+def get_neighbors(position):
     """
-    Returns valid neighboring squares adjacent to the given position and a flag indicating if the oat is found.
-
-    Parameters:
-        position (tuple): Current position in the maze (row, column).
-        slime_mold_maze (dict): A dictionary representing the maze, containing dimensions and other properties.
-
-    Returns:
-        tuple:
-            - list: A list of valid neighboring positions (tuples).
-            - bool: True if the oat is found in the neighbors, False otherwise.
+    Returns valid neighboring squares adjacent to the given position.
     """
     # Define the four possible directions of movement: up, down, left, right
     directions = [
-        (1, 0),   # Up
-        (-1, 0),  # Down
+        (1, 0),   # Down
+        (-1, 0),  # Up
         (0, 1),   # Right
         (0, -1)   # Left
     ]
@@ -217,7 +210,6 @@ def get_neighbors(position, slime_mold_maze):
 
     # List to store valid neighbors
     neighbors = []
-    found_oat = False
 
     # Iterate over all possible directions
     for direction in directions:
@@ -228,14 +220,10 @@ def get_neighbors(position, slime_mold_maze):
             maze_square = slime_mold_maze["maze"][y][x]
             # Check if the new position is not a wall
             if maze_square != "#":
-                # Check if the new position is the oat
-                if maze_square == "O":
-                    found_oat = True
-                
                 # Add to the list of neighbors
                 neighbors.append(new_position)
 
-    return neighbors, found_oat
+    return neighbors
 ```
 
 
@@ -246,7 +234,7 @@ def print_solution(slime_mold_maze, sol):
     for y in range(slime_mold_maze["dimensions"][0]):
         row = []
         for x in range(slime_mold_maze["dimensions"][1]):
-            if (y, x) in sol:
+            if (y, x) in sol and slime_mold_maze["maze"][y][x] != "O":
                 row.append("*")
             else:
                 row.append(slime_mold_maze["maze"][y][x])
@@ -259,12 +247,13 @@ slime_mold_maze = {
              ["_", "_", "_", "_",],
              ["_", "#", "_", "_",]],
     "dimensions": (5, 4),
-    "start": (5, 0)
+    "start": (4, 0)
 }
 
 sol = solve_maze(slime_mold_maze)
 print_solution(slime_mold_maze, sol)
 ```
+When we run the program, this is the solution our algorithm came up with:
 ```python
 ['#', '*', '*', 'O']
 ['#', '*', '#', '_']
@@ -310,21 +299,12 @@ def solve_maze(slime_mold_maze):
 
     def get_neighbors(position):
         """
-        Returns valid neighboring squares adjacent to the given position and a flag indicating if the oat is found.
-
-        Parameters:
-            position (tuple): Current position in the maze (row, column).
-            slime_mold_maze (dict): A dictionary representing the maze, containing dimensions and other properties.
-
-        Returns:
-            tuple:
-                - list: A list of valid neighboring positions (tuples).
-                - bool: True if the oat is found in the neighbors, False otherwise.
+        Returns valid neighboring squares adjacent to the given position.
         """
         # Define the four possible directions of movement: up, down, left, right
         directions = [
-            (1, 0),   # Up
-            (-1, 0),  # Down
+            (1, 0),   # Down
+            (-1, 0),  # Up
             (0, 1),   # Right
             (0, -1)   # Left
         ]
@@ -334,7 +314,6 @@ def solve_maze(slime_mold_maze):
 
         # List to store valid neighbors
         neighbors = []
-        found_oat = False
 
         # Iterate over all possible directions
         for direction in directions:
@@ -345,21 +324,24 @@ def solve_maze(slime_mold_maze):
                 maze_square = slime_mold_maze["maze"][y][x]
                 # Check if the new position is not a wall
                 if maze_square != "#":
-                    # Check if the new position is the oat
-                    if maze_square == "O":
-                        found_oat = True
-                    
                     # Add to the list of neighbors
                     neighbors.append(new_position)
 
-        return neighbors, found_oat
+        return neighbors
+
+    def found_oat(position):
+        """
+        Returns if the oat is at a given location
+        """
+        maze = slime_mold_maze["maze"]
+        y, x = position
+        return maze[y][x] == "O"
 
     # Unpack maze start position
     start_position = slime_mold_maze["start"]
 
     # Initialize the queue with the starting position
     queue = [[start_position]]
-    # Initilize the visited set with the starting postion
     visited = {start_position}
 
     # Perform Breadth-First Search (BFS) to find the oat
@@ -368,21 +350,23 @@ def solve_maze(slime_mold_maze):
         current_path = queue.pop(0)
         current_position = current_path[-1]
 
-        # Get neighbors and check if the oat is found
-        neighbors, found_oat = get_neighbors(current_position)
-        if found_oat:
+        # Check if we found the oat
+        if found_oat(current_position):
             return current_path
+
+        # Get neighbors
+        neighbors = get_neighbors(current_position)
 
         # Add valid neighbors to the queue
         for neighbor in neighbors:
-            # Check if we have not explored this square yet
             if neighbor not in visited:
                 visited.add(neighbor)
                 # Create a new path to avoid aliasing
                 new_path = current_path + [neighbor]
                 queue.append(new_path)
 
-    return []  # Return None if no solution exists
+    # Return -1 if no solution exists
+    return -1
 ```
 This is where sets really shine. If our maze was very big, then we would visit a lot of differnt places in our BFS algorithm. If we stored all of our visited spaces in a list, then it would take a long time to evaluage `neighbor not in visited` because it runs in O(n) time. However, with a set this line only runs in O(1) time!
 

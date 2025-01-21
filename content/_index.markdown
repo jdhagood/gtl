@@ -103,11 +103,25 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
         <h2>Lecture 4: <a href="cellular_atomata">Cellular Automata</a></h2>
         <p class="description">Let's get some more practice with for loops as we explore cellular automatas</p>
         <p>
-            Download here: <a href="/psets/conway.ipynb" download>conway.ipynb</a>
+            Download p-set: <a href="/psets/conway.ipynb" download>conway.ipynb</a>
         </p>
     </div>
 </div>
 {{< /rawhtml >}}
+
+{{< rawhtml >}}
+<div class="rounded-box">
+    <img class="icon" src="/img/icons/slime_mold.jpg" alt="img">
+    <div class="content">
+        <h2>Lecture 5: <a href="DFS">DFS</a></h2>
+        <p class="description">DFS and introduction to sets</p>
+        <p>
+            Download p-set: <a href="/psets/DFS.ipynb" download>DFS.ipynb</a>
+        </p>
+    </div>
+</div>
+{{< /rawhtml >}}
+
 <!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
@@ -135,18 +149,6 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
 </div>
 {{< /rawhtml >}}
 
-{{< rawhtml >}}
-<div class="rounded-box">
-    <img class="icon" src="/img/icons/slime_mold.jpg" alt="img">
-    <div class="content">
-        <h2>Lecture 6: <a href="DFS">DFS</a></h2>
-        <p class="description">DFS and introduction to sets</p>
-        <p>
-            Download here: <a href="/zip_files/code.zip" download>Download the ZIP file</a>
-        </p>
-    </div>
-</div>
-{{< /rawhtml >}}
 
 {{< rawhtml >}}
 <div class="rounded-box">
