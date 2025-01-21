@@ -23,7 +23,7 @@ menu:
       url: "environment_model/"
       weight: 2
     - name: ESP32 AP
-      url: "esp32AP/"
+      url: "esp/"
       weight: 2
 
 params:
