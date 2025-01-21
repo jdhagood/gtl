@@ -1,5 +1,5 @@
 +++
-title = 'Esp32 AP'
+title = 'ESP32 AP'
 draft = false
 +++
 A simple example program to set up an ESP32 as an Access Point to server a webpage to control an LED on an local wireless network.
