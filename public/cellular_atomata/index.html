@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cellular Atomata | GTL Python</title>
+    <title>Cellular Automata | GTL Python</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
     
@@ -26,51 +26,12 @@
     </nav>
 
 <div class="article-meta">
-<h1><span class="title">Cellular Atomata</span></h1>
+<h1><span class="title">Cellular Automata</span></h1>
 
 
 </div>
 
 <main>
-<h1 id="for-loops-with-range">For loops with range</h1>
-<p>For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times. We have seen them in this course before but it is worth going over them again.</p>
-<p>Suppose you wanted to &ldquo;hello&rdquo; to the terminal 5 times. You could naively run the python script</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
-</span></span></code></pre></div><p>However, any time you see idential blocks of code one after another alarm bells should go off in your head screaming &lsquo;use a for loop!&rsquo; The following code does the exact same thing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">5</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#39;hello&#39;</span>)
-</span></span></code></pre></div><p>We can then change that &lsquo;5&rsquo; to any other number we want for our for loop to repeat as many times as possible! Try this for other numbers. What happens if you put in 0, negative numbers, or nonintegers?</p>
-<p>The power of the for loop does not stop at only saving you some keystroks. It can also act as a counter!</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">5</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;i = &#34;</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff5c57">str</span>(i))
-</span></span></code></pre></div><p>This is what gets printed out to the terminal</p>
-<pre tabindex="0"><code>i = 0
-i = 1
-i = 2
-i = 3
-i = 4
-</code></pre><p>When our for loop is initiated, i becomes a local variable accessable in the loop. We could have chosen any variable name, but i (for index I suppose) is most commonly chosen. Each time the for loop loops, i is incramented by one. To fully understand this, an enviroment diagram helps out.
-
-<iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=for%20i%20in%20range%285%29%3A%0A%20%20%20%20print%28%22i%20%3D%20%22%20%2B%20str%28i%29%29%0Aprint%28%22done%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=true&curInstr=12&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-
-
-Note that we never exit the global frame in this execution. This will become an imporant distinction between itterative and recursive programming in later lectures.</p>
-<p>We can count in different ways by changing the arguments of the range funciton. There are three arguments that we can play with.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff5c57">range</span>(start<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">0</span>, end, count<span style="color:#ff6ac1">=</span><span style="color:#ff9f43">1</span>)
-</span></span></code></pre></div><p>By default &lsquo;start&rsquo; and &lsquo;count&rsquo; are set to 0 and 1 respectivly. The &lsquo;start&rsquo; value is where we start, the &rsquo;end&rsquo; value is where we end (not included in the loop), and the &lsquo;count&rsquo; variable how much we add on each loop. For instance, if we wanted to print every third number between 30 (included) and 45 (not included) we could run</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">30</span>, <span style="color:#ff9f43">45</span>, <span style="color:#ff9f43">3</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(<span style="color:#5af78e">&#34;i = &#34;</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff5c57">str</span>(i))
-</span></span></code></pre></div><p>which gives us, as expected</p>
-<pre tabindex="0"><code>i = 30
-i = 33
-i = 36
-i = 39
-i = 42
-</code></pre><p>Take a minute to play around with the three values on the range function. Try setting the count variable to a negative number with start &gt; end. Try non-integer types. What happens?</p>
 <h1 id="nested-for-loops">Nested for loops</h1>
 <p>If you put a for loop inside of a for loop, we call this a nested for loop.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">5</span>):
@@ -102,16 +63,16 @@ i = 4, j = 1
 i = 4, j = 2
 i = 4, j = 3
 i = 4, j = 4
-</code></pre><p>Notice how I changed the name of the itterating variable on the inner for loop to &lsquo;j&rsquo;. What happens if I still named it &lsquo;i&rsquo;?</p>
-<p>This is a powerful technique and will reqire some practice to master. Try to figure out how this code works that prints off a multiplication table in the terminal.</p>
+</code></pre><p>Notice how I changed the name of the iteration variable on the inner for loop to &lsquo;j&rsquo;. What happens if I still named it &lsquo;i&rsquo;?</p>
+<p>This is a powerful technique and will require some practice to master. Try to figure out how this code works that prints off a multiplication table in the terminal.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">11</span>):
 </span></span><span style="display:flex;"><span>    current_line <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> j <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">11</span>):
 </span></span><span style="display:flex;"><span>        current_line <span style="color:#ff6ac1">+=</span> <span style="color:#ff5c57">str</span>(i)<span style="color:#ff6ac1">.</span>zfill(<span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;x&#34;</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff5c57">str</span>(j)<span style="color:#ff6ac1">.</span>zfill(<span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34; = &#34;</span> <span style="color:#ff6ac1">+</span> <span style="color:#ff5c57">str</span>(i<span style="color:#ff6ac1">*</span>j)<span style="color:#ff6ac1">.</span>zfill(<span style="color:#ff9f43">3</span>) <span style="color:#ff6ac1">+</span> <span style="color:#5af78e">&#34;  &#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(current_line)
-</span></span></code></pre></div><p>Play around with this code. Even though we have not discussed it, can you figure out what the string method .zfill() does? Can you make it such that we avoid redundantly printing out multiplication facts that are actually the same under commutativity (i.e after printing &ldquo;02x07 = 014&rdquo; we do not want to print &ldquo;07x02 = 014&rdquo;)</p>
+</span></span></code></pre></div><p>Play around with this code. Even though we have not discussed it, can you figure out what the string method .zfill() does? Can you make it such that we avoid redundantly printing out multiplication facts that are actually the same under commutativity (i.e. after printing &ldquo;02x07 = 014&rdquo; we do not want to print &ldquo;07x02 = 014&rdquo;)</p>
 <h1 id="for-loops-with-lists-and-strings">For loops with lists and strings</h1>
-<p>You will often times find yourself needing to loop over the elements of a list. One way to do this is itterating over the indexes of the list using range:</p>
+<p>You will oftentimes find yourself needing to loop over the elements of a list. One way to do this is iterating over the indexes of the list using range:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>countries <span style="color:#ff6ac1">=</span> [<span style="color:#5af78e">&#34;Italy&#34;</span>, <span style="color:#5af78e">&#34;USA&#34;</span>, <span style="color:#5af78e">&#34;Angola&#34;</span>, <span style="color:#5af78e">&#34;China&#34;</span>, <span style="color:#5af78e">&#34;Australia&#34;</span>, <span style="color:#5af78e">&#34;Brazil&#34;</span>]
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff5c57">len</span>(countries)):
 </span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(countries[i])
@@ -119,7 +80,7 @@ i = 4, j = 4
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>countries <span style="color:#ff6ac1">=</span> [<span style="color:#5af78e">&#34;Italy&#34;</span>, <span style="color:#5af78e">&#34;USA&#34;</span>, <span style="color:#5af78e">&#34;Angola&#34;</span>, <span style="color:#5af78e">&#34;China&#34;</span>, <span style="color:#5af78e">&#34;Australia&#34;</span>, <span style="color:#5af78e">&#34;Brazil&#34;</span>]
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> country <span style="color:#ff6ac1">in</span> countries:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(country)
-</span></span></code></pre></div><p>This helps reduce both the number of keystrokes and imporve readablity of your code (litteraly, the code does exactly what it says!).</p>
+</span></span></code></pre></div><p>This helps reduce both the number of keystrokes and improve readability of your code (literally, the code does exactly what it says!).</p>
 <p>This trick also works for the letters in a string. If we wanted to print &ldquo;Italy&rdquo; character by character we could use this code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">for</span> letter <span style="color:#ff6ac1">in</span> <span style="color:#5af78e">&#34;Italy&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(letter)
@@ -148,7 +109,7 @@ y
 </span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">list</span>(enum_countries)
 </span></span><span style="display:flex;"><span>[(<span style="color:#ff9f43">0</span>, <span style="color:#5af78e">&#39;Italy&#39;</span>), (<span style="color:#ff9f43">1</span>, <span style="color:#5af78e">&#39;USA&#39;</span>), (<span style="color:#ff9f43">2</span>, <span style="color:#5af78e">&#39;Angola&#39;</span>), (<span style="color:#ff9f43">3</span>, <span style="color:#5af78e">&#39;China&#39;</span>), (<span style="color:#ff9f43">4</span>, <span style="color:#5af78e">&#39;Australia&#39;</span>), (<span style="color:#ff9f43">5</span>, <span style="color:#5af78e">&#39;Brazil&#39;</span>)]
 </span></span></code></pre></div><p>So enumerate basically puts each element in a list in a tuple with its index. When we call our for loop we can unpack these tuples to two variables representing the index and element for each element in our list.</p>
-<h1 id="cellular-atomota">Cellular Atomota</h1>
+<h1 id="cellular-automata">Cellular Automata</h1>
 <p>I invite you to google &ldquo;Conway&rsquo;s Game of Life.&rdquo; You will be greeted with one of Google&rsquo;s easter eggs in the form of some little white squares on the side of your screen showing how much nerds love this little game.
 <style>
     .soft {
@@ -219,9 +180,9 @@ The pattern of squares you see is due to a simple ruleset
     
 </div>
 
-These rules were chosen by mathmatician John Conway and collegues while playing this game on a Go board becase they produced the most interesting outputs. I invite you to play around with Conway&rsquo;s game of life <a href="https://playgameoflife.com/">here</a>! (I also cannot help but bring up the fact that <a href="https://www.alanzucconi.com/2020/10/13/conways-game-of-life/">Conway&rsquo;s game of life is turing complete</a> which means that we can represent the <a href="https://www.youtube.com/watch?v=xP5-iIeKXE8">game of life in the game of life</a>.)</p>
-<p>We will explore Conway&rsquo;s game of life on the pset, but for now lets implement a simpler 1D cellular atomata.</p>
-<p>Steven Wolfram (computer scientest, physist, businsman, fellow of the American Matimatical Society and all around smart guy) helped popularize <a href="https://mathworld.wolfram.com/ElementaryCellularAutomaton.html">elementary cellular atomota</a>. These are 1D cellular atomata. Like in Conway&rsquo;s Game of Life, cells can either be alive or dead, but unlike Conway&rsquo;s game of life, each cell only has 2 neighbors instead of 8.</p>
+These rules were chosen by mathematician John Conway and colleagues while playing this game on a Go board because they produced the most interesting outputs. I invite you to play around with Conway&rsquo;s game of life <a href="https://playgameoflife.com/">here</a>! (I also cannot help but bring up the fact that <a href="https://www.alanzucconi.com/2020/10/13/conways-game-of-life/">Conway&rsquo;s game of life is turing complete</a> which means that we can represent the <a href="https://www.youtube.com/watch?v=xP5-iIeKXE8">game of life in the game of life</a>.)</p>
+<p>We will explore Conway&rsquo;s game of life on the pset, but for now let&rsquo;s implement a simpler 1D cellular automata.</p>
+<p>Steven Wolfram (computer scientist, physicist, businessman, fellow of the American Mathematical Society and all around smart guy) helped popularize <a href="https://mathworld.wolfram.com/ElementaryCellularAutomaton.html">elementary cellular atomota</a>. These are 1D cellular automata. Like in Conway&rsquo;s Game of Life, cells can either be alive or dead, but unlike Conway&rsquo;s game of life, each cell only has 2 neighbors instead of 8.</p>
 <p>Because we only need to look at three cells to determine if a cell is alive or dead in the next generation (the left neighbor, the cell itself, and the right neighbor), there are only 2x2x2=8 cases to consider. Wolfram came up with a nifty way to represent these rules. If we let the dead state be a binary 0 and the alive state be a binary 1, then we can consider what number is represented by these cells (alive dead alive = 101 = 5). We then decide, for each number between 0 and 7, if it corresponds to an alive cell. This means that there are 2x2x2x2x2x2x2x2=256 possible rules for us to construct. The figure below demonstrates some of these rules</p>
 <style>
     .soft {
@@ -252,12 +213,12 @@ These rules were chosen by mathmatician John Conway and collegues while playing 
     <img src="/img/cellular_atomata/elementary_rules.jpg" class="soft" alt="Soft-styled image">
     
     <div class="caption">
-        Elementary Cellular Atomata Rules
+        Elementary Cellular Automata Rules
     </div>
     
 </div>
 
-<p>To visualize the evolution these cellular atomota we can print out sequential generations. Newer generations are printed below the older generations. Different rules lead to different printouts.</p>
+<p>To visualize the evolution of these cellular automata we can print out sequential generations. Newer generations are printed below the older generations. Different rules lead to different printouts.</p>
 <style>
     .soft {
         width: 600px;
@@ -287,62 +248,71 @@ These rules were chosen by mathmatician John Conway and collegues while playing 
     <img src="/img/cellular_atomata/evolution.svg" class="soft" alt="Soft-styled image">
     
     <div class="caption">
-        Elementary Cellular Atomata Evolutions
+        Elementary Cellular Automata Evolutions
     </div>
     
 </div>
 
-<p>Let&rsquo;s implement this in python. First we need to figure out how to represent our cells and rules. Lists give us a very nifty way to do this. We reprsent an alive cell as 1 and a dead cell as 0.</p>
+<p>Let&rsquo;s implement this in python. First we need to figure out how to represent our cells and rules. Lists give us a very nifty way to do this. We represent an alive cell as 1 and a dead cell as 0.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#78787e"># Define the size of the cellular automaton</span>
 </span></span><span style="display:flex;"><span>SIZE <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">55</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#78787e"># Initialize a list of cells with all cells in the &#34;dead&#34; state (0)</span>
 </span></span><span style="display:flex;"><span>cells <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">*</span> SIZE
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#78787e"># Set the middle cell to the &#34;alive&#34; state (1)</span>
 </span></span><span style="display:flex;"><span>cells[SIZE <span style="color:#ff6ac1">//</span> <span style="color:#ff9f43">2</span>] <span style="color:#ff6ac1">=</span> <span style="color:#ff9f43">1</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#78787e"># Define the rule set as a list of binary values (e.g., Rule 220)</span>
 </span></span><span style="display:flex;"><span>rule <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">0</span>]
-</span></span></code></pre></div><p>We now want to be able to update our cells list based on our rules list. Let&rsquo;s make a function that takes in a list of cells and a rules list and outputs the next generation of cells. One small thing that we need to decide is how we handel the edges our of cells list. I am choosing to always keep the edges in the dead state, but feel free to play around with other ways to handel the edge case like wraping around (the first and last cell are neighbors).</p>
+</span></span></code></pre></div><p>We now want to be able to update our cell list based on our rules list. Let&rsquo;s make a function that takes in a list of cells and a rules list and outputs the next generation of cells. One small thing that we need to decide is how we handle the edges out of the cell list. I am choosing to always keep the edges in the dead state, but feel free to play around with other ways to handle the edge case like wrapping around (the first and last cell are neighbors).</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_next_generation</span>(cells, rule):
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Compute the next generation of cells based on the current generation
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    and the given rule set.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        cells (list[int]): The current generation of cells (0 or 1).
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        rule (list[int]): The rule set for the automaton (8 binary values).
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        list[int]: The next generation of cells.
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Start with the edges in the dead state (0)</span>
 </span></span><span style="display:flex;"><span>    next_generation <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">0</span>]
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>   
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Reverse the rule to match our indexing</span>
 </span></span><span style="display:flex;"><span>    rule <span style="color:#ff6ac1">=</span> rule[::<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>]
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>   
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Compute the state of each cell in the next generation</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(<span style="color:#ff9f43">1</span>, <span style="color:#ff5c57">len</span>(cells) <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">1</span>):
 </span></span><span style="display:flex;"><span>        left_cell <span style="color:#ff6ac1">=</span> cells[i <span style="color:#ff6ac1">-</span> <span style="color:#ff9f43">1</span>]
 </span></span><span style="display:flex;"><span>        middle_cell <span style="color:#ff6ac1">=</span> cells[i]
 </span></span><span style="display:flex;"><span>        right_cell <span style="color:#ff6ac1">=</span> cells[i <span style="color:#ff6ac1">+</span> <span style="color:#ff9f43">1</span>]
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Calculate the rule index using the binary representation of the neighbors</span>
 </span></span><span style="display:flex;"><span>        rule_index <span style="color:#ff6ac1">=</span> (<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">2</span>) <span style="color:#ff6ac1">*</span> left_cell <span style="color:#ff6ac1">+</span> (<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">1</span>) <span style="color:#ff6ac1">*</span> middle_cell <span style="color:#ff6ac1">+</span> (<span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">**</span> <span style="color:#ff9f43">0</span>) <span style="color:#ff6ac1">*</span> right_cell
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Determine the new state of the cell based on the rule</span>
 </span></span><span style="display:flex;"><span>        new_cell <span style="color:#ff6ac1">=</span> rule[rule_index]
 </span></span><span style="display:flex;"><span>        next_generation<span style="color:#ff6ac1">.</span>append(new_cell)
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Add the rightmost edge in the dead state (0)</span>
 </span></span><span style="display:flex;"><span>    next_generation<span style="color:#ff6ac1">.</span>append(<span style="color:#ff9f43">0</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> next_generation
-</span></span></code></pre></div><p>We are nearly ready to test this out. We will print our cells to the terminal to visualize them. Lets make a print method to make it easier to see what is going on</p>
+</span></span></code></pre></div><p>We are nearly ready to test this out. We will print our cells to the terminal to visualize them. Let&rsquo;s make a print method to make it easier to see what is going on</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">print_cells</span>(cells):
 </span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Print the current state of the cells as a grid.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
 </span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        cells (list[int]): The list of cells (0 or 1).
@@ -354,15 +324,15 @@ These rules were chosen by mathmatician John Conway and collegues while playing 
 </span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">else</span>:
 </span></span><span style="display:flex;"><span>            cells_string <span style="color:#ff6ac1">+=</span> <span style="color:#5af78e">&#34; &#34;</span>  <span style="color:#78787e"># Dead cell</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff5c57">print</span>(cells_string)
-</span></span></code></pre></div><p>Now lets put it all together. I invite you to play around with the rules and see what patterns can emerge. Some are boring, some are predictable, and some are very chaotic (like the famous rule 30).
+</span></span></code></pre></div><p>Now let&rsquo;s put it all together. I invite you to play around with the rules and see what patterns can emerge. Some are boring, some are predictable, and some are very chaotic (like the famous rule 30).
 
 <iframe src="https://trinket.io/embed/python/a3aeb9bfa223" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 </p>
 <h1 id="main-takeaways">Main Takeaways</h1>
-<p>In this lecture we covered a lot of gound. We discussed nested for loops to allow us to itterate over two or more values at onice. Just as we can image one for loop itterating over a 1D list of numbers, n-nested for loops can itterate over an n-D array of numbers.</p>
-<p>We saw how for loops can help us repeat blocks of code mutliple times with an incramenting variable. We also saw how easy python makes it for us to itterate through a list or string with the &lsquo;in&rsquo; keyword.</p>
-<p>We ended the lecture by applying some of these concepts to cellular atomata.</p>
+<p>In this lecture we covered a lot of ground. We discussed nested for loops to allow us to iterate over two or more values at once. Just as we can image one for loop iterating over a 1D list of numbers, n-nested for loops can iterate over an n-D array of numbers.</p>
+<p>We saw how for loops can help us repeat blocks of code multiple times with an incrementing variable. We also saw how easy python makes it for us to iterate through a list or string with the &lsquo;in&rsquo; keyword.</p>
+<p>We ended the lecture by applying some of these concepts to cellular automata and exploring how simple rulesets can lead to complex behaviors. This idea of simplicity leading to complexity is a common thread throughout math, physics, and computer science and seems to be an underlying property of the universe. At least according to Steven Wolfram!</p>
 
 </main>
 

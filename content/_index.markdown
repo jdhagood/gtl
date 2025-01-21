@@ -95,7 +95,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}}
-<!-- 
+
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/snail.jpg" alt="img">
@@ -108,7 +108,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     </div>
 </div>
 {{< /rawhtml >}}
-
+<!-- 
 {{< rawhtml >}}
 <div class="rounded-box">
     <img class="icon" src="/img/icons/sound.jpg" alt="img">
