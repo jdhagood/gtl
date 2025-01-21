@@ -1,5 +1,5 @@
 ---
-title: Landing Page
+title: GTL Python Home Page
 ---
 # Introduction to Python
 
@@ -48,7 +48,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     <img class="icon" src="/img/icons/icon1.jpg" alt="Lecture 0 Icon">
     <div class="content">
         <h2>Lecture 0: <a href="hello_world">hello, world</a></h2>
-        <p class="description">Let's write our first python program! We're going to download python, play around in the shell, and discuss how assignments are turned in.</p>
+        <p class="description">Let's write our first python program! We're going to download python, play around in the shell, and write our first programs.</p>
         <p>
             Download p-set: <a href="/psets/hello_world.ipynb" download>hello_world.ipynb</a>
         </p>
@@ -88,7 +88,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
     <img class="icon" src="/img/icons/mandelbrot.jpg" alt="img">
     <div class="content">
         <h2>Lecture 3: <a href="recursion">Recursion</a></h2>
-        <p class="description">A more intensive study of functions in the enviroment diagram and recursion. An introduction to recursion, when to use it, and some cool applications!</p>
+        <p class="description"> An introduction to recursion, when to use it, and some cool applications!</p>
         <p>
             No pset to download :)
         </p>
@@ -100,8 +100,8 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
 <div class="rounded-box">
     <img class="icon" src="/img/icons/snail.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 4: <a href="cellular_atomata">Cellular Atomota</a></h2>
-        <p class="description">Mainly focus on lists and itterative solutions with for loops but also lighlty introduce functions and inputs</p>
+        <h2>Lecture 4: <a href="cellular_atomata">Cellular Automata</a></h2>
+        <p class="description">Let's get some more practice with for loops as we explore cellular automatas</p>
         <p>
             Download here: <a href="/psets/conway.ipynb" download>conway.ipynb</a>
         </p>
