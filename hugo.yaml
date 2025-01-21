@@ -22,6 +22,9 @@ menu:
     - name: Environment Diagram
       url: "environment_model/"
       weight: 2
+    - name: ESP32 AP
+      url: "esp32AP/"
+      weight: 2
 
 params:
   description: "A website built through Hugo"
