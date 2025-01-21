@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Landing Page on GTL Python</title>
+    <title>GTL Python Home Page on GTL Python</title>
     <link>https://gtlpython.click/</link>
-    <description>Recent content in Landing Page on GTL Python</description>
+    <description>Recent content in GTL Python Home Page on GTL Python</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://gtlpython.click/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -49,14 +49,14 @@ if CONDITION: CODE_TO_RUN_IF_CONDITION_IS_TRUE CODE_AFTER_IF_STATEMENT CONDITION
     </item>
     
     <item>
-      <title>Cellular Atomata</title>
+      <title>Cellular Automata</title>
       <link>https://gtlpython.click/cellular_atomata/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gtlpython.click/cellular_atomata/</guid>
-      <description>For loops with range For loops are very versitile. In their most basic use case, they allow you to repeat a block of code mutliple times. We have seen them in this course before but it is worth going over them again.
-Suppose you wanted to &amp;ldquo;hello&amp;rdquo; to the terminal 5 times. You could naively run the python script
-print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) print(&amp;#39;hello&amp;#39;) However, any time you see idential blocks of code one after another alarm bells should go off in your head screaming &amp;lsquo;use a for loop!</description>
+      <description>Nested for loops If you put a for loop inside of a for loop, we call this a nested for loop.
+for i in range(5): for j in range(5): print(&amp;#34;i = &amp;#34; + str(i) + &amp;#34;, j = &amp;#34; + str(j)) Which prints to the terminal 25 lines. (why 25?)
+i = 0, j = 0 i = 0, j = 1 i = 0, j = 2 i = 0, j = 3 i = 0, j = 4 i = 1, j = 0 i = 1, j = 1 i = 1, j = 2 i = 1, j = 3 i = 1, j = 4 i = 2, j = 0 i = 2, j = 1 i = 2, j = 2 i = 2, j = 3 i = 2, j = 4 i = 3, j = 0 i = 3, j = 1 i = 3, j = 2 i = 3, j = 3 i = 3, j = 4 i = 4, j = 0 i = 4, j = 1 i = 4, j = 2 i = 4, j = 3 i = 4, j = 4 Notice how I changed the name of the iteration variable on the inner for loop to &amp;lsquo;j&amp;rsquo;.</description>
     </item>
     
     <item>
