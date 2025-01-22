@@ -113,7 +113,7 @@ If you have any questions or concerns email me at jdhagood@mit.edu.
 <div class="rounded-box">
     <img class="icon" src="/img/icons/slime_mold.jpg" alt="img">
     <div class="content">
-        <h2>Lecture 5: <a href="DFS">DFS</a></h2>
+        <h2>Lecture 5: <a href="dfs">DFS</a></h2>
         <p class="description">DFS and introduction to sets</p>
         <p>
             Download p-set: <a href="/psets/DFS.ipynb" download>DFS.ipynb</a>
