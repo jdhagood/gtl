@@ -37,6 +37,16 @@ When you use a microphone to record a sound, it measures the electrical signal f
     </item>
     
     <item>
+      <title>BFS</title>
+      <link>https://gtlpython.click/bfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtlpython.click/bfs/</guid>
+      <description>Sets If you have have so much as dipped your toes in higher level math, you have likely heard about sets. All of modern math is built on top of sets. In math a set is an unordered collection of objects. Sets can be constructed to hold almost anything anything from numbers to functions to cats and dogs to other sets (Russel has entered the chat).
+In python we can create a set using curly braces.</description>
+    </item>
+    
+    <item>
       <title>Binary Search</title>
       <link>https://gtlpython.click/binarysearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -57,16 +67,6 @@ if CONDITION: CODE_TO_RUN_IF_CONDITION_IS_TRUE CODE_AFTER_IF_STATEMENT CONDITION
       <description>Nested for loops If you put a for loop inside of a for loop, we call this a nested for loop.
 for i in range(5): for j in range(5): print(&amp;#34;i = &amp;#34; + str(i) + &amp;#34;, j = &amp;#34; + str(j)) Which prints to the terminal 25 lines. (why 25?)
 i = 0, j = 0 i = 0, j = 1 i = 0, j = 2 i = 0, j = 3 i = 0, j = 4 i = 1, j = 0 i = 1, j = 1 i = 1, j = 2 i = 1, j = 3 i = 1, j = 4 i = 2, j = 0 i = 2, j = 1 i = 2, j = 2 i = 2, j = 3 i = 2, j = 4 i = 3, j = 0 i = 3, j = 1 i = 3, j = 2 i = 3, j = 3 i = 3, j = 4 i = 4, j = 0 i = 4, j = 1 i = 4, j = 2 i = 4, j = 3 i = 4, j = 4 Notice how I changed the name of the iteration variable on the inner for loop to &amp;lsquo;j&amp;rsquo;.</description>
-    </item>
-    
-    <item>
-      <title>DFS</title>
-      <link>https://gtlpython.click/dfs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://gtlpython.click/dfs/</guid>
-      <description>Sets If you have have so much as dipped your toes in higher level math, you have likely heard about sets. All of modern math is built on top of sets. In math a set is an unordered collection of objects. Sets can be constructed to hold almost anything anything from numbers to functions to cats and dogs to other sets (Russel has entered the chat).
-In python we can create a set using curly braces.</description>
     </item>
     
     <item>

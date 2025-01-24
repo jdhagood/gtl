@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BFS | GTL Python</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About Me</a></li>
+      
+      <li><a href="/environment_model/">Environment Diagram</a></li>
+      
+      <li><a href="/esp/">ESP32 AP</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">BFS</span></h1>
+
+
+</div>
+
+<main>
+<h1 id="sets">Sets</h1>
+<p>If you have have so much as dipped your toes in higher level math, you have likely heard about sets. All of modern math is built on top of sets.
+In math a set is an unordered collection of objects. Sets can be constructed to hold <em>almost</em> anything anything from numbers to functions to cats and dogs to other sets (<a href="https://en.wikipedia.org/wiki/Russell%27s_paradox">Russel</a> has entered the chat).</p>
+<p>In python we can create a set using curly braces.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a <span style="color:#ff6ac1">=</span> {<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>}
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">type</span>(a)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&lt;</span><span style="color:#ff6ac1">class</span> <span style="color:#ff5c57">&#39;</span><span style="color:#f3f99d">set</span><span style="color:#5af78e">&#39;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff5c57">print</span>(a)
+</span></span><span style="display:flex;"><span>{<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>}
+</span></span></code></pre></div><p>The superpower of sets comes from our ability to check if an element is in the set.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">in</span> a
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">in</span> a
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">3</span> <span style="color:#ff6ac1">in</span> a
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff9f43">4</span> <span style="color:#ff6ac1">in</span> a
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">False</span>
+</span></span></code></pre></div><p>Notice that this is the same syntax we used to check if an element was in a list. However, checking if an element is in a set is much faster than checking if an element is in a list for very large collections of items. This is because checking membership in a list requires itterating over the list, which runs in O(n) time for n elements in the list. However, sets use a clever hash function to check membership, so they run in O(1) time. The amount of time to check if an element is in a very large set vs a very small set is the same! Note that this hasing method to access set elements means that we can&rsquo;t store mutalbe objects inside.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_set <span style="color:#ff6ac1">=</span> {[<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>]}
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#5af78e">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ff9f43">1</span>, <span style="color:#ff6ac1">in</span> <span style="color:#ff6ac1">&lt;</span>module<span style="color:#ff6ac1">&gt;</span>
+</span></span><span style="display:flex;"><span>TypeError: unhashable <span style="color:#ff5c57">type</span>: <span style="color:#5af78e">&#39;list&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> my_set <span style="color:#ff6ac1">=</span> {(<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>)} <span style="color:#78787e"># must use the immutable cousin of the list, the tuple</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span>
+</span></span></code></pre></div><p>Sets also have quite a few more nifty tricks up their sleves. You can add elements to sets like so</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a <span style="color:#ff6ac1">=</span> {<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>}
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a<span style="color:#ff6ac1">.</span>add(<span style="color:#ff9f43">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a
+</span></span><span style="display:flex;"><span>{<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>}
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a<span style="color:#ff6ac1">.</span>add(<span style="color:#ff9f43">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> a
+</span></span><span style="display:flex;"><span>{<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>}
+</span></span></code></pre></div><p>The fact that we can do this means that sets, like lists, are mutable and will alise together if you are not careful! (if you are curious, just how the existence of mutable lists implies the existence of inmutable tuples, the existence of mutable sets implies the existence of immutalbe <a href="https://www.programiz.com/python-programming/methods/built-in/frozenset">frozensets</a>)</p>
+<p>Notice how the set did not change when we tried to add 4 for the second time. This is because sets will hold only one instance of an object. We can use this to our advantage to get rid of duplicate objects in other data structures. If we have a list and only care about the unique elements in the list, we could convert it to a set and iterate over the values in the set</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> duplicated_list <span style="color:#ff6ac1">=</span> [<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">2</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">3</span>, <span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">6</span>] 
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> <span style="color:#ff6ac1">for</span> i <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">set</span>(duplicated_list):
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>     <span style="color:#ff5c57">print</span>(i)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">6</span>
+</span></span></code></pre></div><p>As always, this is not a 100% comprehensive guide on sets (not even close!). I encourage you to <a href="https://python-reference.readthedocs.io/en/latest/docs/sets/">read the docs!</a> (if I had a nickel for every time I heard that in CS&hellip;) There are some pretty nifty things you can do with sets that allow you to increase code readiblity and keystrokes.</p>
+<h1 id="breadth-first-search">Breadth First Search</h1>
+<p>Before we talk about breadth first search, lets see it in action.</p>
+<p>A slime mold is a type of eukaryoitic protist. My favorite slime mold is the <a href="https://en.wikipedia.org/wiki/Physarum_polycephalum">physarium polycephalum</a>, a yellow blob that loves to munch on decomposing matter in its plasmodium stage (the biology of these guys is so interesting! They are acellular, meaning that they are essentially one giant macroscopoic cell with multiple nuclei in them).</p>
+<style>
+    .soft {
+        width: 600px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;  
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;  
+    }
+    .caption {
+        font-size: 0.9em;
+        color: #555;  
+        margin-top: 10px;
+    }
+    .caption a {
+        color: #007BFF;  
+        text-decoration: none;  
+    }
+    .caption a:hover {
+        text-decoration: underline;  
+    }
+</style>
+
+<div class="image-container">
+    <img src="/img/DFS/mold.jpg" class="soft" alt="Soft-styled image">
+    
+    <div class="caption">
+        P. Polycephalum
+    </div>
+    
+</div>
+
+<p>Whats interesting about these guys though is that they can solve mazes!</p>
+
+<div style="display: flex; justify-content: center;">
+  <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/OBYqSr-c6Ks" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+
+<p>How was the Jerry able to do that despite having no brain? If you watch the video carefully you can notice that the slime mold was growing into many of the nooks and crannies of the maze until it found food. After it found food it killed off all the paths it explored that didn&rsquo;t find food. You can image why the slime mold evolved to do this. The bigger the slime mold grows, the more it has to eat. It wants to eat the maximum abount of food while having the smallest body to increase its chances of survival and reproduction. It sends out feelers in every direction until it finds something.</p>
+<p>This is is what computer scientests would call a breadth first search (BFS) algorithm. This algorithm runs on graph structures and answers the question &ldquo;how can I get from point A to point B in the shortest distance possible.&rdquo;</p>
+<p>Let&rsquo;s make a BFS algorithm to mimick what jerry does. We will represent the maze as a 2d matrix. &lsquo;#&rsquo; represents a wall that the slime mode cannot grow into, &lsquo;O&rsquo; represents an oat, the end goal of the slime mold. The following is a valid starting maze:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[[<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]]
+</span></span></code></pre></div><p>This maze will be in a dictionary with other information about it, like the starting point of the slime mold dimensions of the maze. For our maze it could look something like this</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>slime_mold_maze <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;maze&#34;</span>: [[<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]],
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;dimensions&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">4</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;start&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this eample, the start tuple would correspond to the slime mold starting at <code>slime_mold_maze[&quot;maze&quot;][5][0]</code> which looks like</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[[<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]]
+</span></span></code></pre></div><p>We want to write a function to figure out how the slime mold can get from its starting position and make it to the oat in the shortest path possible
+We can try to solve the maze with a function that looks something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">&gt;&gt;&gt;</span> solve_slime_mold_maze(slime_mold_maze)
+</span></span><span style="display:flex;"><span>[[<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span> [<span style="color:#5af78e">&#34;*&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]]
+</span></span></code></pre></div><p>Note that there may be multiple shortest paths. We are only concerned with returning the shortest one. Lets try to make this function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">solve_maze</span>(slime_mold_maze):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Solves a maze represented as a dictionary and returns the path to the goal (oat) or -1 if unsolvable.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        slime_mold_maze (dict): A dictionary containing the maze&#39;s dimensions, start position, and oat position.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        list: The path to the oat as a list of positions.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        int: Returns -1 if no solution exists.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position):
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns valid neighboring squares adjacent to the given position.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Need to Implement!!</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">found_oat</span>(position):
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns if the oat is at a given location
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        maze <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>]
+</span></span><span style="display:flex;"><span>        y, x <span style="color:#ff6ac1">=</span> position
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> maze[y][x] <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;O&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Unpack maze start position</span>
+</span></span><span style="display:flex;"><span>    start_position <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;start&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Initialize the queue with the starting position</span>
+</span></span><span style="display:flex;"><span>    queue <span style="color:#ff6ac1">=</span> [[start_position]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Perform Breadth-First Search (BFS) to find the oat</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> queue:
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get the current path from the queue</span>
+</span></span><span style="display:flex;"><span>        current_path <span style="color:#ff6ac1">=</span> queue<span style="color:#ff6ac1">.</span>pop(<span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>        current_position <span style="color:#ff6ac1">=</span> current_path[<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if we found the oat</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> found_oat(current_position):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> current_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get neighbors</span>
+</span></span><span style="display:flex;"><span>        neighbors <span style="color:#ff6ac1">=</span> get_neighbors(current_position)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Add valid neighbors to the queue</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> neighbor <span style="color:#ff6ac1">in</span> neighbors:
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Create a new path to avoid aliasing</span>
+</span></span><span style="display:flex;"><span>            new_path <span style="color:#ff6ac1">=</span> current_path <span style="color:#ff6ac1">+</span> [neighbor]
+</span></span><span style="display:flex;"><span>            queue<span style="color:#ff6ac1">.</span>append(new_path)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return -1 if no solution exists</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>
+</span></span></code></pre></div><p>The code above is a lot to take in! You may need to read it a couple of times before it makes sense. The intuition is that we represent potential paths that the slime mold can take as lists of tuples. Every time the while loop cycles, we pop off the first path in the queue. We then consider all the places we can go from from the end of the path using the <code>get_neighbors</code> function that we are yet to implement. This function also checks if we have found the oat at the end of the path. If we found the oat we can go ahead and return the path! Otherwise we itterate through the neighbors and make each of them the end to a new path in the queue.</p>
+<p>One very import thing to notice is how we are popping and adding paths to the queue. Notice how we pop <strong>from the front of the queue</strong> and add our paths <strong>to the back of the queue</strong>. This ensures that all the paths in the queue grow at the same rate. If you instead both popped and added to the back of the queue this would be a depth first search algorithm (DFS). We will not cover DFS algorithms, but after you understand BFS, it is not hard to understand DFS with a quick Google search.</p>
+<h2 id="get_neighbors">get_neighbors</h2>
+<p>The algorithm above is very generic and does not fully encode the problem we are trying to solve. The real differentiating factor in DFS algorithms is how you get your neighbors at the end of a path. For us we can use something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns valid neighboring squares adjacent to the given position.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Define the four possible directions of movement: up, down, left, right</span>
+</span></span><span style="display:flex;"><span>    directions <span style="color:#ff6ac1">=</span> [
+</span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),   <span style="color:#78787e"># Down</span>
+</span></span><span style="display:flex;"><span>        (<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),  <span style="color:#78787e"># Up</span>
+</span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>),   <span style="color:#78787e"># Right</span>
+</span></span><span style="display:flex;"><span>        (<span style="color:#ff9f43">0</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)   <span style="color:#78787e"># Left</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Get the maze dimensions</span>
+</span></span><span style="display:flex;"><span>    height, width <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;dimensions&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># List to store valid neighbors</span>
+</span></span><span style="display:flex;"><span>    neighbors <span style="color:#ff6ac1">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Iterate over all possible directions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> direction <span style="color:#ff6ac1">in</span> directions:
+</span></span><span style="display:flex;"><span>        new_position <span style="color:#ff6ac1">=</span> (position[<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">+</span> direction[<span style="color:#ff9f43">0</span>], position[<span style="color:#ff9f43">1</span>] <span style="color:#ff6ac1">+</span> direction[<span style="color:#ff9f43">1</span>])
+</span></span><span style="display:flex;"><span>        y, x <span style="color:#ff6ac1">=</span> new_position
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if the new position is within the maze bounds</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> <span style="color:#ff9f43">0</span> <span style="color:#ff6ac1">&lt;=</span> y <span style="color:#ff6ac1">&lt;</span> height <span style="color:#ff6ac1">and</span> <span style="color:#ff9f43">0</span> <span style="color:#ff6ac1">&lt;=</span> x <span style="color:#ff6ac1">&lt;</span> width:
+</span></span><span style="display:flex;"><span>            maze_square <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x]
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Check if the new position is not a wall</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> maze_square <span style="color:#ff6ac1">!=</span> <span style="color:#5af78e">&#34;#&#34;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Add to the list of neighbors</span>
+</span></span><span style="display:flex;"><span>                neighbors<span style="color:#ff6ac1">.</span>append(new_position)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> neighbors
+</span></span></code></pre></div><p>We can now substitue this back in our function <code>solve_maze</code> and test our function out! I made a quick function to print out the solution and let the algorithm run.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">print_solution</span>(slime_mold_maze, sol):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">for</span> y <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(slime_mold_maze[<span style="color:#5af78e">&#34;dimensions&#34;</span>][<span style="color:#ff9f43">0</span>]):
+</span></span><span style="display:flex;"><span>        row <span style="color:#ff6ac1">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> x <span style="color:#ff6ac1">in</span> <span style="color:#ff5c57">range</span>(slime_mold_maze[<span style="color:#5af78e">&#34;dimensions&#34;</span>][<span style="color:#ff9f43">1</span>]):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> (y, x) <span style="color:#ff6ac1">in</span> sol <span style="color:#ff6ac1">and</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x] <span style="color:#ff6ac1">!=</span> <span style="color:#5af78e">&#34;O&#34;</span>:
+</span></span><span style="display:flex;"><span>                row<span style="color:#ff6ac1">.</span>append(<span style="color:#5af78e">&#34;*&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">else</span>:
+</span></span><span style="display:flex;"><span>                row<span style="color:#ff6ac1">.</span>append(slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x])
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">print</span>(row)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>slime_mold_maze <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;maze&#34;</span>: [[<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]],
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;dimensions&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">4</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;start&#34;</span>: (<span style="color:#ff9f43">4</span>, <span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sol <span style="color:#ff6ac1">=</span> solve_maze(slime_mold_maze)
+</span></span><span style="display:flex;"><span>print_solution(slime_mold_maze, sol)
+</span></span></code></pre></div><p>When we run the program, this is the solution our algorithm came up with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;O&#39;</span>]
+</span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>]
+</span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>]
+</span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>]
+</span></span><span style="display:flex;"><span>[<span style="color:#5af78e">&#39;*&#39;</span>, <span style="color:#5af78e">&#39;#&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>, <span style="color:#5af78e">&#39;_&#39;</span>]
+</span></span></code></pre></div><p>As you can see the slime mold made a beeline for the oat just as we wanted. Everything seems to be working, but there is a slight problem.</p>
+<h2 id="redundant-paths">Redundant paths</h2>
+<p>Consider the following slime mold maze.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>slime_mold_maze <span style="color:#ff6ac1">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;maze&#34;</span>: [[<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;O&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>, <span style="color:#5af78e">&#34;#&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,],
+</span></span><span style="display:flex;"><span>             [<span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>, <span style="color:#5af78e">&#34;_&#34;</span>,]],
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;dimensions&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">4</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;start&#34;</span>: (<span style="color:#ff9f43">5</span>, <span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sol <span style="color:#ff6ac1">=</span> solve_maze(slime_mold_maze)
+</span></span><span style="display:flex;"><span>print_solution(slime_mold_maze, sol)
+</span></span></code></pre></div><p>If you try to run it you will probably be dissapointed that the program will run forever and just consume a lot of memory.</p>
+<p>The culprate is the while loop that checks if we have anything in the queue. Because it is impossible to get to the oat, the queue will keep growing with paths wantering around in the lower part of the maze and the queue never becomes empty.</p>
+<p>The slime mold in nature also has to deal with this problem, and we can use its solution. The slime mold does not grow on top of where it has previously been because it leaves behind a trail of mucus that stops growth. We can implement a similar stratgy in our BFS by keeping track of where the slime mold has explored. It is redundant to explore the same square twice because any path that does that would necessarily be longer than it needs to be.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">solve_maze</span>(slime_mold_maze):
+</span></span><span style="display:flex;"><span>    <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Solves a maze represented as a dictionary and returns the path to the goal (oat) or -1 if unsolvable.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Parameters:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        slime_mold_maze (dict): A dictionary containing the maze&#39;s dimensions, start position, and oat position.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        list: The path to the oat as a list of positions.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        int: Returns -1 if no solution exists.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">get_neighbors</span>(position):
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns valid neighboring squares adjacent to the given position.
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Define the four possible directions of movement: up, down, left, right</span>
+</span></span><span style="display:flex;"><span>        directions <span style="color:#ff6ac1">=</span> [
+</span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),   <span style="color:#78787e"># Down</span>
+</span></span><span style="display:flex;"><span>            (<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>, <span style="color:#ff9f43">0</span>),  <span style="color:#78787e"># Up</span>
+</span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">0</span>, <span style="color:#ff9f43">1</span>),   <span style="color:#78787e"># Right</span>
+</span></span><span style="display:flex;"><span>            (<span style="color:#ff9f43">0</span>, <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>)   <span style="color:#78787e"># Left</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get the maze dimensions</span>
+</span></span><span style="display:flex;"><span>        height, width <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;dimensions&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># List to store valid neighbors</span>
+</span></span><span style="display:flex;"><span>        neighbors <span style="color:#ff6ac1">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Iterate over all possible directions</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> direction <span style="color:#ff6ac1">in</span> directions:
+</span></span><span style="display:flex;"><span>            new_position <span style="color:#ff6ac1">=</span> (position[<span style="color:#ff9f43">0</span>] <span style="color:#ff6ac1">+</span> direction[<span style="color:#ff9f43">0</span>], position[<span style="color:#ff9f43">1</span>] <span style="color:#ff6ac1">+</span> direction[<span style="color:#ff9f43">1</span>])
+</span></span><span style="display:flex;"><span>            y, x <span style="color:#ff6ac1">=</span> new_position
+</span></span><span style="display:flex;"><span>            <span style="color:#78787e"># Check if the new position is within the maze bounds</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> <span style="color:#ff9f43">0</span> <span style="color:#ff6ac1">&lt;=</span> y <span style="color:#ff6ac1">&lt;</span> height <span style="color:#ff6ac1">and</span> <span style="color:#ff9f43">0</span> <span style="color:#ff6ac1">&lt;=</span> x <span style="color:#ff6ac1">&lt;</span> width:
+</span></span><span style="display:flex;"><span>                maze_square <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>][y][x]
+</span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Check if the new position is not a wall</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff6ac1">if</span> maze_square <span style="color:#ff6ac1">!=</span> <span style="color:#5af78e">&#34;#&#34;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#78787e"># Add to the list of neighbors</span>
+</span></span><span style="display:flex;"><span>                    neighbors<span style="color:#ff6ac1">.</span>append(new_position)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> neighbors
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">found_oat</span>(position):
+</span></span><span style="display:flex;"><span>        <span style="color:#5af78e">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        Returns if the oat is at a given location
+</span></span></span><span style="display:flex;"><span><span style="color:#5af78e">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        maze <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;maze&#34;</span>]
+</span></span><span style="display:flex;"><span>        y, x <span style="color:#ff6ac1">=</span> position
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">return</span> maze[y][x] <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#34;O&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Unpack maze start position</span>
+</span></span><span style="display:flex;"><span>    start_position <span style="color:#ff6ac1">=</span> slime_mold_maze[<span style="color:#5af78e">&#34;start&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Initialize the queue with the starting position</span>
+</span></span><span style="display:flex;"><span>    queue <span style="color:#ff6ac1">=</span> [[start_position]]
+</span></span><span style="display:flex;"><span>    visited <span style="color:#ff6ac1">=</span> {start_position}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Perform Breadth-First Search (BFS) to find the oat</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">while</span> queue:
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get the current path from the queue</span>
+</span></span><span style="display:flex;"><span>        current_path <span style="color:#ff6ac1">=</span> queue<span style="color:#ff6ac1">.</span>pop(<span style="color:#ff9f43">0</span>)
+</span></span><span style="display:flex;"><span>        current_position <span style="color:#ff6ac1">=</span> current_path[<span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Check if we found the oat</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">if</span> found_oat(current_position):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">return</span> current_path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Get neighbors</span>
+</span></span><span style="display:flex;"><span>        neighbors <span style="color:#ff6ac1">=</span> get_neighbors(current_position)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#78787e"># Add valid neighbors to the queue</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff6ac1">for</span> neighbor <span style="color:#ff6ac1">in</span> neighbors:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff6ac1">if</span> neighbor <span style="color:#ff6ac1">not</span> <span style="color:#ff6ac1">in</span> visited:
+</span></span><span style="display:flex;"><span>                visited<span style="color:#ff6ac1">.</span>add(neighbor)
+</span></span><span style="display:flex;"><span>                <span style="color:#78787e"># Create a new path to avoid aliasing</span>
+</span></span><span style="display:flex;"><span>                new_path <span style="color:#ff6ac1">=</span> current_path <span style="color:#ff6ac1">+</span> [neighbor]
+</span></span><span style="display:flex;"><span>                queue<span style="color:#ff6ac1">.</span>append(new_path)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#78787e"># Return -1 if no solution exists</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> <span style="color:#ff6ac1">-</span><span style="color:#ff9f43">1</span>
+</span></span></code></pre></div><p>This is where sets really shine. If our maze was very big, then we would visit a lot of differnt places in our BFS algorithm. If we stored all of our visited spaces in a list, then it would take a long time to evaluage <code>neighbor not in visited</code> because it runs in O(n) time. However, with a set this line only runs in O(1) time!</p>
+<h2 id="main-takeaways">Main Takeaways</h2>
+<p>As we implemented this BFS algorithm, we saw how many of the differnt data structures in python came together to solve a nontrival problem. However, more importantly, we saw the basic compoents of a BFS search algorithm that can be used to solve a varity of other problems.</p>
+<p>We started with a queue list to hold our paths that we explore and a visited set to hold all the locations we have explored. While the queue is not empty, we pop the first path off the queue and explore all the valid neighbors at the end of the path that we have not visited yet, adding these to the visited set. If none of them are the target, we add the paths back to the end of the queue and repeat the process over and over until we either find what we are looking for, or run out of places to explore and can return that there is not a solution.</p>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © JD Hagood 2025 | <a href="https://github.com/jdhagood/gtl">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
