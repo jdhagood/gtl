@@ -30,6 +30,13 @@
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;In this lab we will perform manipulations on audio files to produce some cool effects. Before we can start let&amp;rsquo;s talk about how sound is stored on a computer.&lt;/p&gt;&#xA;&lt;p&gt;When you use a microphone to record a sound, it measures the electrical signal from a transducer which is proportial to the pressure at the transducer many times a second. This produces a list of numbers, called samples (both positive, zero, and negative), corresponding to the pressue at a certain time.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>BFS</title>
+      <link>https://gtlpython.click/bfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://gtlpython.click/bfs/</guid>
+      <description>&lt;h1 id=&#34;sets&#34;&gt;Sets&lt;/h1&gt;&#xA;&lt;p&gt;If you have have so much as dipped your toes in higher level math, you have likely heard about sets. All of modern math is built on top of sets.&#xA;In math a set is an unordered collection of objects. Sets can be constructed to hold &lt;em&gt;almost&lt;/em&gt; anything anything from numbers to functions to cats and dogs to other sets (&lt;a href=&#34;https://en.wikipedia.org/wiki/Russell%27s_paradox&#34;&gt;Russel&lt;/a&gt; has entered the chat).&lt;/p&gt;&#xA;&lt;p&gt;In python we can create a set using curly braces.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Binary Search</title>
       <link>https://gtlpython.click/binarysearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -42,13 +49,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://gtlpython.click/cellular_atomata/</guid>
       <description>&lt;h1 id=&#34;nested-for-loops&#34;&gt;Nested for loops&lt;/h1&gt;&#xA;&lt;p&gt;If you put a for loop inside of a for loop, we call this a nested for loop.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#ff9f43&#34;&gt;5&lt;/span&gt;):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#ff9f43&#34;&gt;5&lt;/span&gt;):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;i = &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;str&lt;/span&gt;(i) &lt;span style=&#34;color:#ff6ac1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;, j = &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;str&lt;/span&gt;(j))&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pr</description>
-    </item>
-    <item>
-      <title>DFS</title>
-      <link>https://gtlpython.click/dfs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://gtlpython.click/dfs/</guid>
-      <description>&lt;h1 id=&#34;sets&#34;&gt;Sets&lt;/h1&gt;&#xA;&lt;p&gt;If you have have so much as dipped your toes in higher level math, you have likely heard about sets. All of modern math is built on top of sets.&#xA;In math a set is an unordered collection of objects. Sets can be constructed to hold &lt;em&gt;almost&lt;/em&gt; anything anything from numbers to functions to cats and dogs to other sets (&lt;a href=&#34;https://en.wikipedia.org/wiki/Russell%27s_paradox&#34;&gt;Russel&lt;/a&gt; has entered the chat).&lt;/p&gt;&#xA;&lt;p&gt;In python we can create a set using curly braces.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Enviroment Model</title>

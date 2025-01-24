@@ -1,5 +1,5 @@
 +++
-title = 'DFS'
+title = 'BFS'
 draft = false
 +++
 # Sets
